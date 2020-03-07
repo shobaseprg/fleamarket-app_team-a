@@ -10,6 +10,9 @@ server '18.178.22.118', user: 'ec2-user', roles: %w{app db web}
 # アプリケーションサーバー、webサーバー、dbサーバー全てserver '18.178.22.118', user: 'ec2-user'でロールする。
 # by うえやま
 
+set :rails_env, "production"
+set :unicorn_rack_env, "production"
+
 
 # role-based syntax
 # ==================
