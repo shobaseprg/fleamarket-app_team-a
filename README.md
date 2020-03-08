@@ -86,7 +86,6 @@
 -belong_to :saler, class_name: “User”
 -belong_to :brand 
 -belong_to :category
--has_one :evaluation 
 -has_many :users_transacts, dependent: :destroy
 -has_one :to_do, dependent: :destroy
 -has_one :shipping, dependent: :destroy
