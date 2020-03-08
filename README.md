@@ -59,7 +59,7 @@
 |sales_profit|integer||
 |category_id|integer||
 |brand_id|integer|foreign_key: true|
-|buyer_id|integer|foreign_key: true|
+|buyer_id|integer|foreign_key:true,default:0|
 |saler_id|integer|foreign_key: true|
 |shipping_charges|string|null: false|
 |shipping_date|datetime|null: false|
@@ -75,7 +75,7 @@
 -belong_to :brand 
 -belong_to :category
 -has_one :evaluation 
--has_one :users_transacts
+-has_many :users_transacts
 
 
 
