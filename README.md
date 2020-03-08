@@ -15,6 +15,25 @@
 |year|integer|null: false|
 |month|integer|null: false|
 |day|integer|null: false|
+|icon|string||
+
+### Association
+-has_many :evaluations
+-has_many :goods
+-has_many :items, dependent: :destroy
+-has_many :comments
+-has_many :payments, dependent: :destroy
+-has_one :address, dependent: :destroy
+-has_many :evaluation_notices,dependent: :destroy
+-has_many :good_notices,dependent: :destroy
+-has_many :comment_notices,dependent: :destroy
+-has_many :buyed_item_notices,dependent: :destroy
+
+---------------------------------------------------
+
+## addressテーブル
+|Column|Type|Options|
+|------|----|-------|
 |postal_code|string|null: false|
 |prefectures|string|null: false|
 |municipality|string|null: false|
@@ -24,16 +43,11 @@
 |dery_prefectures|string|null: false|
 |dery_address|string|null: false|
 |dery_building|string||
-|icon|string||
-|notice_id|integer|foreign_key: true| 
 
 ### Association
--has_many :evaluations
--has_many :goods
--has_many :items
--has_many :comments
--has_many :payments
+-belong_to :user
 
+---------------------------------------------------
 
 ## users_transactsテーブル 
 |Column|Type|Options|
@@ -47,27 +61,25 @@
 ### Association
 -belong_to :item
 
-
+----------------------------------------------------
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_name|string|null: false|
+|name|string|null: false|
 |description_item|text|null: false|
-|item_state|string|null: false|
+|condition|integer|null: false|
 |price|integer|null: false|
-|sales_profit|integer||
-|category_id|integer||
+|sales_profit|integer|
+|state|integer|null: false|
+|category_id|integer|foreign_key: true,null: false|
 |brand_id|integer|foreign_key: true|
 |buyer_id|integer|foreign_key:true,default:0|
 |saler_id|integer|foreign_key: true|
-|shipping_charges|string|null: false|
-|shipping_date|datetime|null: false|
-|shipping_Purchase|text||
-|shipping_area|integer|null: false|
+|evaluation_id|integer|foreign_key: true|
 
 ### Association
--has_many :items_images
+-has_many :item_images, dependent: :destroy
 -has_many :goods
 -has_many :comments
 -belong_to :buyer, class_name: “User”
@@ -75,21 +87,33 @@
 -belong_to :brand 
 -belong_to :category
 -has_one :evaluation 
--has_many :users_transacts
--has_one :to-do
+-has_many :users_transacts, dependent: :destroy
+-has_one :to_do, dependent: :destroy
+-has_one :shipping, dependent: :destroy
 
+------------------------------------------------------------
+
+## shippingテーブル
+|charges|string|null: false|
+|date|datetime|null: false|
+|Purchase|text||
+|area|integer|null: false|
+
+### Association
+-belong_to :item
+
+----------------------------------------------------------
 
 ## item_imageテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|integer|foreign_key: true|
-|file_name|string||
 |image|string| 
 
 ### Association
 -belong_to :item 
 
-
+-----------------------------------------------------------
 
 ## goodテーブル
 |Column|Type|Options|
@@ -101,7 +125,7 @@
 -belong_to :user 
 -belong_to :item
 
-
+-----------------------------------------------------------
 
 ## evaluationsテーブル
 |Column|Type|Options|
@@ -115,7 +139,7 @@
 -belong_to :receiver, class_name: "User"
 -belong_to :item
 
-
+------------------------------------------------------------
 
 ## brandテーブル
 |Column|Type|Options|
@@ -125,41 +149,70 @@
 ### Association
 -has_many :items
 
-
-
+-------------------------------------------------------------
 
 ## categoryテーブル
 |Column|Type|Options|
 |------|----|-------|
-|caregory_list1|string||
-|caregory_list2|string||
-|caregory_list3|string||
+|name|string||
+|ancestry|string||
 
 ### Association
 -has_many :items
 
+-----------------------------------------------------------------
 
-
-## to-doテーブル
+## to_doテーブル
 |Column|Type|Options|
 |------|----|-------|
-|to-do_list|text||
+|to_do_list|text||
 |todo_status|integer| 
 |item_id|integer|null: false, foreign_key: true| 
 
 ### Association
 -belong_to :item 
 
+-------------------------------------------------------------------
 
-## noticeテーブル
+## good_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|notice_list|text||
+|good_id|integer|foreign_key: true| 
 
 ### Association
--has_many :users
+-belong_to :user
 
+--------------------------------------------------------------------
 
+## comment_noticeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|comment_id|integer|foreign_key: true| 
+
+### Association
+-belong_to :user
+
+---------------------------------------------------------------------
+
+## evaluations_noticeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|evaluations_id|integer|foreign_key: true| 
+
+### Association
+-belong_to :user
+
+--------------------------------------------------------------------
+
+## buyed_item_noticeテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer|foreign_key: true| 
+
+### Association
+-belong_to :user
+
+--------------------------------------------------------------------
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -172,7 +225,7 @@
 -belong_to :user
 -belong_to :item
 
-
+---------------------------------------------------------------------
 
 ## paymentテーブル
 |Column|Type|Options|
