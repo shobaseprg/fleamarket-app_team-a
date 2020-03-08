@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyed_item_notice: MyString
+  comment: MyString
+  payment: MyString
+
+two:
+  buyed_item_notice: MyString
+  comment: MyString
+  payment: MyString

@@ -1,0 +1,2 @@
+class EvaluationNoticesController < ApplicationController
+end

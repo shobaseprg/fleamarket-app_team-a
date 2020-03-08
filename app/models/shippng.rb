@@ -1,0 +1,2 @@
+class Shippng < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class GoodNotice < ApplicationRecord
+end

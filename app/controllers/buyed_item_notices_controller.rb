@@ -1,0 +1,2 @@
+class BuyedItemNoticesController < ApplicationController
+end
