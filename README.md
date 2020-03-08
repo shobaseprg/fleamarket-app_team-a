@@ -136,7 +136,6 @@
 ### Association
 -belong_to :sayer, class_name: "User"
 -belong_to :receiver, class_name: "User"
--belong_to :item
 
 ------------------------------------------------------------
 
