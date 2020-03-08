@@ -185,3 +185,4 @@
 
 ### Association
 -belong_to :user
+
