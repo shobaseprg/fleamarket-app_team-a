@@ -1,7 +1,7 @@
-# Rails.application.routes.draw do
+Rails.application.routes.draw do
 
-#   root to: "homes#index"
+  root to: "homes#index"
 
-#   devise_for :users
+  devise_for :users
 
-# end
+end
