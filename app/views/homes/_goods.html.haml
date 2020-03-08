@@ -3,12 +3,12 @@
   .goods__box
     .goods__box__text
       -# %a{ :href => '#', :id => 'newpost' }
-      = link_to "#", id : 'newpost'
+      = link_to "#", id: 'newpost' do
         %h3{"class"=>"title"}新規投稿
     .goods__box__lists
       .goods__box__lists__list
         -# %a{ :href => '#', :class => 'goods__box__lists__list__anchor1' }
-        = link_to '#',class:'goods__box__lists__list__anchor1'
+        = link_to '#', class:'goods__box__lists__list__anchor1' do
           %figure{"class"=>"images"}
             = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", :class=> 'image')
           .goods__box__lists__list__anchor1__content
@@ -25,7 +25,7 @@
                 （税込）
       .goods__box__lists__list
         -# %a{ :href => '#', :class => 'goods__box__lists__list__anchor1' }
-        = link_to "#", class:"goods__box__lists__list__anchor1"
+        = link_to "#", class:"goods__box__lists__list__anchor1" do
           %figure{"class"=>"images"}
             = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", :class=> 'image')
           .goods__box__lists__list__anchor1__content
@@ -42,7 +42,7 @@
                 （税込）
       .goods__box__lists__list
         -# %a{ :href => '#', :class => 'goods__box__lists__list__anchor1' }
-        = link_to "#", class:"goods__box__lists__list__anchor1"
+        = link_to "#", class:"goods__box__lists__list__anchor1" do
           %figure{"class"=>"images"}
             = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", :class=> 'image')
           .goods__box__lists__list__anchor1__content
