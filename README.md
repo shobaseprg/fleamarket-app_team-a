@@ -76,7 +76,7 @@
 -belong_to :category
 -has_one :evaluation 
 -has_many :users_transacts
-
+-has_one :to-do
 
 
 ## item_imageテーブル
