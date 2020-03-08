@@ -6,8 +6,8 @@
 |------|----|-------|
 |first_name|string|null: false|
 |family_name|string|null: false| 
-|katakana_first_name|string|null: false|
-|katakana_family_name|string|null: false|
+|first_name_reading|string|null: false|
+|family_name_reading|string|null: false|
 |nickname|string|null: false|
 |self_introduction|text||
 |email|string|null: false|
@@ -15,7 +15,7 @@
 |year|integer|null: false|
 |month|integer|null: false|
 |day|integer|null: false|
-|icon|string||
+|avatar|string||
 
 ### Association
 -has_many :evaluations
@@ -52,7 +52,7 @@
 ## users_transactsテーブル 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|foreign_key: true|
+|item_id|references|foreign_key: true|
 |transact_buyer_id|integer|foreign_key: true| 
 |transact_saler_id|integer|foreign_key: true| 
 |transact_comment|text||
@@ -83,7 +83,7 @@
 -has_many :goods
 -has_many :comments
 -belong_to :buyer, class_name: “User”
--belong_to :saler, class_name: “User”
+-belong_to :saller, class_name: “User”
 -belong_to :brand 
 -belong_to :category
 -has_many :users_transacts, dependent: :destroy
