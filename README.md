@@ -43,6 +43,7 @@
 |dery_prefectures|string|null: false|
 |dery_address|string|null: false|
 |dery_building|string||
+|user|references|null: false,foreign_key: true|
 
 ### Association
 -belongs_to :user
@@ -52,9 +53,9 @@
 ## users_transactsテーブル 
 |Column|Type|Options|
 |------|----|-------|
-|item|references|foreign_key: true|
-|transact_buyer|reference|foreign_key: true| 
-|transact_saler|reference|foreign_key: true| 
+|item|references|null: false,foreign_key: true|
+|transact_buyer|reference|null: false,foreign_key: true| 
+|transact_saler|reference|null: false,foreign_key: true| 
 |transact_comment|text||
 |trans_status|integer| 
 
@@ -73,26 +74,19 @@
 |sales_profit|integer|
 |state|integer|null: false|
 |category|reference|foreign_key: true,null: false|
-|brand|reference|foreign_key: true|
-|buyer|reference|foreign_key:true,default:0|
-|saler|reference|foreign_key: true|
-|evaluation|reference|foreign_key: true|
+|brand|reference|null: false,foreign_key: true|
+|buyer|reference|null: false,foreign_key:true,default:0|
+|saler|reference|null: false,foreign_key: true|
+|evaluation|reference|null: false,foreign_key: true|
 
 ### Association
 -has_many :item_images, dependent: :destroy
 -has_many :goods
 -has_many :comments
-<<<<<<< HEAD
--belong_to :buyer, class_name: “User”
--belong_to :saler, class_name: “User”
--belong_to :brand 
--belong_to :category
-=======
 -belongs_to :buyer, class_name: “User”
 -belongs_to :saller, class_name: “User”
 -belongs_to :brand 
 -belongs_to :category
->>>>>>> bd7c8a47c555e95433d32113c467ffc50644ad04
 -has_many :users_transacts, dependent: :destroy
 -has_one :to_do, dependent: :destroy
 -has_one :shipping, dependent: :destroy
@@ -104,6 +98,7 @@
 |date|datetime|null: false|
 |Purchase|text||
 |area|integer|null: false|
+|item|reference|null: false,foreign_key: true|
 
 ### Association
 -belongs_to :item
@@ -113,8 +108,8 @@
 ## item_imageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|reference|foreign_key: true|
-|image|string| 
+|item|reference|null: false,foreign_key: true|
+|image|string|null: false|
 
 ### Association
 -belongs_to :item 
@@ -136,9 +131,9 @@
 ## evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user|reference|foreign_key: true| 
+|user|reference|null: false,foreign_key: true| 
 |text|text||
-|rank|integer|| 
+|rank|integer|null: false|
 
 ### Association
 -belongs_to :sayer, class_name: "User"
@@ -149,7 +144,7 @@
 ## brandテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_list|string||
+|brand_list|string|null: false|
 
 ### Association
 -has_many :items
@@ -160,7 +155,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
-|ancestry|string||
+|ancestry|string|null: false|
 
 ### Association
 -has_many :items
@@ -171,7 +166,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |to_do_list|text||
-|todo_status|integer| 
+|todo_status|integer|null: false|
 |item|reference|null: false, foreign_key: true| 
 
 ### Association
@@ -182,7 +177,7 @@
 ## good_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|good|reference|foreign_key: true| 
+|good|reference|null: false,foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -192,7 +187,7 @@
 ## comment_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|comment|reference|foreign_key: true| 
+|comment|reference|null: false,foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -202,7 +197,7 @@
 ## evaluations_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|evaluations|reference|foreign_key: true| 
+|evaluations|reference|null: false,foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -212,7 +207,7 @@
 ## buyed_item_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|reference|foreign_key: true| 
+|item|reference|null: false,foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -243,4 +238,3 @@
 
 ### Association
 -belongs_to :user
-
