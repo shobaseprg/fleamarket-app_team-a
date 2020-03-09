@@ -21,7 +21,7 @@
 -has_many :evaluations
 -has_many :goods
 -has_many :items, dependent: :destroy
--has_many :comments
+-has_many :comments, dependent: :destroy
 -has_many :payments, dependent: :destroy
 -has_one :address, dependent: :destroy
 -has_many :evaluation_notices,dependent: :destroy
@@ -45,21 +45,21 @@
 |dery_building|string||
 
 ### Association
--belong_to :user
+-belongs_to :user
 
 ---------------------------------------------------
 
 ## users_transactsテーブル 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|foreign_key: true|
+|item|references|foreign_key: true|
 |transact_buyer_id|integer|foreign_key: true| 
 |transact_saler_id|integer|foreign_key: true| 
 |transact_comment|text||
 |trans_status|integer| 
 
 ### Association
--belong_to :item
+-belongs_to :item
 
 ----------------------------------------------------
 
@@ -82,10 +82,10 @@
 -has_many :item_images, dependent: :destroy
 -has_many :goods
 -has_many :comments
--belong_to :buyer, class_name: “User”
--belong_to :saller, class_name: “User”
--belong_to :brand 
--belong_to :category
+-belongs_to :buyer, class_name: “User”
+-belongs_to :saller, class_name: “User”
+-belongs_to :brand 
+-belongs_to :category
 -has_many :users_transacts, dependent: :destroy
 -has_one :to_do, dependent: :destroy
 -has_one :shipping, dependent: :destroy
@@ -99,7 +99,7 @@
 |area|integer|null: false|
 
 ### Association
--belong_to :item
+-belongs_to :item
 
 ----------------------------------------------------------
 
@@ -110,7 +110,7 @@
 |image|string| 
 
 ### Association
--belong_to :item 
+-belongs_to :item 
 
 -----------------------------------------------------------
 
@@ -121,8 +121,8 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
--belong_to :user 
--belong_to :item
+-belongs_to :user 
+-belongs_to :item
 
 -----------------------------------------------------------
 
@@ -134,8 +134,8 @@
 |rank|integer|| 
 
 ### Association
--belong_to :sayer, class_name: "User"
--belong_to :receiver, class_name: "User"
+-belongs_to :sayer, class_name: "User"
+-belongs_to :receiver, class_name: "User"
 
 ------------------------------------------------------------
 
@@ -168,7 +168,7 @@
 |item_id|integer|null: false, foreign_key: true| 
 
 ### Association
--belong_to :item 
+-belongs_to :item 
 
 -------------------------------------------------------------------
 
@@ -178,7 +178,7 @@
 |good_id|integer|foreign_key: true| 
 
 ### Association
--belong_to :user
+-belongs_to :user
 
 --------------------------------------------------------------------
 
@@ -188,7 +188,7 @@
 |comment_id|integer|foreign_key: true| 
 
 ### Association
--belong_to :user
+-belongs_to :user
 
 ---------------------------------------------------------------------
 
@@ -198,7 +198,7 @@
 |evaluations_id|integer|foreign_key: true| 
 
 ### Association
--belong_to :user
+-belongs_to :user
 
 --------------------------------------------------------------------
 
@@ -208,7 +208,7 @@
 |item_id|integer|foreign_key: true| 
 
 ### Association
--belong_to :user
+-belongs_to :user
 
 --------------------------------------------------------------------
 
@@ -220,8 +220,8 @@
 |item_comment|text||
 
 ### Association
--belong_to :user
--belong_to :item
+-belongs_to :user
+-belongs_to :item
 
 ---------------------------------------------------------------------
 
@@ -235,5 +235,5 @@
 |security_code|integer|null: false|
 
 ### Association
--belong_to :user
+-belongs_to :user
 
