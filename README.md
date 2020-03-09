@@ -53,8 +53,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |item|references|foreign_key: true|
-|transact_buyer_id|reference|foreign_key: true| 
-|transact_saler_id|reference|foreign_key: true| 
+|transact_buyer|reference|foreign_key: true| 
+|transact_saler|reference|foreign_key: true| 
 |transact_comment|text||
 |trans_status|integer| 
 
@@ -72,11 +72,11 @@
 |price|integer|null: false|
 |sales_profit|integer|
 |state|integer|null: false|
-|category_id|reference|foreign_key: true,null: false|
-|brand_id|reference|foreign_key: true|
-|buyer_id|reference|foreign_key:true,default:0|
-|saler_id|reference|foreign_key: true|
-|evaluation_id|reference|foreign_key: true|
+|category|reference|foreign_key: true,null: false|
+|brand|reference|foreign_key: true|
+|buyer|reference|foreign_key:true,default:0|
+|saler|reference|foreign_key: true|
+|evaluation|reference|foreign_key: true|
 
 ### Association
 -has_many :item_images, dependent: :destroy
@@ -106,7 +106,7 @@
 ## item_imageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|reference|foreign_key: true|
+|item|reference|foreign_key: true|
 |image|string| 
 
 ### Association
@@ -117,8 +117,8 @@
 ## goodテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+|item|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 
 ### Association
 -belongs_to :user 
@@ -129,7 +129,7 @@
 ## evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|foreign_key: true| 
+|user|reference|foreign_key: true| 
 |text|text||
 |rank|integer|| 
 
@@ -165,7 +165,7 @@
 |------|----|-------|
 |to_do_list|text||
 |todo_status|integer| 
-|item_id|reference|null: false, foreign_key: true| 
+|item|reference|null: false, foreign_key: true| 
 
 ### Association
 -belongs_to :item 
@@ -175,7 +175,7 @@
 ## good_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|good_id|reference|foreign_key: true| 
+|good|reference|foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -185,7 +185,7 @@
 ## comment_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|comment_id|reference|foreign_key: true| 
+|comment|reference|foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -195,7 +195,7 @@
 ## evaluations_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|evaluations_id|reference|foreign_key: true| 
+|evaluations|reference|foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -205,7 +205,7 @@
 ## buyed_item_noticeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|reference|foreign_key: true| 
+|item|reference|foreign_key: true| 
 
 ### Association
 -belongs_to :user
@@ -215,8 +215,8 @@
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|reference|null: false, foreign_key: true| 
-|user_id|reference|null: false, foreign_key: true| 
+|item|reference|null: false, foreign_key: true| 
+|user|reference|null: false, foreign_key: true| 
 |comment|text||
 
 ### Association
@@ -228,7 +228,7 @@
 ## paymentテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true| 
+|user|reference|null: false, foreign_key: true| 
 |card_number|integer|null: false|
 |expiration_month|integer|null: false|
 |expiration_year|integer|null: false|
