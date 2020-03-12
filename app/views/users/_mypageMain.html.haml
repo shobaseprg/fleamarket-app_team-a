@@ -1,5 +1,7 @@
-.mypageMainContainer.clearfix
+.mypageMainContainer
+  .mypageMainContainer__leftContnet
   .mypageMainContainer__rightContnet
+    .mypageMainContainer__rightContnet__profile
     %ul.mypageMainContainer__rightContnet__tabs
       %li.tab.activeTab
         .tabMessage
@@ -7,7 +9,7 @@
       %li.tab
         .tabMessage
           やることリスト
-    %ul.mypageMainContainer__rightContnet__lists.non-activeLists.activeLists
+    %ul.mypageMainContainer__rightContnet__lists.non-active.active
       = render partial: "mypageNoticeForm", locals: { notice: @notices }
-    %ul.mypageMainContainer__rightContnet__lists.non-activeLists
+    %ul.mypageMainContainer__rightContnet__lists.non-active
       = render partial: "mypageTodoForm", locals: { todo: @todos }
