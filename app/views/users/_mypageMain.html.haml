@@ -28,3 +28,15 @@
         取引中の商品
       .itemBox.non-active
         取引終了の商品
+    #all-lists.non-active
+      %ul.mypageMainContainer__rightContnet__all-tabs
+        %li.all-tab.n-btn
+          .tabMessage
+            おしらせ
+        %li.all-tab.t-btn
+          .tabMessage
+            やることリスト
+      %ul.mypageMainContainer__rightContnet__all-lists.n-all.non-active
+        = render partial: "mypageNoticeFormAll", locals: { notice: @notices }
+      %ul.mypageMainContainer__rightContnet__all-lists.t-all.non-active
+        = render partial: "mypageTodoFormAll", locals: { todo: @todos }

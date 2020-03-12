@@ -10,12 +10,18 @@ $(function()  {
 
   function pushAllShowNbtn(){
     $("#five-lists").removeClass("active").addClass("non-active");
+    $("#all-lists").removeClass("non-active").addClass("active");
+    $(".n-all").removeClass("non-active").addClass("active");
+  // $("n-btn").addClass("activeTab");
+    // $("t-btn").removeClass("activeTab");
     } 
   $(".n-btn").click(pushAllShowNbtn);
   // ▲通知から一覧を押した場合　うえやま
 
   function pushAllShowTbtn(){
     $("#five-lists").removeClass("active").addClass("non-active");
+    $("#all-lists").removeClass("non-active").addClass("active")
+    $(".t-all").removeClass("non-active").addClass("active");
     } 
   $(".t-btn").click(pushAllShowTbtn);
   // ▲やることから一覧を押した場合　うえやま

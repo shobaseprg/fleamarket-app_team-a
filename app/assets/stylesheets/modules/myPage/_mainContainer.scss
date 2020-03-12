@@ -40,12 +40,26 @@ ul{
         }
         .tabMessage{
           @include tabMessage();
+        }
+      }
+      .activeTab{
+        background-color: #fff;
+        border-top: 2px solid red;
+      }
+    &__all-tabs{
+      @include tabs();
+      .all-tab{
+        @include twoTab();
+        }
+        .tabMessage{
+          @include tabMessage();
           }
       }
       .activeTab{
         background-color: #fff;
         border-top: 2px solid red;
       }
+    
     &__lists{
       width: 100%;
       &__list{
