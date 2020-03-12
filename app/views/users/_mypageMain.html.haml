@@ -2,10 +2,12 @@
   .mypageMainContainer__rightContnet
     %ul.mypageMainContainer__rightContnet__tabs
       %li.tab.activeTab
-        = link_to "おしらせ","#" 
+        .tabMessage
+          おしらせ
       %li.tab
-        = link_to "やることリスト","#"
-    %ul.mypageMainContainer__rightContnet__noticeLists.lists.activeLists
+        .tabMessage
+          やることリスト
+    %ul.mypageMainContainer__rightContnet__lists.non-activeLists.activeLists
       = render partial: "mypageNoticeForm", locals: { notice: @notices }
-    %ul.mypageMainContainer__rightContnet__todoLists.lists.activeLists
+    %ul.mypageMainContainer__rightContnet__lists.non-activeLists
       = render partial: "mypageTodoForm", locals: { todo: @todos }
