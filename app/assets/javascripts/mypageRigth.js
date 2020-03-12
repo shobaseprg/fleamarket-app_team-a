@@ -12,11 +12,18 @@ $(function()  {
 
   tabs.click(tabSwitch);  
 
-  function pushAllShow(){
-    $(".mypageMainContainer__rightContnet__lists__list__allShow").addClass("non-active");
+  function pushAllShowNbtn(){
+    $(".n-allshow").addClass("non-active");
     console.log("ok")
     } 
 
-  $(".mypageMainContainer__rightContnet__lists__list__allShow__btn").click(pushAllShow);
+  $(".n-btn").click(pushAllShowNbtn);
+
+  function pushAllShowTbtn(){
+    $(".t-allshow").addClass("non-active");
+    console.log("ok")
+    } 
+
+  $(".t-btn").click(pushAllShowTbtn);
 
 });
