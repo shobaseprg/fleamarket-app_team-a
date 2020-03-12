@@ -121,7 +121,7 @@ ul{
             font-weight: 900;
           }
         }
-        &__allShow{
+        .N-allShow{
           @include mypageRightForm();
           padding-top: 20px;
           &__btn{
