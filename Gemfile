@@ -77,3 +77,5 @@ gem 'fog-aws'
 
 gem 'haml-rails'
 gem 'devise'
+
+gem "font-awesome-sass"
