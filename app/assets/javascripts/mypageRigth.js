@@ -1,29 +1,32 @@
 $(function()  {
   let tabs = $(".tab")
     function tabSwitch() {
-      $(".activeTab").removeClass("activeTab");
+      $(".tab").removeClass("activeTab");
       $(this).addClass("activeTab");
-
-      const index = tabs.index(this);
-
+    const index = tabs.index(this);
       $(".mypageMainContainer__rightContnet__lists").removeClass("active").eq(index).addClass("active");
-    console.log("ok")
     }
-
   tabs.click(tabSwitch);  
 
   function pushAllShowNbtn(){
-    $(".n-allshow").addClass("non-active");
-    console.log("ok")
+    $("#five-lists").removeClass("active").addClass("non-active");
     } 
-
   $(".n-btn").click(pushAllShowNbtn);
+  // ▲通知から一覧を押した場合　うえやま
 
   function pushAllShowTbtn(){
-    $(".t-allshow").addClass("non-active");
-    console.log("ok")
+    $("#five-lists").removeClass("active").addClass("non-active");
     } 
-
   $(".t-btn").click(pushAllShowTbtn);
+  // ▲やることから一覧を押した場合　うえやま
+
+  let itemTabs = $(".itemTab")
+    function itemTabSwitch() {
+      $(".itemTab").removeClass("activeTab");
+      $(this).addClass("activeTab");
+    const index = itemTabs.index(this);
+      $(".itemBox").removeClass("active").eq(index).addClass("active"); 
+    }
+    itemTabs.click(itemTabSwitch);
 
 });

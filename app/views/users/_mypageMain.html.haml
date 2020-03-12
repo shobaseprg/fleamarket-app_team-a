@@ -2,14 +2,29 @@
   .mypageMainContainer__leftContnet
   .mypageMainContainer__rightContnet
     .mypageMainContainer__rightContnet__profile
-    %ul.mypageMainContainer__rightContnet__tabs
-      %li.tab.activeTab
-        .tabMessage
-          おしらせ
-      %li.tab
-        .tabMessage
-          やることリスト
-    %ul.mypageMainContainer__rightContnet__lists.non-active.active
-      = render partial: "mypageNoticeForm", locals: { notice: @notices }
-    %ul.mypageMainContainer__rightContnet__lists.non-active
-      = render partial: "mypageTodoForm", locals: { todo: @todos }
+    #five-lists
+      %ul.mypageMainContainer__rightContnet__tabs
+        %li.tab.activeTab
+          .tabMessage
+            おしらせ
+        %li.tab
+          .tabMessage
+            やることリスト
+      %ul.mypageMainContainer__rightContnet__lists.non-active.active
+        = render partial: "mypageNoticeForm", locals: { notice: @notices }
+      %ul.mypageMainContainer__rightContnet__lists.non-active
+        = render partial: "mypageTodoForm", locals: { todo: @todos }
+      .mypageMainContainer__rightContnet__myItems  
+        %p
+          購入した商品
+      %ul.mypageMainContainer__rightContnet__myItems__tabs
+        %li.itemTab.activeTab
+          .tabMessage
+            取引中
+        %li.itemTab
+          .tabMessage
+            過去の取引
+      .itemBox.non-active.active
+        取引中の商品
+      .itemBox.non-active
+        取引終了の商品

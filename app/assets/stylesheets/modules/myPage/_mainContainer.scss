@@ -34,32 +34,18 @@ ul{
       background-color: blue;
     }
     &__tabs{
-      background-color: #eee;
-      text-align: center;
-      height: 72px;
-      display: flex;
+      @include tabs();
       .tab{
-        width:50%;
-        font-size: 16px;
-        line-height: 72px;
-        position: relative;
+        @include twoTab();
         }
         .tabMessage{
-          position: absolute;
-          top:0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          &:hover{
-            color:rgb(116, 114, 114);
-            cursor : pointer;
+          @include tabMessage();
           }
-        }
+      }
       .activeTab{
         background-color: #fff;
         border-top: 2px solid red;
       }
-    }
     &__lists{
       width: 100%;
       &__list{
@@ -139,5 +125,30 @@ ul{
         }
       }   
     }
+    &__myItems{
+      margin-top: 30px;
+      @include mypageRightForm();
+      height: 70px;
+      line-height: 70px;
+      p{
+        width: 100px;
+        margin: 0 auto;
+      }
+      &__tabs{
+        @include tabs();
+        .itemTab{
+          @include twoTab();
+          .tabMessage{
+            @include tabMessage();
+          }
+        }
+      }
+    }
+      .itemBox{
+        height: 250px;
+        width: 100%;
+        background-color: yellow;
+      }
   }
 }
+
