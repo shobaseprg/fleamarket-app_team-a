@@ -3,16 +3,16 @@
   .mypageMainContainer__rightContnet
     .mypageMainContainer__rightContnet__profile
     #five-lists
-      %ul.mypageMainContainer__rightContnet__tabs
+      %ul.tabs
         %li.tab.activeTab
           .tabMessage
             おしらせ
         %li.tab
           .tabMessage
             やることリスト
-      %ul.mypageMainContainer__rightContnet__lists.non-active.active
+      %ul.lists.non-active.active
         = render partial: "mypageNoticeForm", locals: { notice: @notices }
-      %ul.mypageMainContainer__rightContnet__lists.non-active
+      %ul.lists.non-active
         = render partial: "mypageTodoForm", locals: { todo: @todos }
       .mypageMainContainer__rightContnet__myItems  
         %p
@@ -28,3 +28,15 @@
         取引中の商品
       .itemBox.non-active
         取引終了の商品
+    #all-tabs.non-active
+      %ul.mypageMainContainer__rightContnet__tabs
+        %li.all-tab.activeTab
+          .tabMessage
+            おしらせ
+        %li.all-tab
+          .tabMessage
+            やることリスト
+    %ul#all-notice-lists.non-active
+      = render partial: "mypageNoticeFormAll", locals: { notice: @notices }
+    %ul#all-todo-lists.non-active
+      = render partial: "mypageTodoFormAll", locals: { todo: @todos }
