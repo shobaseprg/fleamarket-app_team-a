@@ -17,14 +17,6 @@ $(function()  {
       $(".all-lists").eq(index).addClass("active");
     } 
     allshowbtns.click(pushAllShowbtn);
-  // ▲通知から一覧を押した場合　うえやま
-
-
-//   function pushAllShowTbtn(){
-//     $("#five-lists").removeClass("active").addClass("non-active");
-//     } 
-//   $(".t-btn").click(pushAllShowTbtn);
-//   // ▲やることから一覧を押した場合　うえやま
 
   let initialitemtabs = $(".jq-initial-item-tab")
     function itemTabSwitch() {
