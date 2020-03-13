@@ -26,7 +26,6 @@ ul{
   &__rightContnet{
     width:700px;
     // ▲仮　うえやま
-    height: 2040px;
     // ▲ 仮　byうえやま
     background-color: red;
     // ▲　仮　byうえやま
@@ -156,6 +155,7 @@ ul{
   height: 60px;
   background-color: #eee;
   font-size: 14px;
+  text-align: center;
   &:hover{
     opacity: 0.5; 
   }
@@ -163,36 +163,20 @@ ul{
     margin: 0 auto;
     line-height: 60px;
     width: 200px;
-    padding-left: 40px;
   }
 }
-//         }
-//       }   
-//     }
-//     &__myItems{
-//       margin-top: 30px;
-//       @include mypageRightForm();
-//       height: 70px;
-//       line-height: 70px;
-//       p{
-//         width: 100px;
-//         margin: 0 auto;
-//       }
-//       &__tabs{
-//         @include tabs();
-//         .itemTab{
-//           @include twoTab();
-//           .tabMessage{
-//             @include tabMessage();
-//           }
-//         }
-//       }
-//     }
-//       .itemBox{
-//         height: 250px;
-//         width: 100%;
-//         background-color: yellow;
-//       }
-//   }
-// }
 
+.box-title{
+  margin-top: 30px;
+  height: 70px;
+  width: 100%; 
+  background-color: #fff;
+  border-bottom: 2px solid #f8f8f8;
+  line-height: 70px;
+  text-align: center;
+}
+.box-content {
+  height: 300px;
+  width: 100%;
+  background-color: pink;
+}

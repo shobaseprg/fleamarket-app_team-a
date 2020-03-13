@@ -23,18 +23,6 @@
           .all-show-btn.jq-all-show-btn.non-active
             %p
               一覧を見る(todo)
+        .transaction-item
+          = render partial: "initial-mypageTransactionItem"
 
-        -# .my-items  
-        -#   %p.m
-        -#     購入した商品
-        -#     %ul.tabs.my-items__tabs
-        -#       %li.tab.my-items__tabs__tab.activeTab
-        -#         .tabMessage
-        -#           取引中
-        -#       %li.tab.my-items__tabs__tab
-        -#         .tabMessage
-        -#           過去の取引
-        -#     .itemBox.non-active.active
-        -#       取引中の商品
-        -#     .itemBox.non-active
-        -#       取引終了の商品
