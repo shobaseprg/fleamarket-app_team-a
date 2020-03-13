@@ -14,12 +14,6 @@ ul{
 .active{
   display: block;
 }
-
-.activeTab{
-  background-color: #fff;
-  border-top: 2px solid red;
-}
-
 .mypageMainContainer{
   padding-top: 30px;
   height: 100%;
@@ -39,31 +33,98 @@ ul{
       height: 200px;
       background-color: blue;
     }
-    &__rightContnet__five-tabs{
-      @include two-tabs();
-    }
-    &__rightContnet__lists{
-      @include lists();
-    }
-      &__allShow{
+    &__tabs{
+      @include tabs();
+      .tab{
+        @include twoTab();
+        }
+        .tabMessage{
+          @include tabMessage();
+          }
+      }
+      .activeTab{
+        background-color: #fff;
+        border-top: 2px solid red;
+      }
+    &__lists{
+      width: 100%;
+      &__list{
         @include mypageRightForm();
-        padding-top: 20px;
-        &__btn{
-          margin: 0 auto;
-          width: 90%; 
-          height: 70%;
-          background-color: #eee;
-          font-size: 14px;
-          display: flex;
-          align-items: center;
-          p{
-            margin: 0 auto;
+        position: relative; 
+        display: flex;
+        a{
+          position: absolute;
+          top:0;
+          left:0;
+          height: 100%;
+          width: 100%;
+          &:hover{
+            opacity: 0.1; 
+            background-color:gray;
           }
         }
-      }
-    }   
-  }
-
+        &__icon{
+          width: 80px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          .cat{
+            margin: 15px;
+            }
+        }
+        &__messageBox{
+          height: 100%;
+          width: calc(100% - 80px);
+          &__message{
+            margin: 0 auto;
+            height: 60%;
+            width: 90%;
+            font-size: 12px;
+            padding-top: 15px;
+          }
+          &__watches{
+            display: flex;
+            margin: 0 auto;
+            height: 40%;
+            width: 90%;
+            .fa-clock{
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900;
+            }
+            &__time{
+              margin-top: 3px;
+              font-size: 12px;
+            }
+          }
+        }
+        &__arrow{
+          height: 100%;
+          width: 30px;
+          display: flex;
+          align-items: center;
+          .fa-chevron-right{
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900;
+          }
+        }
+        &__allShow{
+          @include mypageRightForm();
+          padding-top: 20px;
+          &__btn{
+            margin: 0 auto;
+            width: 90%; 
+            height: 70%;
+            background-color: #eee;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            p{
+              margin: 0 auto;
+            }
+          }
+        }
+      }   
+    }
     &__myItems{
       margin-top: 30px;
       @include mypageRightForm();
