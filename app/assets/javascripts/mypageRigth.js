@@ -13,7 +13,8 @@ $(function()  {
   function pushAllShowbtn(){
     $('html, body').animate({scrollTop:0},'fast');
     $(".mypageMainContainer__rightContnet__initial").addClass("non-active");
-    console.log("ok");
+    const index = allshowbtns.index(this);
+      $(".all-lists").eq(index).addClass("active");
     } 
     allshowbtns.click(pushAllShowbtn);
   // ▲通知から一覧を押した場合　うえやま
