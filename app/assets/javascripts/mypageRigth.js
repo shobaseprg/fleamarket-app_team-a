@@ -1,32 +1,37 @@
 $(function()  {
-  let tabs = $(".tab")
+  let jqtabs = $(".jq-tab")
     function tabSwitch() {
-      $(".tab").removeClass("activeTab");
+      jqtabs.removeClass("activeTab");
       $(this).addClass("activeTab");
-    const index = tabs.index(this);
-      $(".mypageMainContainer__rightContnet__lists").removeClass("active").eq(index).addClass("active");
+    const index = jqtabs.index(this);
+      $(".jq-box").removeClass("active").eq(index).addClass("active");
+      $(".all-show-btn").removeClass("active").eq(index).addClass("active");
     }
-  tabs.click(tabSwitch);  
+  jqtabs.click(tabSwitch);  
 
-  function pushAllShowNbtn(){
-    $("#five-lists").removeClass("active").addClass("non-active");
+   let allshowbtns = $(".jq-all-show-btn")
+  function pushAllShowbtn(){
+    $('html, body').animate({scrollTop:0},'fast');
+    $(".five-lists").addClass("non-active");
+    console.log("ok");
     } 
-  $(".n-btn").click(pushAllShowNbtn);
+    allshowbtns.click(pushAllShowbtn);
   // ▲通知から一覧を押した場合　うえやま
 
-  function pushAllShowTbtn(){
-    $("#five-lists").removeClass("active").addClass("non-active");
-    } 
-  $(".t-btn").click(pushAllShowTbtn);
-  // ▲やることから一覧を押した場合　うえやま
 
-  let itemTabs = $(".itemTab")
-    function itemTabSwitch() {
-      $(".itemTab").removeClass("activeTab");
-      $(this).addClass("activeTab");
-    const index = itemTabs.index(this);
-      $(".itemBox").removeClass("active").eq(index).addClass("active"); 
-    }
-    itemTabs.click(itemTabSwitch);
+//   function pushAllShowTbtn(){
+//     $("#five-lists").removeClass("active").addClass("non-active");
+//     } 
+//   $(".t-btn").click(pushAllShowTbtn);
+//   // ▲やることから一覧を押した場合　うえやま
+
+//   let itemTabs = $(".itemTab")
+//     function itemTabSwitch() {
+//       $(".itemTab").removeClass("activeTab");
+//       $(this).addClass("activeTab");
+//     const index = itemTabs.index(this);
+//       $(".itemBox").removeClass("active").eq(index).addClass("active"); 
+//     }
+//     itemTabs.click(itemTabSwitch);
 
 });

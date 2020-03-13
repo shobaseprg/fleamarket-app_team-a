@@ -1,30 +1,40 @@
 .mypageMainContainer
   .mypageMainContainer__leftContnet
   .mypageMainContainer__rightContnet
-    .mypageMainContainer__rightContnet__profile
-    #five-lists
-      %ul.mypageMainContainer__rightContnet__tabs
-        %li.tab.activeTab
-          .tabMessage
-            おしらせ
-        %li.tab
-          .tabMessage
-            やることリスト
-      %ul.mypageMainContainer__rightContnet__lists.non-active.active
-        = render partial: "mypageNoticeForm", locals: { notice: @notices }
-      %ul.mypageMainContainer__rightContnet__lists.non-active
-        = render partial: "mypageTodoForm", locals: { todo: @todos }
-      .mypageMainContainer__rightContnet__myItems  
-        %p
-          購入した商品
-      %ul.mypageMainContainer__rightContnet__myItems__tabs
-        %li.itemTab.activeTab
-          .tabMessage
-            取引中
-        %li.itemTab
-          .tabMessage
-            過去の取引
-      .itemBox.non-active.active
-        取引中の商品
-      .itemBox.non-active
-        取引終了の商品
+    .mypageMainContainer__rightContnet__initial
+
+      .five-lists
+        .five-lists__profile
+        %ul.tabs.five-lists__tabs.jq-tabs
+          %li.two-tab.five-lists__tabs__tab.jq-tab.activeTab
+            .tabMessage
+              おしらせ
+          %li.two-tab.five-lists__tabs__tab.jq-tab
+            .tabMessage
+              やることリスト
+        %ul.lists.five-lists__lists.jq-box.non-active.active
+          = render partial: "mypageFivelists", locals: { lists: @notices }
+        %ul.lists.five-lists__lists.jq-box.non-active
+          = render partial: "mypageFivelists", locals: { lists: @todos }
+        .lists__list.jq-all-show-btns
+          .all-show-btn.jq-all-show-btn.non-active.active
+            %p
+              一覧を見る(notice)
+          .all-show-btn.jq-all-show-btn.non-active
+            %p
+              一覧を見る(todo)
+
+        -# .my-items  
+        -#   %p.m
+        -#     購入した商品
+        -#     %ul.tabs.my-items__tabs
+        -#       %li.tab.my-items__tabs__tab.activeTab
+        -#         .tabMessage
+        -#           取引中
+        -#       %li.tab.my-items__tabs__tab
+        -#         .tabMessage
+        -#           過去の取引
+        -#     .itemBox.non-active.active
+        -#       取引中の商品
+        -#     .itemBox.non-active
+        -#       取引終了の商品
