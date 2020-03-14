@@ -2,7 +2,7 @@
   .header__inner
     .header__inner__main
       .icon
-        = link_to image_tag(src= "header_logo.gif", class: "image",size: "140x60")
+        = link_to image_tag(src= "header_logo.png", class: "image",size: "140x60")
       .searchbox
         %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input{name: "utf8", type: "hidden", value: "✓"}/
@@ -21,3 +21,5 @@
         .list-right__item
           = link_to "ログイン", "#", class: "login-btn"
           = link_to "新規会員登録", "#", class: "new-member-btn"
+          -# 仮で記載↓byうえやま
+          = link_to "マイページ", "/users/1", class:"new-member-btn"
