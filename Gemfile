@@ -77,9 +77,10 @@ gem 'fog-aws'
 
 
 gem 'haml-rails'
-gem 'devise'
 
 gem "font-awesome-sass"
 
 gem 'jquery-rails'
+
+gem 'devise'
 

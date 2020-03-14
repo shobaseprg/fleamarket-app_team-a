@@ -10,33 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_102133) do
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "family_name", null: false
-    t.string "katakana_first_name", null: false
-    t.string "katakana_family_name", null: false
-    t.string "nickname", null: false
-    t.text "self_introduction", null: false
-    t.string "email", default: "", null: false
-    t.string "password", default: "", null: false
-    t.integer "year", null: false
-    t.integer "month", null: false
-    t.integer "day", null: false
-    t.string "postal_code", null: false
-    t.string "prefectures", null: false
-    t.string "municipality", null: false
-    t.string "address", null: false
-    t.string "building"
-    t.string "dery_postal_code", null: false
-    t.string "dery_prefectures", null: false
-    t.string "dery_address", null: false
-    t.string "dery_building"
-    t.string "icon"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
