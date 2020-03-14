@@ -1,0 +1,16 @@
+- lists.each do |list|
+  %li
+    .lists__list
+      = link_to "","#" ,class: "tabLink"
+      .lists__list__icon
+        = image_tag(src= "cat.png",size: "50x50",class: "cat")
+      .lists__list__messageBox
+        .lists__list__messageBox__message
+          = "#{list[:text]}"
+        .lists__list__messageBox__watches
+          .lists__list__messageBox__watches__watchIcon
+            = icon('fab', 'clock')
+          .lists__list__messageBox__watches__time
+            = "#{list[:time]}"
+      .lists__list__arrow
+        = icon('fab','chevron-right')
