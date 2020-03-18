@@ -84,7 +84,3 @@ gem 'jquery-rails'
 
 gem 'devise'
 
-gem 'payjp'
-
-
-
