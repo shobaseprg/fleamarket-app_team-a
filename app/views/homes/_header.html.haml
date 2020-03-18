@@ -2,14 +2,7 @@
   .header__inner
     .header__inner__main
       .icon
-        = link_to image_tag(src= "header_logo.png", class: "image",size: "140x60")
-      .searchbox
-        %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
-          %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input.searchbox__input{name: "key", placeholder: "キーワードから探す"}
-          %button{type: "submit"}
-            .searchbox__icon
-              = image_tag "icon-search 1.png", size: "19x19"
+        = link_to "/"               = image_tag "icon-search 1.png", size: "19x19"
               %input{name: "authenticity_token", type: "hidden", value: ""}
     .header__inner__nav
       .list-left
@@ -19,7 +12,7 @@
           = link_to "ブランド", "#", class:"brand-btn"
       .list-right
         .list-right__item
-          = link_to "ログイン", "#", class: "login-btn"
-          = link_to "新規会員登録", "#", class: "new-member-btn"
+          = link_to "ログイン", new_user_session_path, class: "login-btn"
+          = link_to "新規会員登録", new_user_registration_path, class: "new-member-btn"
           -# 仮で記載↓byうえやま
           = link_to "マイページ", "/users/1", class:"new-member-btn"
