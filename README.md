@@ -231,6 +231,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|reference|null: false, foreign_key: true| 
+|customer_id|integer|null:false|
+<!-- ▲追記　うえやま -->
 |card_number|integer|null: false|
 |expiration_month|integer|null: false|
 |expiration_year|integer|null: false|
