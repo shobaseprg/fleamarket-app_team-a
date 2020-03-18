@@ -1,0 +1,34 @@
+.mypageMainContainer
+  .mypageMainContainer__leftContnet
+    = render partial: "mypageLeft"
+
+  .mypageMainContainer__rightContnet
+    .mypageMainContainer__rightContnet__initial
+
+      .five-lists
+        .five-lists__profile
+        %ul.tabs.five-lists__tabs.jq-tabs
+          %li.two-tab.five-lists__tabs__tab.jq-tab.activeTab
+            .tabMessage
+              おしらせ
+          %li.two-tab.five-lists__tabs__tab.jq-tab
+            .tabMessage
+              やることリスト
+        %ul.lists.five-lists__lists.jq-box.non-active.active
+          = render partial: "mypageFivelists", locals: { lists: @notices }
+        %ul.lists.five-lists__lists.jq-box.non-active
+          = render partial: "mypageFivelists", locals: { lists: @todos }
+        .lists__list.jq-all-show-btns
+          .all-show-btn.jq-all-show-btn.non-active.active
+            %p
+              一覧を見る(notice)
+          .all-show-btn.jq-all-show-btn.non-active
+            %p
+              一覧を見る(todo)
+        .transaction-item
+          = render partial: "initial-mypageTransactionItem"
+    %ul.lists.all-lists.non-active
+      = render partial: "mypageAlllists", locals: { lists: @notices }
+    %ul.lists.all-lists.non-active
+      = render partial: "mypageAlllists", locals: { lists: @todos }
+
