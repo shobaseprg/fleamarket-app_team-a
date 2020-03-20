@@ -1,2 +1,0 @@
-PAYJP_PUBLIC_KEY = 'pk_test_ae272d63392590ed7095ba52'
-PAYJP_SECRET_KEY = 'sk_test_0c40fd2bbc8f1aac67d8caba'
