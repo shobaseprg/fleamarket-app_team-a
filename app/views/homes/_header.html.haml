@@ -20,7 +20,9 @@
           = link_to "ブランド", "#", class:"brand-btn"
       .list-right
         .list-right__item
-          = link_to "ログイン", "#", class: "login-btn"
-          = link_to "新規会員登録", "#", class: "new-member-btn"
+          - if user_signed_in?
+            ログイン中
+          = link_to "ログイン", new_user_session_path, class: "login-btn"
+          = link_to "新規会員登録", new_user_registration_path, class: "new-member-btn"
           -# 仮で記載↓byうえやま
           = link_to "マイページ", "/users/1", class:"new-member-btn"
