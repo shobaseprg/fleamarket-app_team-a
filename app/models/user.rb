@@ -9,6 +9,7 @@ class User < ApplicationRecord
   VALID_NAME_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
   VALID_KATAKANA_REGEX = /\A[ァ-ヶー－]+\z/
 
+  validates :self_introduction, length: { maximum: 1000 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 7 }, format: { with: VALID_PASSWORD_REGEX }
   validates :phone_number, presence: true, uniqueness: true, length: { maximum: 11 }
