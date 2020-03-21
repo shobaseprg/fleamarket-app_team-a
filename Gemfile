@@ -80,3 +80,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'payjp'
 gem 'pry-rails'
+
