@@ -80,4 +80,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'payjp'
 gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
 
