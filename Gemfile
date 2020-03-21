@@ -83,3 +83,7 @@ gem "font-awesome-sass"
 gem 'jquery-rails'
 
 gem 'devise'
+
+gem 'active_hash'
+
+gem 'pry-rails'
