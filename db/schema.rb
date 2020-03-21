@@ -153,9 +153,9 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
     t.string "first_name_reading", null: false
     t.string "family_name_reading", null: false
     t.string "nickname", null: false
-    t.string "self_introduction", null: false
+    t.text "self_introduction"
     t.string "email", default: "", null: false
-    t.string "phone_number", limit: 11, null: false
+    t.string "phone_number", default: "", null: false
     t.string "password", default: "", null: false
     t.integer "year", null: false
     t.integer "month", null: false
