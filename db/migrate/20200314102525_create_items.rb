@@ -3,8 +3,8 @@ class CreateItems < ActiveRecord::Migration[5.0]
     create_table :items do |t|
       t.string :name ,null: false
       t.text :description_item ,null: false
-      t.references :category, foreign_key: true ,null: false
-      t.references :brand, foreign_key: true
+      t.references :category, null: false, foreign_key: true
+      t.references :brand , foreign_key: true
       t.string :condition ,null: false
       t.string :shipping_charger ,null: false
       t.string :shipping_method ,null: false
@@ -12,9 +12,9 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :shipping_days ,null: false
       t.integer :price ,null: false
       t.integer :sales_profit ,null: false
-      t.references :buyer,foreign_key: #{ to_table: :users }
-      t.references :seller,foreign_key: ,null: false #{ to_table: :users }
-      t.references :evaluationforeign_key: true ,null: false
+      t.references :buyer,foreign_key:{ to_table: :users }
+      t.references :seller ,null: false,foreign_key:{ to_table: :users } 
+      t.references :evaluation ,null: false, foreign_key: true
       t.timestamps
     end
   end

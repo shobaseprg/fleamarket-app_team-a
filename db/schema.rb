@@ -108,14 +108,17 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
-    t.integer "condition", null: false
-    t.integer "price", null: false
-    t.integer "sales_profit"
-    t.integer "state", null: false
     t.integer "category_id", null: false
-    t.integer "brand_id", null: false
-    t.integer "buyer_id", default: 0
-    t.integer "saler_id", null: false
+    t.integer "brand_id"
+    t.string "condition", null: false
+    t.string "shipping_charger", null: false
+    t.string "shipping_method", null: false
+    t.string "ship_from", null: false
+    t.string "shipping_days", null: false
+    t.integer "price", null: false
+    t.integer "sales_profit", null: false
+    t.integer "buyer_id"
+    t.integer "seller_id", null: false
     t.integer "evaluation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,18 +126,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["evaluation_id"], name: "index_items_on_evaluation_id"
-    t.index ["saler_id"], name: "index_items_on_saler_id"
-  end
-
-  create_table "shippings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "charges", null: false
-    t.date "datetime", null: false
-    t.text "Purchase"
-    t.integer "area", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_shippings_on_item_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -152,9 +144,9 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
     t.string "first_name_reading", null: false
     t.string "family_name_reading", null: false
     t.string "nickname", null: false
-    t.string "self_introduction", null: false
+    t.text "self_introduction"
     t.string "email", default: "", null: false
-    t.string "phone_number", limit: 11, null: false
+    t.string "phone_number", default: "", null: false
     t.string "password", default: "", null: false
     t.integer "year", null: false
     t.integer "month", null: false
@@ -196,8 +188,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "evaluations"
   add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "saler_id"
-  add_foreign_key "shippings", "items"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "to_dos", "items"
   add_foreign_key "users_transacts", "items"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
