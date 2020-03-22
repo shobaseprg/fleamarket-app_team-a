@@ -2,11 +2,12 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.item_images.new
   end
 
   def create
     @item = Item.new(item_params)
-    if @message.save
+    if @item.save
       flash[:notice] = "出品が完了しました"
       redirect_to root_path
     else
@@ -17,7 +18,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description_item,)
+    params.require(:item).permit(:name, :description_item, :category_id, :brand_id, :condition, :shipping_charger, :shipping_method, :ship_from, :shipping_days, :price, :sales_profit, images_attributes: [:image])
   end
 
 end
