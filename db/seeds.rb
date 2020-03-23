@@ -47,7 +47,6 @@ mens_smallArticle = mens.children.create(:name=>"小物")
 mens_watchs = mens.children.create(:name=>"時計")
 mens_yukata = mens.children.create(:name=>"水着")
 mens_regWear = mens.children.create(:name=>"レッグウェア")
-mens_regWear = mens.children.create(:name=>"アンダーウェア")
 mens_other = mens.children.create(:name=>"その他")
 # ベビー・キッズの子要素
 baby_girlsClothesU95 = baby.children.create(:name=>"ベビー服(女の子用) ~95cm")
@@ -67,52 +66,111 @@ baby_event = baby.children.create(:name=>"行事/記念品")
 baby_other = baby.children.create(:name=>"その他")
 # インテリア・住まい・小物の子要素
 interior_kitchen = interior.children.create(:name=>"キッチン/食器")
+interior_bed = interior.children.create(:name=>"ベッド/マットレス")
 # 本・音楽・ゲームの子要素
 book_books = book.children.create(:name=>"本")
+book_comics = book.children.create(:name=>"漫画")
 # おもちゃ・ホビー・グッズの子要素
 toy_toys = toy.children.create(:name=>"おもちゃ")
+toy_tarent = toy.children.create(:name=>"タレントグッズ")
 # コスメ・香水・美容の子要素
 cosmetic_baseMakeup = cosmetic.children.create(:name=>"ベースメイク")
+cosmetic_Makeup = cosmetic.children.create(:name=>"メイクアップ")
 # 家電・スマホ・カメラの子要素
 appliances_smartPhone = appliances.children.create(:name=>"スマートフォン/携帯電話")
+appliances_accessory = appliances.children.create(:name=>"スマホアクセサリー")
 # スポーツ・レジャーの子要素
 sports_golf = sports.children.create(:name=>"ゴルフ")
+sports_fishing = sports.children.create(:name=>"フィッシング")
 # ハンドメイドの子要素
 handmade_girlsAccessory = handmade.children.create(:name=>"アクセサリー(女性用)")
+handmade_fashon = handmade.children.create(:name=>"ファッション/小物")
 # チケットの子要素
 ticket_music = ticket.children.create(:name=>"音楽")
+ticket_sports = ticket.children.create(:name=>"スポーツ")
 # 自動車・オートバイの子要素
 car_body = car.children.create(:name=>"自転車本体")
+car_tire = car.children.create(:name=>"自転車タイヤ/ホイール")
 # その他の子要素
 other_petSupplies = other.children.create(:name=>"ペット用品")
+other_foods = other.children.create(:name=>"食品")
 
 # カテゴリー孫要素の一覧
 # レディースの孫要素
-lazies_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)"}, {:name=>"Tシャツ/カットソー(七分/長袖)"}, {:name=>"シャツ/ブラウス(半袖/袖なし)"}, {:name=>"シャツ/ブラウス(七分/長袖)"}, {:name=>"ポロシャツ"}])
-lazies_jacket.children.create([{:name=>"テーラードジャケット"}, {:name=>"ノーカラージャケット"}, {:name=>"デニムジャケット"}, {:name=>"レザージャケット"}, {:name=>"ダウンジャケット"}])
+lazies_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)"}, {:name=>"Tシャツ/カットソー(七分/長袖)"}, {:name=>"シャツ/ブラウス(半袖/袖なし)"}, {:name=>"シャツ/ブラウス(七分/長袖)"}, {:name=>"ポロシャツ"},{:name=>"キャミソール"},{:name=>"その他"}])
+lazies_jacket.children.create([{:name=>"テーラードジャケット"}, {:name=>"ノーカラージャケット"}, {:name=>"デニムジャケット"}, {:name=>"レザージャケット"}, {:name=>"ダウンジャケット"},{:name=>"ライダースジャケット"},{:name=>"その他"}])
+lazies_pants.children.create([{:name=>"デニム/ジーンズ"},{:name=>"ショートパンツ"},{:name=>"カジュアルパンツ"},{:name=>"ハーフパンツ"},{:name=>"その他"}])
+lazies_skirt.children.create([{:name=>"ミニスカート"},{:name=>"ひざ丈スカート"},{:name=>"ロングスカート"},{:name=>"キュロット"},{:name=>"その他"}])
+lazies_onepiece.children.create([{:name=>"ミニワンピース"},{:name=>"ひざ丈ワンピース"},{:name=>"ロングワンピース"},{:name=>"その他"}])
+lazies_shoes.children.create([{:name=>"ハイヒール/パンプス"},{:name=>"ブーツ"},{:name=>"サンダル"},{:name=>"スニーカー"},{:name=>"その他"}])
+lazies_roomWear.children.create([{:name=>"パジャマ"},{:name=>"ルームウェア"}])
+lazies_regWear.children.create([{:name=>"ソックス"},{:name=>"スパッツ/レギンス"},{:name=>"ストッキング/タイツ"},{:name=>"レッグウォーマー"},{:name=>"その他"}])
+lazies_hat.children.create([{:name=>"ニットキャップ/ビーニー"},{:name=>"ハット"},{:name=>"ハンチング/ベレー帽"},{:name=>"キャップ"},{:name=>"その他"}])
+lazies_bag.children.create([{:name=>"ハンドバッグ"},{:name=>"トートバッグ"},{:name=>"エコバッグ"},{:name=>"リュック/バックパック"},{:name=>"ボストンバッグ"},{:name=>"スポーツバッグ"},{:name=>"その他"}])
+lazies_accessory.children.create([{:name=>"ネックレス"},{:name=>"ブレスレット"},{:name=>"バンドル/リストバンド"},{:name=>"リング"},{:name=>"ピアス"},{:name=>"イヤリング"},{:name=>"その他"}])
+lazies_hairAccessory.children.create([{:name=>"ヘアゴム/シュシュ"},{:name=>"ヘアバンド/カチューシャ"},{:name=>"ヘアピン"},{:name=>"その他"}])
+lazies_smallArticle.children.create([{:name=>"長財布"},{:name=>"折り財布"},{:name=>"コインケース/小銭入れ"},{:name=>"名刺入れ/定期入れ"},{:name=>"キーケース"},{:name=>"キーホルダー"},{:name=>"その他"}])
+lazies_watchs.children.create([{:name=>"腕時計"},{:name=>"ラバーベルト"},{:name=>"レザーベルト"},{:name=>"金属ベルト"},{:name=>"その他"}])
+lazies_wig.children.create([{:name=>"前髪ウィッグ"},{:name=>"ロングストレート"},{:name=>"ロングカール"},{:name=>"ショートストレート"},{:name=>"その他"}])
+lazies_yukata.children.create([{:name=>"浴衣"},{:name=>"着物"},{:name=>"振袖"},{:name=>"長襦袢/半襦袢"},{:name=>"水着"},{:name=>"その他"}])
+lazies_suit.children.create([{:name=>"スカートスーツ"},{:name=>"パンツスーツ"},{:name=>"ドレス"},{:name=>"パーティーバッグ"},{:name=>"シューズ"},{:name=>"その他"}])
+lazies_maternity.children.create([{:name=>"トップス"},{:name=>"アウター"},{:name=>"インナー"},{:name=>"ワンピース"},{:name=>"授乳服"},{:name=>"その他"}])
+lazies_other.children.create([{:name=>"コスプレ"},{:name=>"下着"},{:name=>"その他"}])
 # メンズの孫要素
-mens_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)"}, {:name=>"Tシャツ/カットソー(七分/長袖)"}, {:name=>"シャツ/ブラウス(半袖/袖なし)"}, {:name=>"シャツ/ブラウス(七分/長袖)"}, {:name=>"ポロシャツ"}])
-mens_jacket.children.create([{:name=>"テーラードジャケット"}, {:name=>"ノーカラージャケット"}, {:name=>"デニムジャケット"}, {:name=>"レザージャケット"}, {:name=>"ダウンジャケット"}])
+mens_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)"}, {:name=>"Tシャツ/カットソー(七分/長袖)"}, {:name=>"シャツ/ブラウス(半袖/袖なし)"}, {:name=>"シャツ/ブラウス(七分/長袖)"}, {:name=>"ポロシャツ"},{:name=>"その他"}])
+mens_jacket.children.create([{:name=>"テーラードジャケット"}, {:name=>"ノーカラージャケット"}, {:name=>"デニムジャケット"}, {:name=>"レザージャケット"}, {:name=>"ダウンジャケット"},{:name=>"その他"}])
+mens_pants.children.create([{:name=>"デニム/ジーンズ"},{:name=>"ワークパンツ"},{:name=>"スラックス"},{:name=>"チノパン"},{:name=>"その他"}])
+mens_shoes.children.create([{:name=>"モカシン"},{:name=>"ブーツ"},{:name=>"サンダル"},{:name=>"スニーカー"},{:name=>"その他"}])
+mens_bag.children.create([{:name=>"ショルダーバッグ"},{:name=>"トートバッグ"},{:name=>"ボストンバッグ"},{:name=>"リュック/バックパック"},{:name=>"ウエストポーチ"},{:name=>"ボディーバッグ"},{:name=>"その他"}])
+mens_suit.children.create([{:name=>"スーツジャケット"},{:name=>"スーツベスト"},{:name=>"スラックス"},{:name=>"セットアップ"},{:name=>"その他"}])
+mens_hat.children.create([{:name=>"キャップ"},{:name=>"ハット"},{:name=>"ハンチング/ベレー帽"},{:name=>"キャスケット"},{:name=>"その他"}])
+mens_accessory.children.create([{:name=>"ネックレス"},{:name=>"ブレスレット"},{:name=>"バンドル/リストバンド"},{:name=>"リング"},{:name=>"ピアス"},{:name=>"その他"}])
+mens_smallArticle.children.create([{:name=>"長財布"},{:name=>"折り財布"},{:name=>"コインケース/小銭入れ"},{:name=>"名刺入れ/定期入れ"},{:name=>"キーケース"},{:name=>"キーホルダー"},{:name=>"その他"}])
+mens_watchs.children.create([{:name=>"腕時計"},{:name=>"ラバーベルト"},{:name=>"レザーベルト"},{:name=>"金属ベルト"},{:name=>"その他"}])
+mens_yukata.children.create([{:name=>"一般水着"},{:name=>"スポーツ用"},{:name=>"アクセサリー"},{:name=>"その他"}])
+mens_regWear.children.create([{:name=>"ソックス"},{:name=>"スパッツ/レギンス"},{:name=>"レッグウォーマー"},{:name=>"その他"}])
 # ベビー・キッズの孫要素
-baby_girlsClothesU95.children.create([{:name=>"トップス"}, {:name=>"アウター"}, {:name=>"パンツ"}, {:name=>"スカート"}, {:name=>"ワンピース"}])
-baby_mensClothesU95.children.create([{:name=>"トップス"}, {:name=>"アウター"}, {:name=>"パンツ"}, {:name=>"おくるみ"}, {:name=>"下着/肌着"}])
+baby_girlsClothesU95.children.create([{:name=>"トップス"}, {:name=>"アウター"}, {:name=>"パンツ"}, {:name=>"スカート"}, {:name=>"ワンピース"},{:name=>"その他"}])
+baby_mensClothesU95.children.create([{:name=>"トップス"}, {:name=>"アウター"}, {:name=>"パンツ"}, {:name=>"おくるみ"}, {:name=>"下着/肌着"},{:name=>"その他"}])
+baby_ClothesU95.children.create([{:name=>"トップス"}, {:name=>"アウター"}, {:name=>"パンツ"}, {:name=>"おくるみ"}, {:name=>"下着/肌着"},{:name=>"その他"}])
+kids_girlsClothesO100.children.create([{:name=>"コート"}, {:name=>"ジャケット/上着"}, {:name=>"トップス"}, {:name=>"スカート"}, {:name=>"パンツ"},{:name=>"その他"}])
+kids_mensClothesO100.children.create([{:name=>"コート"}, {:name=>"ジャケット/上着"}, {:name=>"トップス"}, {:name=>"セットアップ"}, {:name=>"パンツ"},{:name=>"その他"}])
+kids_ClothesO100.children.create([{:name=>"コート"}, {:name=>"ジャケット/上着"}, {:name=>"トップス"}, {:name=>"ボトムス"}, {:name=>"パジャマ"},{:name=>"その他"}])
+kids_shoes.children.create([{:name=>"サンダル"},{:name=>"スニーカー"},{:name=>"その他"}])
+child_smallArticle.children.create([{:name=>"靴下/スパッツ"},{:name=>"帽子"},{:name=>"エプロン"},{:name=>"サスペンダー"},{:name=>"その他"}])
+baby_diaper.children.create([{:name=>"おむつ用品"},{:name=>"おまる/補助便座"},{:name=>"トレーニングパンツ"},{:name=>"ベビーバス"},{:name=>"その他"}])
+baby_outing.children.create([{:name=>"ベビーカー"},{:name=>"抱っこひも/スリング"},{:name=>"チャイルドシート"},{:name=>"その他"}])
+baby_breastFeeding.children.create([{:name=>"ミルク"},{:name=>"ベビーフード"},{:name=>"ベビー用食器"},{:name=>"その他"}])
+baby_furniture.children.create([{:name=>"ベッド"},{:name=>"布団/毛布"},{:name=>"イス"},{:name=>"その他"}])
+baby_toys.children.create([{:name=>"おふろのおもちゃ"},{:name=>"がらがら"},{:name=>"オルゴール"},{:name=>"その他"}])
+baby_event.children.create([{:name=>"お宮参り用品"},{:name=>"お食い初め用品"},{:name=>"アルバム"},{:name=>"手形/足形"},{:name=>"その他"}])
 # インテリア・住まい・小物の孫要素
-interior_kitchen.children.create([{:name=>"キッチン/食器"}, {:name=>"ベッド/マットレス"}, {:name=>"椅子/チェア"}, {:name=>"机/テーブル"}, {:name=>"収納家具"}])
+interior_kitchen.children.create([{:name=>"食器"}, {:name=>"調理器具"}, {:name=>"収納/キッチン雑貨"}, {:name=>"弁当用品"}, {:name=>"カトラリー"},{:name=>"その他"}])
+interior_bed.children.create([{:name=>"セミシングルベッド"}, {:name=>"シングルベッド"}, {:name=>"セミダブルベッド"}, {:name=>"ダブルベッド"},{:name=>"その他"}])
 # 本・音楽・ゲームの孫要素
-book_books.children.create([{:name=>"文学/小説"}, {:name=>"人文/社会"}, {:name=>"ノンフィクション/教養"}, {:name=>"地図/旅行ガイド"}, {:name=>"ビジネス/経済"}])
+book_books.children.create([{:name=>"文学/小説"}, {:name=>"人文/社会"}, {:name=>"ノンフィクション/教養"}, {:name=>"地図/旅行ガイド"}, {:name=>"ビジネス/経済"},{:name=>"その他"}])
+book_comics.children.create([{:name=>"全巻セット"}, {:name=>"少年漫画"}, {:name=>"少女漫画"}, {:name=>"青年漫画"}, {:name=>"女性漫画"},{:name=>"その他"}])
 # おもちゃ・ホビー・グッズの孫要素
-toy_toys.children.create([{:name=>"キャラクターグッズ"}, {:name=>"ぬいぐるみ"}, {:name=>"小物/アクセサリー"}, {:name=>"模型/プラモデル"}, {:name=>"ミニカー"}])
+toy_toys.children.create([{:name=>"キャラクターグッズ"}, {:name=>"ぬいぐるみ"}, {:name=>"小物/アクセサリー"}, {:name=>"模型/プラモデル"}, {:name=>"ミニカー"},{:name=>"その他"}])
+toy_tarent.children.create([{:name=>"アイドル"}, {:name=>"ミュージシャン"}, {:name=>"タレント/お笑い芸人"}, {:name=>"スポーツ選手"},{:name=>"その他"}])
 # コスメ・香水・美容の孫要素
-cosmetic_baseMakeup.children.create([{:name=>"ファンデーション"}, {:name=>"化粧下地"}, {:name=>"コントロールカラー"}, {:name=>"BBクリーム"}, {:name=>"CCクリーム"}])
+cosmetic_baseMakeup.children.create([{:name=>"ファンデーション"}, {:name=>"化粧下地"}, {:name=>"コントロールカラー"}, {:name=>"BBクリーム"}, {:name=>"CCクリーム"},{:name=>"その他"}])
+cosmetic_Makeup.children.create([{:name=>"アイシャドウ"}, {:name=>"口紅"}, {:name=>"リップグロス"}, {:name=>"リップライナー"}, {:name=>"チーク"},{:name=>"その他"}])
 # 家電・スマホ・カメラの孫要素
 appliances_smartPhone.children.create([{:name=>"スマートフォン本体"}, {:name=>"バッテリー/充電器"}, {:name=>"携帯電話本体"}, {:name=>"PHS本体"}, {:name=>"その他"}])
+appliances_accessory.children.create([{:name=>"Android用ケース"}, {:name=>"iPhone用ケース"}, {:name=>"カバー"}, {:name=>"イヤホンジャック"}, {:name=>"その他"}])
 # スポーツ・レジャーの孫要素
 sports_golf.children.create([{:name=>"クラブ"}, {:name=>"ウェア(男性用)"}, {:name=>"ウェア(女性用)"}, {:name=>"バッグ"}, {:name=>"その他"}])
+sports_fishing.children.create([{:name=>"ロッド"}, {:name=>"リール"}, {:name=>"ルアー用品"}, {:name=>"ウエア"}, {:name=>"その他"}])
 # ハンドメイドの孫要素
-handmade_girlsAccessory.children.create([{:name=>"アクセサリー(女性用)"}, {:name=>"ファッション/小物"}, {:name=>"アクセサリー/時計"}, {:name=>"日用品/インテリア"}, {:name=>"趣味/おもちゃ"}])
+handmade_girlsAccessory.children.create([{:name=>"アクセサリー(女性用)"}, {:name=>"ファッション/小物"}, {:name=>"アクセサリー/時計"}, {:name=>"日用品/インテリア"}, {:name=>"趣味/おもちゃ"},{:name=>"その他"}])
+handmade_fashon.children.create([{:name=>"バッグ"}, {:name=>"財布"}, {:name=>"ファッション雑貨"}, {:name=>"その他"}])
 # チケットの孫要素
-ticket_music.children.create([{:name=>"男性アイドル"}, {:name=>"女性アイドル"}, {:name=>"韓流"}, {:name=>"国内アーティスト"}, {:name=>"海外アーティスト"}])
+ticket_music.children.create([{:name=>"男性アイドル"}, {:name=>"女性アイドル"}, {:name=>"韓流"}, {:name=>"国内アーティスト"}, {:name=>"海外アーティスト"},{:name=>"その他"}])
+ticket_sports.children.create([{:name=>"サッカー"}, {:name=>"野球"}, {:name=>"テニス"}, {:name=>"格闘技/プロレス"}, {:name=>"相撲/武道"},{:name=>"その他"}])
 # 自動車・オートバイの孫要素
-car_body.children.create([{:name=>"国内自動車本体"}, {:name=>"外国自動車本体"}])
+car_body.children.create([{:name=>"国内自動車本体"}, {:name=>"外国自動車本体"},{:name=>"その他"}])
+car_tire.children.create([{:name=>"タイヤ/ホイールセット"}, {:name=>"タイヤ"},{:name=>"ホイール"},{:name=>"その他"}])
 # その他の孫要素
-other_petSupplies.children.create([{:name=>"ペットフード"}, {:name=>"犬用品"}, {:name=>"猫用品"}, {:name=>"魚用品/水草"}, {:name=>"小動物用品"}])
+other_petSupplies.children.create([{:name=>"ペットフード"}, {:name=>"犬用品"}, {:name=>"猫用品"}, {:name=>"魚用品/水草"}, {:name=>"デグー用品"},{:name=>"その他"}])
+other_foods.children.create([{:name=>"菓子"}, {:name=>"米"}, {:name=>"野菜"}, {:name=>"果物"}, {:name=>"加工食品"},{:name=>"その他"}])
