@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_093702) do
+ActiveRecord::Schema.define(version: 2020_03_23_005817) do
 
   create_table "addresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -119,13 +119,11 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
     t.integer "sales_profit", null: false
     t.integer "buyer_id"
     t.integer "seller_id", null: false
-    t.integer "evaluation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["evaluation_id"], name: "index_items_on_evaluation_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
@@ -186,7 +184,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
-  add_foreign_key "items", "evaluations"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "to_dos", "items"

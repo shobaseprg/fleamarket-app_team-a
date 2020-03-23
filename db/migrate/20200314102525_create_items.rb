@@ -14,7 +14,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :sales_profit ,null: false
       t.references :buyer,foreign_key:{ to_table: :users }
       t.references :seller ,null: false,foreign_key:{ to_table: :users } 
-      t.references :evaluation ,null: false, foreign_key: true
       t.timestamps
     end
   end
