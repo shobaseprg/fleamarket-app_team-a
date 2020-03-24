@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "homes#index"
+  root to: "items#index"
   
   resources :users, only: :show
   resources :items
