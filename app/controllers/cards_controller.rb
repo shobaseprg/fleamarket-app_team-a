@@ -14,7 +14,7 @@ class CardsController < ApplicationController
       card: params['payjp-token']
       # params['payjp-token']（response.id）からcustomerを作成
       ) 
-      @card = Card.new(card_params)
+      @card = Card.new(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to "/"
       else
@@ -22,10 +22,4 @@ class CardsController < ApplicationController
       end
     end
   end
-
-  private
-  def card_params
-    params.require(:card).permit(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
-  end
-
 end
