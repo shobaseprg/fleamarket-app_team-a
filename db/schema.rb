@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_005817) do
+ActiveRecord::Schema.define(version: 2020_03_24_110856) do
 
   create_table "addresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -108,8 +108,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_005817) do
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
-    t.integer "category_id", null: false
-    t.integer "brand_id"
     t.string "condition", null: false
     t.string "shipping_charger", null: false
     t.string "shipping_method", null: false
@@ -117,14 +115,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_005817) do
     t.string "shipping_days", null: false
     t.integer "price", null: false
     t.integer "sales_profit", null: false
-    t.integer "buyer_id"
-    t.integer "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_items_on_brand_id"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -182,10 +174,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_005817) do
   add_foreign_key "goods", "items"
   add_foreign_key "goods", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "to_dos", "items"
   add_foreign_key "users_transacts", "items"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
