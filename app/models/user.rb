@@ -41,7 +41,7 @@ class User < ApplicationRecord
   has_many :goods
   has_many :items, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :payments, dependent: :destroy
+  has_many :cards, dependent: :destroy
   has_one :address, dependent: :destroy
   has_many :evaluation_notices,dependent: :destroy
   has_many :good_notices,dependent: :destroy
