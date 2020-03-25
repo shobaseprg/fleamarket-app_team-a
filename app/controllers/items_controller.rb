@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @products = Product.includes(:item_images).order('created_at DESC')
+
   end
 
   def new
@@ -11,7 +11,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    #binding.pry
+    if @item.save!
       flash[:notice] = "出品が完了しました"
       redirect_to root_path
     else
@@ -22,7 +23,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description_item, :condition, :shipping_charger, :shipping_method, :ship_from, :shipping_days, :price, :sales_profit, images_attributes: [:image])
+    params.require(:item).permit(:name, :description_item, :condition, :shipping_charger, :shipping_method, :ship_from, :shipping_days, :price, :sales_profit, item_images_attributes: [:image])
   end
 
 end
