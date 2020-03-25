@@ -46,7 +46,7 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.text_field :condition, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :condition_id, Condition.all, :id, :name, class: "sell__main__content__form__box__group__select__form"
               %label
                 配送料の負担
                 %span.form-require

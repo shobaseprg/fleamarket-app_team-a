@@ -10,23 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_110856) do
-
-  create_table "addresses", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "postal_code", null: false
-    t.string "prefectures", null: false
-    t.string "municipality", null: false
-    t.string "address", null: false
-    t.string "building"
-    t.string "dery_postal_code", null: false
-    t.string "dery_prefectures", null: false
-    t.string "dery_address", null: false
-    t.string "dery_building"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2020_03_14_102635) do
 
   create_table "brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand_list", null: false
@@ -34,25 +18,11 @@ ActiveRecord::Schema.define(version: 2020_03_24_110856) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "buyed_item_notices", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_buyed_item_notices_on_item_id"
-  end
-
   create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "ancestry", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "comment_notices", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_comment_notices_on_user_id"
   end
 
   create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,20 +44,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_110856) do
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 
-  create_table "evaluations_notices", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_evaluations_notices_on_user_id"
-  end
-
-  create_table "good_notices", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_good_notices_on_user_id"
-  end
-
   create_table "goods", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "user_id", null: false
@@ -106,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_110856) do
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
-    t.string "condition", null: false
+    t.integer "condition_id", null: false
     t.string "shipping_charger", null: false
     t.string "shipping_method", null: false
     t.string "ship_from", null: false
@@ -161,14 +117,9 @@ ActiveRecord::Schema.define(version: 2020_03_24_110856) do
     t.index ["transact_saler_id"], name: "index_users_transacts_on_transact_saler_id"
   end
 
-  add_foreign_key "addresses", "users"
-  add_foreign_key "buyed_item_notices", "items"
-  add_foreign_key "comment_notices", "users"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "evaluations", "users"
-  add_foreign_key "evaluations_notices", "users"
-  add_foreign_key "good_notices", "users"
   add_foreign_key "goods", "items"
   add_foreign_key "goods", "users"
   add_foreign_key "item_images", "items"
