@@ -35,6 +35,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 7 }, format: { with: VALID_PASSWORD_REGEX }
   # validates :phone_number, uniqueness: true, length: { maximum: 11 }
+    validates :phone_number, length: { maximum: 11 }
+
  
 
   has_many :evaluations
