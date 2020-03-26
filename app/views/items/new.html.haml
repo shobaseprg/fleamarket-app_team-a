@@ -46,31 +46,31 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.collection_select :condition_id, Condition.all, :id, :name, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :condition_id, Condition.all, :id, :name #, class: "sell__main__content__form__box__group__select__form"
               %label
                 配送料の負担
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.text_field :shipping_charger, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :shipping_charger_id, ShippingCharger.all, :id, :name # class: "sell__main__content__form__box__group__select__form"
               %label
                 配送の方法
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.text_field :shipping_method, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :shipping_method_id,ShippingMethod.all, :id, :name  #class: "sell__main__content__form__box__group__select__form"
               %label
                 発送元の地域
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.text_field :ship_from, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :ship_from_id, ShipFrom.all, :id, :name #class: "sell__main__content__form__box__group__select__form"
               %label
                 発送までの日数
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.text_field :shipping_days, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name  #class: "sell__main__content__form__box__group__select__form"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             販売価格(300〜9,999,999)
@@ -85,7 +85,7 @@
                     必須
                 .sell__main__content__form__box__price__top__right
                   ¥
-                  = f.text_field :price, class: "sell__main__content__form__box__group__select__form"
+                  = f.number_field :price, class: "sell__main__content__form__box__group__select__form"
               %li.sell__main__content__form__box__price__fee
                 .sell__main__content__form__box__price__fee__left
                   販売手数料 (10%)

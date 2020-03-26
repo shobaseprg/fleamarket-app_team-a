@@ -26,13 +26,9 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
   end
 
   create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "user_id", null: false
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_comments_on_item_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "evaluations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,12 +41,8 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
   end
 
   create_table "goods", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_goods_on_item_id"
-    t.index ["user_id"], name: "index_goods_on_user_id"
   end
 
   create_table "item_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,24 +54,20 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
-    t.integer "condition_id", null: false
-    t.string "shipping_charger", null: false
-    t.string "shipping_method", null: false
-    t.string "ship_from", null: false
-    t.string "shipping_days", null: false
-    t.integer "price", null: false
-    t.integer "sales_profit", null: false
+    t.integer "condition_id"
+    t.string "shipping_charger_id"
+    t.string "shipping_method_id"
+    t.string "ship_from_id"
+    t.string "shipping_days_id"
+    t.integer "price"
+    t.integer "sales_profit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "to_do_list"
-    t.integer "todo_status", null: false
-    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_to_dos_on_item_id"
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -105,26 +93,18 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
   end
 
   create_table "users_transacts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
     t.integer "transact_buyer_id", null: false
     t.integer "transact_saler_id", null: false
     t.text "transact_comment"
     t.integer "trans_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_users_transacts_on_item_id"
     t.index ["transact_buyer_id"], name: "index_users_transacts_on_transact_buyer_id"
     t.index ["transact_saler_id"], name: "index_users_transacts_on_transact_saler_id"
   end
 
-  add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users"
   add_foreign_key "evaluations", "users"
-  add_foreign_key "goods", "items"
-  add_foreign_key "goods", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "to_dos", "items"
-  add_foreign_key "users_transacts", "items"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
   add_foreign_key "users_transacts", "users", column: "transact_saler_id"
 end
