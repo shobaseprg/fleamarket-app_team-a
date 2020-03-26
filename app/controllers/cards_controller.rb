@@ -3,7 +3,6 @@ class CardsController < ApplicationController
   require 'payjp'
 
   def create
-    binding.pry
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
     # credential.yamlからPayjp.api_keyを設定（秘密鍵）
     if params['payjp-token'].blank?
@@ -15,7 +14,7 @@ class CardsController < ApplicationController
       card: params['payjp-token']
       # params['payjp-token']（response.id）からcustomerを作成
       ) 
-      @card = Card.new(card_params)
+      @card = Card.new(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to "/"
       else
@@ -23,11 +22,4 @@ class CardsController < ApplicationController
       end
     end
   end
-
-
-  private
-  def card_params
-    params.require(:card).permit(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
-  end
 end
-
