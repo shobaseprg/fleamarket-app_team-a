@@ -2,8 +2,9 @@
   .header__inner
     .header__inner__main
       .icon
-        = link_to "home","/"
-        -# image_tag(src= "header_logo.png", class: "image",size: "140x60")
+        = link_to "/" do
+          = image_tag "header_logo.png", class: "image",size: "140x60"
+
       .searchbox
         %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input{name: "utf8", type: "hidden", value: "✓"}/
@@ -15,7 +16,7 @@
     .header__inner__nav
       .list-left
         .list-left__item-first
-          = link_to 'カテゴリー', '#', class: "category-btn"
+          = link_to 'カテゴリー', '/categories', class: "category-btn"
         .list-left__item-second
           = link_to "ブランド", "#", class:"brand-btn"
       .list-right
