@@ -28,10 +28,10 @@ class Item < ApplicationRecord
   # has_many :users_transacts, dependent: :destroy 
   # has_one :to_do, dependent: :destroy 
 
-  # with_options presence: true do
-  #   validates :name
-  #   validates :description_item 
-  #   validates :price
-  # end
+   with_options presence: true do
+     validates :name
+     validates :description_item 
+     validates :price
+   end
 end
 
