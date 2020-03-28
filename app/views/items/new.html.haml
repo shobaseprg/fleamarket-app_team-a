@@ -1,0 +1,118 @@
+.sell
+  %header.sell__head
+    = link_to "/" do
+      = image_tag "header_logo.png", class: "sell__head__img",size: "150x65"
+  .sell__main
+    = form_for @item do |f|
+      .sell__main__content
+        .sell__main__content__file
+          .sell__main__content__file__up
+            %h3.sell__main__content__file__up__head
+              出品画像
+              %span.form-require
+                必須
+              %p.sell__main__content__file__up__head__text
+                最大10枚までアップロードできます
+            .sell__main__content__file__up__box
+              = f.fields_for :item_images do |i|
+                = i.file_field :image
+              
+        .sell__main__content__form
+          %label
+            商品名
+            %span.form-require
+              必須
+            = f.text_field :name, class: "sell__main__content__form__input", placeholder: "40文字まで"
+          %label
+            商品の説明
+            %span.form-require
+              必須
+          = f.text_area :description_item, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）         例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .sell__main__content__form
+          %h3.sell__main__content__form__sub
+            商品の詳細
+          .sell__main__content__form__box
+            .sell__main__content__form__box__group
+ 
+        .sell__main__content__form
+          %h3.sell__main__content__form__sub
+            配送について
+            = link_to "", target: "_blank", class: "sell__main__content__form__sub__icon" do
+              \?
+          .sell__main__content__form__box
+            .sell__main__content__form__box__group
+              %label
+                商品状態
+                %span.form-require
+                  必須
+              .sell__main__content__form__box__group__select
+                = f.collection_select :condition_id, Condition.all, :id, :name #, class: "sell__main__content__form__box__group__select__form"
+              %label
+                配送料の負担
+                %span.form-require
+                  必須
+              .sell__main__content__form__box__group__select
+                = f.collection_select :shipping_charger_id, ShippingCharger.all, :id, :name # class: "sell__main__content__form__box__group__select__form"
+              %label
+                配送の方法
+                %span.form-require
+                  必須
+              .sell__main__content__form__box__group__select
+                = f.collection_select :shipping_method_id,ShippingMethod.all, :id, :name  #class: "sell__main__content__form__box__group__select__form"
+              %label
+                発送元の地域
+                %span.form-require
+                  必須
+              .sell__main__content__form__box__group__select
+                = f.collection_select :ship_from_id, ShipFrom.all, :id, :name #class: "sell__main__content__form__box__group__select__form"
+              %label
+                発送までの日数
+                %span.form-require
+                  必須
+              .sell__main__content__form__box__group__select
+                = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name  #class: "sell__main__content__form__box__group__select__form"
+        .sell__main__content__form
+          %h3.sell__main__content__form__sub
+            販売価格(300〜9,999,999)
+            = link_to "", target: "_blank", class: "sell__main__content__form__sub__icon" do
+              \?
+          .sell__main__content__form__box
+            %ul.sell__main__content__form__box__price
+              %li.sell__main__content__form__box__price__top
+                .sell__main__content__form__box__price__top__left
+                  販売価格
+                  %span.form-require
+                    必須
+                .sell__main__content__form__box__price__top__right
+                  ¥
+                  = f.number_field :price, class: "sell__main__content__form__box__group__select__form"
+              %li.sell__main__content__form__box__price__fee
+                .sell__main__content__form__box__price__fee__left
+                  販売手数料 (10%)
+                .sell__main__content__form__box__price__fee__right#tax-text
+                  \-
+              %li.sell__main__content__form__box__price__profit
+                .sell__main__content__form__box__price__profit__left
+                  販売利益
+                .sell__main__content__form__box__price__profit__right 
+                  = f.text_field :sales_profit
+        .sell__main__content__button
+          = f.submit "出品する"
+          %a.sell__main__content__button__white
+            もどる
+  %header.sell__footer
+    %ul
+      %li
+        = link_to "", target: "_blank" do
+          プライバシーポリシー
+      %li
+        = link_to "", target: "_blank" do
+          フリマ利用規約
+      %li
+        = link_to "", target: "_blank" do
+          特定商取引に関する表記
+    .sell__footer__logo
+      = link_to "/" do
+        = image_tag "footer_logo.png",size: "140x55"
+      %small
+        ©FURIMA
