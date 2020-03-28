@@ -83,6 +83,10 @@ gem 'devise'
 
 gem 'ancestry'
 gem 'payjp'
-gem 'pry-rails'
+
 gem 'better_errors'
 gem 'binding_of_caller'
+
+gem 'active_hash'
+
+gem 'pry-rails'
