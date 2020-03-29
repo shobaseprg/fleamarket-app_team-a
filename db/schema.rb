@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
     t.integer "shipping_days_id"
     t.integer "price"
     t.integer "sales_profit"
+    t.integer "sales_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
