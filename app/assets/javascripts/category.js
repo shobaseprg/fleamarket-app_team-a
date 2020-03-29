@@ -37,7 +37,7 @@ let parentValue = $(this).val(); //選択された親カテゴリーの名前を
 if(parentValue != ""){ //親カテゴリーが初期値でないことを確認
 $.ajax({
   // リクエストを送信する先のURL
-url: "/categories/get_child_category",
+url: "/items/category_children",
  // HTTP通信の種類を記述する
 type: "GET",
 // サーバに送信する値
@@ -49,11 +49,11 @@ dataType: "json"
 })
 
 // doneはAjax通信が成功したとき,failはAjax通信が失敗したとき
-.done(function(childs){
+.done(function(children){
 $("#child_box").remove();
 $("#grandchild_box").remove();
 let insertHTML = "";
-childs.forEach(function(child){
+children.forEach(function(child){
 insertHTML += appendOption(child);
 });
 childBox(insertHTML);
@@ -69,34 +69,35 @@ $("#grandchild_box").remove();
 })
 })
 
-// $(function() {
-// $("#category-select-box_list").on('change', "#child_form", function(){
-// let childValue = $("#child_form").val();
-// if(childValue != ""){
-// $.ajax({
-// url: "/categories/get_grandchild_category",
-// type: "GET",
-// data: {
-// child_id: childValue
-// },
-// dataType: "json"
-// })
-// .done(function(grandchilds){
-// $("#grandchild_box").remove()
-// let insertHTML = "";
-// grandchilds.forEach(function(grandchild){
-// insertHTML += appendOption(grandchild);
-// });
-// grandChildBox(insertHTML);
-// $('#child_form').css('margin','0');
-// })
-// .fail(function(){
-// alert("カテゴリー取得に失敗しました");
-// })
-// } else {
-// $("#grandchild_box").remove()
-// }
-// })
-// })
+$(function() {
+$("#category-select-box_list").on('change', "#child_form", function(){
+let childValue = $("#child_form").val();
+if(childValue != ""){
+$.ajax({
+url: "/items/category_grandchildren",
+type: "GET",
+data: {
+child_id: childValue
+},
+dataType: "json"
+})
+
+.done(function(grandchilds){
+$("#grandchild_box").remove()
+let insertHTML = "";
+grandchilds.forEach(function(grandchild){
+insertHTML += appendOption(grandchild);
+});
+grandChildBox(insertHTML);
+$('#child_form').css('margin','0');
+})
+.fail(function(){
+alert("カテゴリー取得に失敗しました");
+})
+} else {
+$("#grandchild_box").remove()
+}
+})
+})
 
 });
