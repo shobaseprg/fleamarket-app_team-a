@@ -3,6 +3,9 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :item_images, allow_destroy: true
   
   extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :brand
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :condition
   
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -16,6 +19,7 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :shipping_days
+  
   # validates_associated :item_images
   # validates :images, presence: true
 
