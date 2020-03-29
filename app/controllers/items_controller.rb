@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @parents = Category.all.order("id ASC").limit(13)
-    ids = [14..423]
-    @children = Category.where(id: ids)
+    @parents = Category.where(ancestry:nil)
+    # ids = [14..423]
+    # @children = Category.where(id: ids)
   end
 
   def create
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description_item, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, :sales_profit, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :description_item, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, :sales_profit, item_images_attributes: [:image])
   end
 
 end
