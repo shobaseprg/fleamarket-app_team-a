@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save!
       flash[:notice] = "出品が完了しました"
+      redirect_to root_path
     else
       flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
       redirect_to new_item_path
