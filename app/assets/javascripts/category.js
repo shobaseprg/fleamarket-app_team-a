@@ -4,7 +4,7 @@ $(function(){
     let html = `<option value="${category.id}">${category.name}</option>`;
     return html;
   }
-  // 子カテゴリーの表示作成（選択肢の表示）
+  // 子カテゴリーの表示作成
   function childBox(insertHTML){
     let childBoxHTML =`<div class="sell__main__content__form__box__group__select" id="child_box">
                         <i class="icon-arrow-bottom"></i>
@@ -16,7 +16,7 @@ $(function(){
     $("#parent_box").after(childBoxHTML);
     }
 
-  // 孫カテゴリーの表示作成（選択肢の表示）
+  // 孫カテゴリーの表示作成
   function grandChildBox(insertHTML){
     let grandChildBoxHTML =`<div class="sell__main__content__form__box__group__select" id="grandchild_box">
                               <i class="icon-arrow-bottom"></i>
