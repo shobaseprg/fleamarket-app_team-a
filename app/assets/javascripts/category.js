@@ -57,7 +57,7 @@ children.forEach(function(child){
 insertHTML += appendOption(child);
 });
 childBox(insertHTML);
-$('#parent_form').css('margin','0');
+$('#parent_form') .css('margin','0');
 })
 .fail(function(){
 alert("カテゴリー取得に失敗しました");

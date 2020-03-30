@@ -34,11 +34,24 @@
           .sell__main__content__form__box
             .sell__main__content__form__box__group#category-select-box_list
               %label
-                カテゴリ
+                カテゴリー
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select#parent_box
                 = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, class: "sell__main__content__form__box__group__select__form", id: "parent_form"
+              %label
+                ブランド
+                %span.form-require_brand
+                  任意
+              .sell__main__content__form__box__group__select
+                = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "---"}, class: "sell__main__content__form__box__group__select__form"
+              %label
+                商品状態
+                %span.form-require
+                  必須
+              .sell__main__content__form__box__group__select
+                = f.collection_select :condition_id, Condition.all, :id, :name ,  {prompt: "---"},class: "sell__main__content__form__box__group__select__form"
+
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             配送について
@@ -46,12 +59,6 @@
               \?
           .sell__main__content__form__box
             .sell__main__content__form__box__group
-              %label
-                商品状態
-                %span.form-require
-                  必須
-              .sell__main__content__form__box__group__select
-                = f.collection_select :condition_id, Condition.all, :id, :name #, class: "sell__main__content__form__box__group__select__form"
               %label
                 配送料の負担
                 %span.form-require
