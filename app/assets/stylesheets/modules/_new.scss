@@ -2,26 +2,15 @@
 .sell {
   background: lightcyan;
   color: #333;
-  // 必須の装飾
+ 
   .form-require {
-    box-sizing: border-box;
-    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
-      メイリオ, Meiryo, sans-serif;
-    background: #ea352d;
-    margin: 0 0 0 8px;
-    padding: 2px 4px;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 12px;
-    vertical-align: top;
-    font-weight: 600;
+    @include form-require();
   }
 
   // 任意の装飾
   .form-require_brand {
     box-sizing: border-box;
-    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
-      メイリオ, Meiryo, sans-serif;
+    @include font();
     background: lightgray;
     margin: 0 0 0 8px;
     padding: 2px 4px;
@@ -52,8 +41,7 @@
         padding: 40px;
         border-top: 1px solid #eee;
         box-sizing: border-box;
-        font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
-          メイリオ, Meiryo, sans-serif;
+        @include font();
         &__up {
           &__head {
             font-size: 16px;
@@ -75,26 +63,13 @@
             font-size: 0;
             text-align: center;
             box-sizing: border-box;
-            font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
-              YuGothic, メイリオ, Meiryo, sans-serif;
+            @include font();
             -webkit-transition: -webkit-box-shadow ease-out 0.3s;
             transition: -webkit-box-shadow ease-out 0.3s;
             transition: box-shadow ease-out 0.3s;
             transition: box-shadow ease-out 0.3s,
               -webkit-box-shadow ease-out 0.3s;
             cursor: pointer;
-            &__inner {
-              text-align: center;
-              margin-top: 80px;
-              font-size: 14px;
-              line-height: 1.5;
-              -webkit-transform: translate(0, -50%);
-              transform: translate(0, -50%);
-              pointer-events: none;
-              white-space: pre-wrap;
-              word-wrap: break-word;
-              font-family: monospace, monospace;
-            }
           }
         }
       }
@@ -105,8 +80,7 @@
         border-top: 1px solid #eee;
         display: block;
         box-sizing: border-box;
-        font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
-          メイリオ, Meiryo, sans-serif;
+        @include font();
         label {
           font-weight: 600;
           font-size: 14px;
@@ -128,11 +102,8 @@
           line-height: 1.5;
           font-size: 16px;
           box-sizing: border-box;
-          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
-            YuGothic, メイリオ, Meiryo, sans-serif;
-          &:nth-child(3) {
-            height: 142px;
-          }
+          @include font();
+        
         }
         &__sub {
           color: #888;
@@ -182,8 +153,7 @@
               display: block;
               height: 72px;
               box-sizing: border-box;
-              font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
-                YuGothic, メイリオ, Meiryo, sans-serif;
+              @include font();
               &__left {
                 width: 50%;
                 line-height: 48px;
@@ -196,21 +166,9 @@
                 float: right;
                 align-items: center;
                 display: flex;
-                &__input {
-                  display: inline-block;
-                  width: 80%;
-                  margin: 0 0 0 5%;
-                  height: 48px;
-                  padding: 10px 16px 8px;
-                  border-radius: 4px;
-                  border: 1px solid #ccc;
-                  background: #fff;
-                  line-height: 1.5;
-                  font-size: 16px;
-                  text-align: right;
-                  box-sizing: border-box;
-                  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
-                    YuGothic, メイリオ, Meiryo, sans-serif;
+
+                &__yen{
+                  padding-bottom: 40px;
                 }
               }
             }
@@ -220,8 +178,7 @@
               border-top: 1px solid #ccc;
               height: 63px;
               box-sizing: border-box;
-              font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
-                YuGothic, メイリオ, Meiryo, sans-serif;
+              @include font();
               &__left {
                 text-align: left;
                 font-size: 14px;
@@ -247,6 +204,7 @@
             }
           }
         }
+      
       }
       &__button {
         padding: 40px;
@@ -263,6 +221,7 @@
         &__red {
           margin: 40px auto 0;
           background: #ea352d;
+          border: 1px solid #ea352d;
           color: #fff;
           display: block;
           width: 60%;
@@ -307,29 +266,14 @@
       font-size: 12px;
       text-decoration: none;
       box-sizing: border-box;
-      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
-        メイリオ, Meiryo, sans-serif;
+      @include font();
     }
-    li:nth-child(1):hover {
-      opacity: 0.7;
-      text-decoration: underline;
-      box-sizing: border-box;
-    }
-    li:nth-child(2):hover {
-      opacity: 0.7;
-      text-decoration: underline;
-    }
-    li:nth-child(3):hover {
-      opacity: 0.7;
-      text-decoration: underline;
-    }
+
     &__logo {
       width: 80px;
       height: 65px;
       margin: 40px auto 0;
-      small {
-        font-size: 13px;
-      }
+
       img:hover {
         opacity: 0.7;
       }

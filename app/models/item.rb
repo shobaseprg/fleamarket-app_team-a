@@ -20,8 +20,7 @@ class Item < ApplicationRecord
   # validates :images, presence: true
 
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category
+  belongs_to :category
   # belongs_to :brand
   # has_many :goods
   # has_many :comments
