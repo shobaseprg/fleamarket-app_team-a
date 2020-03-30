@@ -79,14 +79,10 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem "font-awesome-sass"
 gem 'jquery-rails'
-gem 'ancestry'
 gem 'devise'
-
+gem 'ancestry'
 gem 'payjp'
-
 gem 'better_errors'
 gem 'binding_of_caller'
-
 gem 'active_hash'
-
 gem 'pry-rails'
