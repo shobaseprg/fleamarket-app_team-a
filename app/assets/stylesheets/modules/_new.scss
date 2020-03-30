@@ -103,7 +103,9 @@
           font-size: 16px;
           box-sizing: border-box;
           @include font();
-        
+          &:nth-child(3) {
+            height: 142px;
+          }
         }
         &__sub {
           color: #888;
