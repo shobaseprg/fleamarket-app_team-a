@@ -1,3 +1,11 @@
+.wrapper
+  = render "items/header"
+  = render "card_new_mypageMain"
+  = render "items/bottom_banner"
+  = render "items/footer"
+  = render "items/sell_btn"
+
+
 = form_with model: @card, url: cards_path, local: true, html: { name: 'inputForm' } do |f|
   カード番号
   = f.text_field :card_number, id: "card_number"
