@@ -1,5 +1,5 @@
 $(function(){
-  // カテゴリーセレクトボックスのオプションを作成（関数定義）
+  // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
     let html = `<option value="${category.id}">${category.name}</option>`;
     return html;
@@ -69,6 +69,7 @@ $("#grandchild_box").remove();
 })
 })
 
+// 子カテゴリー選択後のイベント（イベント発火後、孫要素のセレクトボックスが出現）
 $(function() {
 $("#category-select-box_list").on('change', "#child_form", function(){
 let childValue = $("#child_form").val();
