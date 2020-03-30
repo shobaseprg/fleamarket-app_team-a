@@ -22,7 +22,11 @@ class User < ApplicationRecord
 
   # has_many :evaluations
   # has_many :goods
-  # has_many :items, dependent: :destroy
+  has_many :saling_items, -> { where("seller_id is not NULL && buyer_id is NULL") }, class_name: "Product"
+  has_many :auction_items, -> { where("seller_id is not NULL && auction_id is not NULL && buyer_id is NULL") }, class_name: "Product"
+  has_many :sold_items, -> { where("seller_id is not NULL && buyer_id is not NULL && auction_id is NULL") }, class_name: "Product"
+ 
+
   # has_many :comments, dependent: :destroy
   # has_many :payments, dependent: :destroy
   # has_one :address, dependent: :destroy

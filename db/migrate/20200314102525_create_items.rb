@@ -11,10 +11,11 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :ship_from_id #,null: false
       t.integer :shipping_days_id #,null: false
       t.integer :price #,null: false
-      t.integer :sales_fee #
+      t.integer :sales_fee #,null: false
       t.integer :sales_profit #,null: false
-      # t.references :buyer,foreign_key:{ to_table: :users }
-      # t.references :seller ,null: false,foreign_key:{ to_table: :users } 
+      t.references :seller ,foreign_key:{ to_table: :users } 
+      t.references :buyer,foreign_key:{ to_table: :users }
+      t.references :auction, foreign_key: {to_table: :users}
       t.timestamps
     end
   end
