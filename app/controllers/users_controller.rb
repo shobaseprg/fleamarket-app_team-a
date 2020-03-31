@@ -56,4 +56,4 @@ class UsersController < ApplicationController
                 ]
     @todos = todos.reverse
   end
-  end
+end

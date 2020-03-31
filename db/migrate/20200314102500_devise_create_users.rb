@@ -13,12 +13,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :email, null: false, default: ""
       t.string :phone_number, null: false, default: ""
       t.string :password, null: false, default: ""
-      t.integer :year, null: false
-      t.integer :month, null: false
-      t.integer :day, null: false
+      t.date :birthday, null: false
+
       t.string :avatar
 
-      # t.string :encrypted_password, null: false, default: ""
+      t.string :encrypted_password#, null: false, default: ""
       # t.string :encrypted_password, null: false
 
       ## Recoverable
@@ -26,7 +25,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.datetime :reset_password_sent_at
 
       ## Rememberable
-      # t.datetime :remember_created_at
+      t.datetime :remember_created_at
 
       t.timestamps null: false
     end

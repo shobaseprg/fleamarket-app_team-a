@@ -152,18 +152,18 @@ ActiveRecord::Schema.define(version: 2020_03_20_093702) do
     t.string "first_name_reading", null: false
     t.string "family_name_reading", null: false
     t.string "nickname", null: false
-    t.string "self_introduction", null: false
+    t.string "self_introduction"
     t.string "email", default: "", null: false
     t.string "phone_number", limit: 11, null: false
     t.string "password", default: "", null: false
-    t.integer "year", null: false
-    t.integer "month", null: false
-    t.integer "day", null: false
+    t.date "birthday", null: false
     t.string "avatar"
+    t.string "encrypted_password"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

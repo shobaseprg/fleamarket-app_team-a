@@ -1,21 +1,70 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Log in
-      %h5 登録しているユーザーでログイン
-      = render "devise/shared/links"
-    .account-page__inner--right.user-form
+.login
+  %header.login__head
+    = link_to "/" do
+      = image_tag "header_logo.png", class: "sell__head__img",size: "150x65"
+  .login__main
+    .login__main__content
+      %h2.login__main__content__head
+        ログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email, autofocus: true
-          .field
-            .field-label
-              = f.label :password
-              %i (英数字8文字以上)
-            .field-input
-              = f.password_field :password, autocomplete: "off"
-          .actions
-            = f.submit "Log in", class: 'btn'
+        .login__main__content__item
+          .login__main__content__item__inner
+            .login__main__content__item__inner__box
+              .field
+                .field-label
+                  = f.label :email
+                .field-input
+                  = f.email_field :email, class: "field-input-full", autofocus: true, placeholder: "メールアドレス"
+              .field
+                .field-label
+                  = f.label :password
+                .field-input
+                  = f.password_field :password, class: "field-input-full", autocomplete: "off", placeholder: "パスワード"
+              .actions
+                = f.submit "ログイン", class: 'btn'
+  %header.login__footer
+    %ul
+      %li
+        = link_to "", target: "_blank" do
+          プライバシーポリシー
+      %li
+        = link_to "", target: "_blank" do
+          フリマ利用規約
+      %li
+        = link_to "", target: "_blank" do
+          特定商取引に関する表記
+    .login__footer__logo
+      = link_to "/" do
+        = image_tag "footer_logo.png",size: "140x55"
+      %small
+        ©FURIMA
+
+
+
+
+
+
+
+
+
+-# #account-page.account-page
+-#   .account-page__inner.clearfix
+-#     .account-page__inner--left.account-page__header
+-#       %h2 Log in
+-#       %h5 登録しているユーザーでログイン
+-#       = render "devise/shared/links"
+-#     .account-page__inner--right.user-form
+-#       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#         .field
+-#           .field-label
+-#             = f.label :email
+-#           .field-input
+-#             = f.email_field :email, autofocus: true
+-#           .field
+-#             .field-label
+-#               = f.label :password
+-#               %i (英数字8文字以上)
+-#             .field-input
+-#               = f.password_field :password, autocomplete: "off"
+-#           .actions
+-#             = f.submit "Log in", class: 'btn'
