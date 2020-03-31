@@ -10,19 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_102635) do
+ActiveRecord::Schema.define(version: 2020_03_20_083820) do
 
   create_table "brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand_list", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "buyed_item_notices", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_buyed_item_notices_on_item_id"
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
 
   create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry", null: false
+    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,21 +56,31 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
   create_table "item_images", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "item_id", null: false
     t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_images_on_item_id"
   end
 
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
+    t.integer "brand_id"
     t.integer "condition_id"
-    t.string "shipping_charger_id"
-    t.string "shipping_method_id"
-    t.string "ship_from_id"
-    t.string "shipping_days_id"
+    t.integer "shipping_charger_id"
+    t.integer "shipping_method_id"
+    t.integer "ship_from_id"
+    t.integer "shipping_days_id"
     t.integer "price"
+    t.integer "sales_fee"
     t.integer "sales_profit"
+    t.integer "seller_id"
+    t.integer "buyer_id"
+    t.integer "auction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["auction_id"], name: "index_items_on_auction_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -122,6 +125,9 @@ ActiveRecord::Schema.define(version: 2020_03_14_102635) do
 
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "users", column: "auction_id"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
   add_foreign_key "users_transacts", "users", column: "transact_saler_id"
 end

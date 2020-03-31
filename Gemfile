@@ -80,6 +80,8 @@ gem 'haml-rails'
 gem "font-awesome-sass"
 gem 'jquery-rails'
 gem 'devise'
+
+gem 'ancestry'
 gem 'payjp'
 
 gem 'better_errors'
