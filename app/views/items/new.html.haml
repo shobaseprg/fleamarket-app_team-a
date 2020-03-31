@@ -13,6 +13,8 @@
                 必須
               %p.sell__main__content__file__up__head__text
                 最大10枚までアップロードできます
+
+                -# 後でJSつける。仮クラス名。
             .dropbox
               = f.fields_for :item_images do |i|
                 = i.file_field :image, class: "sell__main__content__file__up__box"

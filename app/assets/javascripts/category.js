@@ -9,7 +9,7 @@ $(function(){
     let childBoxHTML =`<div class="sell__main__content__form__box__group__select" id="child_box">
                         <i class="icon-arrow-bottom"></i>
                         <select class="sell__main__content__form__box__group__select__form" id="child_form" name="item[child_id]">
-                          <option value="">---</option>
+                          <option value="">選択してください</option>
                           ${insertHTML}
                       </select>
                       </div>`
@@ -21,7 +21,7 @@ $(function(){
     let grandChildBoxHTML =`<div class="sell__main__content__form__box__group__select" id="grandchild_box">
                               <i class="icon-arrow-bottom"></i>
                               <select class="sell__main__content__form__box__group__select__form" id="grandchild_form" name="item[category_id]">
-                                <option value="">---</option>
+                                <option value="">選択してください</option>
                                 ${insertHTML}
                               </select>
                             </div>`
