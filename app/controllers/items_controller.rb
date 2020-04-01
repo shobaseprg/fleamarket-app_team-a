@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+    # @parents = Category.where(ancestry:nil)
   end
 
   def create
@@ -20,9 +21,20 @@ class ItemsController < ApplicationController
     end
   end
 
+     # 親カテゴリーが選択された後に動くアクション
+  def category_children
+      #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+      @category_children = Category.find(params[:parent_id]).children
+  end
+  
+   # 子カテゴリーが選択された後に動くアクション
+   def category_grandchildren
+      @category_grandchildren = Category.find(params[:child_id]).children
+   end
+
   private
   def item_params
-    params.require(:item).permit(:name, :description_item, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, :sales_profit, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :description_item, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, :sales_profit, item_images_attributes: [:image])
   end
 
 end

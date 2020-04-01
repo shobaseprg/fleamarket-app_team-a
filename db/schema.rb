@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
+    t.integer "category_id", null: false
     t.integer "condition_id"
     t.string "shipping_charger_id"
     t.string "shipping_method_id"
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
     t.integer "sales_profit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
 
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
   add_foreign_key "users_transacts", "users", column: "transact_saler_id"
 end
