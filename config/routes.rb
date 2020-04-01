@@ -5,8 +5,14 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :users, only: :show
-  resources :items
-  resources :categories,only: :index
+  resources :items do
+    collection do
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+
+  resources :categories, only: [:index] 
 
   resources :cards, only:[:new, :create]
 end
