@@ -1,0 +1,20 @@
+ // 必須の装飾
+@mixin form-require() {
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
+    メイリオ, Meiryo, sans-serif;
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  font-weight: 600;
+}
+
+// 出品ページの統一フォント
+@mixin font() {
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
+  メイリオ, Meiryo, sans-serif;
+}
