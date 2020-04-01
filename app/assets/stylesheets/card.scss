@@ -1,7 +1,7 @@
 .card_back{
   background-color: white;
   padding-top: 20px;
-  height: 550px;
+  height: 600px;
 }
 .mypageMainContainer__rightContnet__initial__card_maincontent{
   width: 50%; 
@@ -19,6 +19,7 @@
   }
   &__in-box{
     height: 100%;
+    position: relative;
     &__form-box{
       &__subtitles{
         margin-top: 10px;
@@ -30,11 +31,25 @@
           background-color: red;
           color: white;
         }
-      }
-      &__card-images{
+      
+    }
         &__card-image{
+          display: flex;
+          position: absolute;
+          z-index: 1;
+          .card{
+            img{
+            margin-right: 5px;
+            width: 30px;
+            height: 30px;
+            }
+            .pickup-card{
+              width: 70px;
+              height: 70px;              
+            }
+          }
+
         }
-      }
       &__form{
         height: 60px;
         .card_form{
@@ -72,5 +87,10 @@
         }
       }
     }
+  }
+  .after_card{
+   position: absolute;
+   top: 120px;
+   width: 100%;
   }
 }
