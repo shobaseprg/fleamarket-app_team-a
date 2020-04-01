@@ -1,6 +1,42 @@
 .mypageMainContainer
   .mypageMainContainer__leftContnet
-    = render partial: "_card_new_mypageLeft"
+    = render partial: "cards/new_inner/card_new_mypageLeft"
 
   .mypageMainContainer__rightContnet
     .mypageMainContainer__rightContnet__initial
+      .card_back
+        .mypageMainContainer__rightContnet__initial__card_maincontent
+          .mypageMainContainer__rightContnet__initial__card_maincontent__title
+            %p クレジットード情報入力
+          .mypageMainContainer__rightContnet__initial__card_maincontent__in-box
+            = form_with model: @card, url: cards_path, local: true, html: { name: 'inputForm' } do |f|
+              .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles__subtitle
+                    %p カード番号
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles__must-mark
+                    %p 必須
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__form
+                  = f.text_field :card_number, id: "card_number",class: "card_form"
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__card-images
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box___card-images__card-image
+              .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles__subtitle
+                    %p 有効期限
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles__must-mark
+                    %p 必須
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__form
+                  = f.collection_select :exp_month , Month.all, :id, :name ,class: "card-check-box"
+                  = f.collection_select :exp_year, Year.all, :id, :name, class: "card-check-box"
+              .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles__subtitle
+                    %p セキュリティーコード
+                  .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__subtitles__must-mark
+                    %p 必須
+                .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__form
+                  = f.text_field :cvc, id: 'cvc',class: "card_form"
+              .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__form
+                #card_token
+                  = f.submit '登録', id: 'token_submit'
