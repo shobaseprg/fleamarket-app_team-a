@@ -23,7 +23,8 @@ class Item < ApplicationRecord
   # validates_associated :item_images
   # validates :images, presence: true
 
-  # belongs_to :category
+
+  belongs_to :category
   # belongs_to :brand
   # has_many :goods
   # has_many :comments
