@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.sales_fee = @item.price / 10 
     @item.sales_profit = @item.price - @item.sales_fee
-    if @item.save
+    if @item.save!
       flash[:notice] = "出品が完了しました"
       redirect_to root_path
     else
