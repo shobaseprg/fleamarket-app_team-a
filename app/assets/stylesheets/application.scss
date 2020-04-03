@@ -1,6 +1,7 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/user";
 @import "mixin/_mixin_rightContnetForm";
 @import "modules/header";
 @import "modules/main";
@@ -8,6 +9,8 @@
 @import "modules/bottom_banner";
 @import "modules/footer";
 @import "modules/sell_btn";
+@import "modules/new";
+
 
 @import "modules/myPage/mainContainer";
 @import "modules/myPage/leftContainer";
