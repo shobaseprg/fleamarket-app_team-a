@@ -1,0 +1,17 @@
+- if @card.present?
+  = form_with url: "/cards/#{@card.id}", method: :delete, local: true do |f|
+    = "**** **** **** " + @card_information.last4
+    - exp_month = @card_information.exp_month.to_s
+    - exp_year = @card_information.exp_year.to_s.slice(2,3)
+    = exp_month + " / " + exp_year
+    %input{type: "hidden", name: "cards_id", value: ""}
+    = f.submit "削除する"
+    - if flash[:notice]
+      = flash[:notice]
+    - if flash[:alert]
+      = flash[:alert]
+    = link_to "カードを追加する", new_card_path
+- else
+  %p
+    カードがありません。 
+    = link_to "カードを追加する", new_card_path
