@@ -7,6 +7,17 @@
 
       .five-lists
         .five-lists__profile
+          .five-lists__profile__box
+            .five-lists__profile__box__image
+              = image_tag "card3.jpeg"
+            .five-lists__profile__box__name
+              %p
+                = current_user.nickname
+            .five-lists__profile__box__information
+              .five-lists__profile__box__information__val
+                評価 0
+              .five-lists__profile__box__information__exhibit
+                = @name
         %ul.tabs.five-lists__tabs.jq-tabs
           %li.two-tab.five-lists__tabs__tab.jq-tab.activeTab
             .tabMessage
