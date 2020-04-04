@@ -194,12 +194,9 @@ User.create(id:5, first_name:"工事",family_name:"仲本",first_name_reading:"�
   email: "5@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
   updated_at:"2020-04-03 14:55:54") 
 
-  Item.create(id:1, name:"ズボン(売けん　買ぶー）", description_item:"ズボンです",category_id:193,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
-    ship_from_id:1,shipping_days_id:1,price:5000,
-    # sales_fee:500, 
-    sales_profit:4500,
-    # seller_id:1 ,buyer_id:2, auction_id:2,
-    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
+  # Item.create(id:1, name:"ズボン(売けん　買ぶー）", description_item:"ズボンです",category_id:193,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
+  #   ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 ,buyer_id:2, auction_id:2,
+  #   created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
   # Item.create(id:2, name:"ラジオ(売けん　買ちゃ）", description_item:"ラジオです",category_id:368,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
   #   ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 ,buyer_id:3, auction_id:3,
   #   created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
