@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
     t.string "shipping_days_id"
     t.integer "price"
     t.integer "sales_profit"
+    t.integer "sales_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
