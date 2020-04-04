@@ -38,9 +38,11 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy #削除に成功した時にポップアップを表示します。
-      redirect_to action: "index", notice: "削除しました"
+      flash[:notice2] = '削除しました'
+      redirect_to action: "index"
     else #削除に失敗した時にアラートを表示します。
-      redirect_to action: "index", alert: "削除できませんでした"
+      flash[:alert2] = '削除できませんでした'
+      redirect_to action: "index"
     end
   end
 
