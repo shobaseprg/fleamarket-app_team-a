@@ -17,7 +17,8 @@
                 -# 後でJSつける。仮クラス名。
             .dropbox
               = f.fields_for :item_images do |i|
-                = i.file_field :image, class: "sell__main__content__file__up__box"
+                = i.file_field :image
+          = f.collection_select :brand_id, Brand.all, :id, :name
         .sell__main__content__form
           %label
             商品名
