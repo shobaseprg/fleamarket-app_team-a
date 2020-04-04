@@ -39,9 +39,7 @@ ul{
       margin: 0 auto;
       width: 30%;
       height: 80%;
-      border: solid;
       &__image{
-        border: solid;
         width: 20%;
         height: 30%;
         margin: inherit;
@@ -52,7 +50,6 @@ ul{
         }
       }
       &__name{
-        border: solid;
         height: 20%;
         margin: inherit;
         margin-top:5px;
@@ -61,10 +58,11 @@ ul{
         }
       }
       &__information{
-        border: solid;
         height: 20%;
         margin: inherit;
         margin-top:5px;
+        display: flex;
+        justify-content: space-around;
       }
     }
   }
