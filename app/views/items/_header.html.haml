@@ -18,13 +18,15 @@
         .list-left__item-second
           = link_to "ブランド", "#", class:"brand-btn"
         .list-left__item-second
+          = link_to "ホーム","/", class:"brand-btn"
+        .list-left__item-second
           %p ０３０４
       .list-right
         - if user_signed_in?
           .list-right__item
             = link_to "カード登録",new_card_path
             = link_to "ログアウト", destroy_user_session_path, method: :delete
-            = link_to "マイページ", "/users/1", class:"new-member-btn"
+            = link_to "マイページ", "/users/#{current_user.id}", class:"new-member-btn"
         - else
           .list-right__item
             = link_to "ログイン", new_user_session_path, class: "login-btn"

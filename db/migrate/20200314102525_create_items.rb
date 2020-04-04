@@ -12,6 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :shipping_days_id #,null: false
       t.integer :price #,null: false
       t.integer :sales_profit #,null: false
+      t.integer :sales_fee
       # t.references :buyer,foreign_key:{ to_table: :users }
       # t.references :seller ,null: false,foreign_key:{ to_table: :users } 
       t.timestamps
