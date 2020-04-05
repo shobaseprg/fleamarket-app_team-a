@@ -19,24 +19,52 @@ ul{
 .mypageMainContainer{
   padding-top: 30px;
   padding-bottom: 30px;
-  height: 100%;
+  height: 1340px;
   width: 100%;
   background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   &__rightContnet{
     width:700px;
-    // ▲仮　うえやま
-    // ▲ 仮　byうえやま
-    // ▲　仮　byうえやま
   }
-}
 
 .five-lists{
   &__profile{
     width: 100%;
     height: 200px;
     background-color: #3CCACE;
+    display: flex;
+    align-items: center;
+    &__box{
+      margin: 0 auto;
+      width: 30%;
+      height: 80%;
+      &__image{
+        width: 20%;
+        height: 30%;
+        margin: inherit;
+        margin-top:20px;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__name{
+        height: 20%;
+        margin: inherit;
+        margin-top:5px;
+        p{
+          text-align: center;
+        }
+      }
+      &__information{
+        height: 20%;
+        margin: inherit;
+        margin-top:5px;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
   }
 }
 
@@ -181,4 +209,5 @@ ul{
   height: 300px;
   width: 100%;
   background-color: #fff;
+}
 }
