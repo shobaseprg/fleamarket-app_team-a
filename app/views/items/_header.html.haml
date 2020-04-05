@@ -15,6 +15,14 @@
       .list-left
         .list-left__item-first
           = link_to 'カテゴリー', categories_path, class: "category-btn"
+          .category-lists.non-show-list          
+            .category-list
+              .category-list__in#oya
+                .category-list__in__one
+              .category-list__in#ko.non-show-list
+                .category-list__in__one
+              .category-list__in#mago.non-show-list
+                .category-list__in__one
         .list-left__item-second
           = link_to "ブランド", "#", class:"brand-btn"
         .list-left__item-second
