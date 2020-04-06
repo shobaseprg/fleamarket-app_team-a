@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+    @item2 = "terebi"
     # @parents = Category.where(ancestry:nil)
   end
 
@@ -19,6 +20,7 @@ class ItemsController < ApplicationController
       flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
       redirect_to new_item_path
     end
+    binding.pry
   end
 
      # 親カテゴリーが選択された後に動くアクション
