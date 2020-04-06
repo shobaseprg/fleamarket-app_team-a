@@ -46,5 +46,5 @@
                   .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__form
                     = f.password_field :cvc, id: 'cvc',class: "card_form" ,maxlength: '6'
                 .mypageMainContainer__rightContnet__initial__card_maincontent__in-box__form-box__form
-                  #card_token
-                    = f.submit '登録', id: 'token_submit'
+                  #card_token.card-btn
+                    = f.submit '登録', id: 'token_submit',class: 'card-btn'

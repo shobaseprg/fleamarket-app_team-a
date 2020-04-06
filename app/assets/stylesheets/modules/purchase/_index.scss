@@ -1,0 +1,246 @@
+// 全体
+.purchaseConfirmation {
+  background: lightcyan;
+  color: #333;
+  // 必須の装飾
+  .form-require {
+    box-sizing: border-box;
+    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
+      メイリオ, Meiryo, sans-serif;
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    font-weight: 600;
+  }
+
+  // 任意の装飾
+  .form-require_brand {
+    box-sizing: border-box;
+    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
+      メイリオ, Meiryo, sans-serif;
+    background: lightgray;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    font-weight: 600;
+  }
+
+  // ヘッダー
+  &__head {
+    height: 128px;
+    width: 100%;
+    padding-top: 40px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  // メイン全体
+  &__main {
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    &__content {
+      &__head {
+        font-size: 22px;
+        padding: 32px;
+        line-height: 1.5;
+        text-align: center;
+        display: block;
+        font-size: 1.4em;
+        font-weight: bold;
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      }
+      &__item {
+        padding: 32px 16px;
+        border-top: 1px solid #f5f5f5;
+        &__inner {
+          max-width: 343px;
+          margin: 0 auto;
+          &__box{
+            display: flex;
+            &__image{
+              height: 80px;
+              width: 80px;
+              background-color: red;
+            }
+            &__detail{
+              width: 247px;
+              padding-left: 16px;
+              &__name{
+                font-size: 14px;
+                padding-bottom: 8px;
+              }
+              &__price{
+                display: flex;
+                &__money{
+                  font-size: 15px;
+                }
+                &__tax{
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+      &__payment {
+        padding: 32px 16px;
+        border-top: 1px solid #f5f5f5;
+        &__price {
+          max-width: 343px;
+          margin: 0 auto;
+          &__box{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            &__text{
+              padding-top: 10px;
+              font-size: 18px;
+            }
+            &__money{
+              font-size: 30px;
+            }
+          }
+          &__point{
+            padding: 20px 0 32px;
+            border-bottom: solid 0.1px #e0e0e0;
+            color: #888888;
+            &__box{
+              font-size: 14px;
+              display: flex;
+              &__text{
+
+              }
+              &__value{
+                padding-left: 5px;
+              }
+            }            
+          }
+        }
+        &__card {
+          max-width: 343px;
+          margin: 0 auto;
+          padding: 32px 0;
+          font-size: 14px;
+          &__method{
+            display: flex;
+            justify-content: space-between;
+            &__text{
+            
+            }
+            &__change{
+              .change{
+                color: #0099e8;
+              }
+            }
+          }
+          &__info{
+            padding: 8px 0 32px;
+            border-bottom: solid 0.1px #e0e0e0;
+            &__name{
+            
+            }
+            &__number{
+              padding-top: 3px;
+            }
+            &__monthyear{
+              height: 20px;
+            }
+          }
+        }
+        &__address {
+          max-width: 343px;
+          margin: 0 auto;
+          font-size: 14px;
+          padding-bottom: 32px;
+          border-bottom: solid 0.1px #e0e0e0;
+          &__method {
+            display: flex;
+            justify-content: space-between;
+            &__change {
+              .change{
+                color: #0099e8;
+              }
+            }
+          }
+        }
+      }
+      &__bottom {
+        padding: 32px 16px;
+        border-top: 1px solid #f5f5f5;
+        &__actions {
+          max-width: 343px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+  .btn {
+    margin: 0px 0px;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+  }
+  &__footer {
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 250px;
+    padding: 40px 0;
+    text-align: center;
+    box-sizing: border-box;
+    ul {
+      display: flex;
+      justify-content: space-around;
+    }
+    a {
+      color: #333;
+      font-size: 12px;
+      text-decoration: none;
+      box-sizing: border-box;
+      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
+        メイリオ, Meiryo, sans-serif;
+    }
+    li:nth-child(1):hover {
+      opacity: 0.7;
+      text-decoration: underline;
+      box-sizing: border-box;
+    }
+    li:nth-child(2):hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+    li:nth-child(3):hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+    &__logo {
+      width: 80px;
+      height: 65px;
+      margin: 40px auto 0;
+      small {
+        font-size: 13px;
+      }
+      img:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
