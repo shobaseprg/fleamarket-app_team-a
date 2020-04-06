@@ -1,9 +1,11 @@
 .goods
-  %h2.head 商品一覧
+  %h2.head 人気のカテゴリー
   .goods__box
     .goods__box__text
-      = link_to "#", id: 'newpost' do
-        %h3.title 新規投稿
+      = link_to "レディース", "#ladies-items"
+      = link_to "メンズ", "#mens-items"
+      = link_to "家電・スマホ・カメラ", "#electronics-items"
+      = link_to "おもちゃ・ホビー・グッズ", "#toys-items"
     .goods__box__lists
       .goods__box__lists__list
         = link_to '#', class:'goods__box__lists__list__anchor1' do
