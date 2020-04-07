@@ -15,17 +15,14 @@
           =link_to"もっと見る ＞"
       .goods__new__item__list
         - @items.each do |item|
-          = link_to item_path(id: item.id),class:"goods__new__item__list__link" do
-            .goods__new__item__list__link__img
-              = image_tag(item.images.first.image, size: "184x184")
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag("")
             .goods__box__lists__list__anchor1__content
-            .goods__box__lists__list__anchor1__content__name
-              product3
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
             .goods__box__lists__list__anchor1__content__description
               %ul
                 %li
-                  300000円
-                %li<
-                  %li.fa.fa-star.likeIkon
-                    0
-
+                  = item.price
+                  円
