@@ -26,3 +26,22 @@
                 %li
                   = item.price
                   円
+
+      .goods__new__item__box#mens-items
+        .goods__new__item__box__category
+          メンズ新着アイテム
+        .goods__new__item__box__more
+          =link_to"もっと見る ＞"
+      .goods__new__item__list
+        - @items.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag("")
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
