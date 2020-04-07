@@ -56,45 +56,17 @@
         &__item-first{
           line-height: 38px;
           position: relative;
-          a{
+          .headerlink{
             padding-right: 30px;
             color: #333;
             &:hover {
               color: #ffb340;
             }
           }
-          .category-lists{
-            .category-list{
-              position: absolute;
-              z-index: 2;
-              display: flex;
-              top:30px;
-              left: 0;
-              width: 800px;
-              height: 600px;
-              border: solid;
-              &__in{
-                height: 100%;
-                width: calc(100% / 3);
-                border: solid;
-                &__one{
-                  border: solid;
-                  height: 30px;
-                }
-              }
-              #oya{
-              
-              }
-              #ko{
-              }
-              #mago{
-              }
-            }
-          }
         }
         &__item-second{
           line-height: 38px;
-          a{
+          .headerlink{
             padding-right: 30px;
             color: #333;
             &:hover {
@@ -107,7 +79,7 @@
         margin-left: auto;
         line-height: 38px;
         &__item{
-          a{
+          .headerlink{
             color: #333;
           }
           .login-btn{
@@ -120,10 +92,3 @@
 }
 }
 
-.show-list{
-  display: block;
-}
-
-.non-show-list{
-  display: none;
-}

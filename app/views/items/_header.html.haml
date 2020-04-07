@@ -1,5 +1,7 @@
 .header
   .header__inner
+    = render "category-downlists"
+    -# カテゴリーリスト部分テンプレート読みこみ
     .header__inner__main
       .icon
         = link_to image_tag(src= "header_logo.png", class: "image",size: "140x60")
@@ -14,19 +16,11 @@
     .header__inner__nav
       .list-left
         .list-left__item-first
-          = link_to 'カテゴリー', categories_path, class: "category-btn"
-          .category-lists.non-show-list          
-            .category-list
-              .category-list__in#oya
-                .category-list__in__one
-              .category-list__in#ko.non-show-list
-                .category-list__in__one
-              .category-list__in#mago.non-show-list
-                .category-list__in__one
+          = link_to 'カテゴリー', categories_path, class: "category-btn headerlink"
         .list-left__item-second
-          = link_to "ブランド", "#", class:"brand-btn"
+          = link_to "ブランド", "#", class:"brand-btn headerlink"
         .list-left__item-second
-          = link_to "ホーム","/", class:"brand-btn"
+          = link_to "ホーム","/", class:"brand-btn headerlink"
         .list-left__item-second
           %p ０３０４
       .list-right

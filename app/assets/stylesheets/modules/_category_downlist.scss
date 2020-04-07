@@ -1,0 +1,39 @@
+.category-downlists{
+  position: absolute;
+  z-index: 2;
+  top:100px;
+  .category-downlist{
+    display: flex;
+    top:30px;
+    left: 0;
+    width: 800px;
+    height: 600px;
+    border: solid;
+    &__in{
+      height: 100%;
+      width: calc(100% / 3);
+      border: solid red;
+      height: 100%;
+      &__one{
+        display: block;
+        border: solid;
+        height: 30px;
+      }
+    }
+    #oya{
+    
+    }
+    #ko{
+    }
+    #mago{
+    }
+  }
+}
+
+.show-list{
+  display: block;
+}
+
+.non-show-list{
+  display: none;
+}
