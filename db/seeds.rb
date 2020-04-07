@@ -16,7 +16,7 @@ children = [
             # インテリア・住まい・小物の子要素
             ["キッチン/食器","ベッド/マットレス"],
             # 本・音楽・ゲームの子要素
-            ["キッチン/食器","ベッド/マットレス"],
+            ["本","漫画"],
             # おもちゃ・ホビー・グッズの子要素
             ["おもちゃ","タレントグッズ"],
             # コスメ・香水・美容の子要素
@@ -178,9 +178,35 @@ g =0
     end
 end
 
+User.create(id:1, first_name:"けん１",family_name:"志村",first_name_reading:"ケン",family_name_reading:"シムラ",nickname:"けんちゃん1",
+            email: "1@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+            updated_at:"2020-04-03 14:55:54") 
+User.create(id:2, first_name:"ぶー",family_name:"高木",first_name_reading:"ブー",family_name_reading:"タカギ",nickname:"ブー2",
+  email: "2@gmail.com",phone_number:"08022222222",password:"1111111a",birthday:"2018-06-06", created_at:"2020-04-04 14:55:54",
+  updated_at:"2020-04-04 14:55:54") 
+User.create(id:3, first_name:"茶",family_name:"加藤",first_name_reading:"チャ",family_name_reading:"カトウ",nickname:"ちゃ3",
+  email: "3@gmail.com",phone_number:"08033333333",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+  updated_at:"2020-04-03 14:55:54") 
+User.create(id:4, first_name:"長介",family_name:"いかりや",first_name_reading:"チョウスケ",family_name_reading:"イカリヤ",nickname:"ちょうさん4",
+  email: "4@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+  updated_at:"2020-04-03 14:55:54") 
+User.create(id:5, first_name:"工事",family_name:"仲本",first_name_reading:"コウジ",family_name_reading:"ナカモト",nickname:"なかもと5",
+  email: "5@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+  updated_at:"2020-04-03 14:55:54") 
 
-
-
-
-
-
+  Item.create(id:1, name:"ズボン(売けん　買ぶー）", description_item:"ズボンです",category_id:193,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
+    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 ,buyer_id:2, auction_id:2,
+    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
+  Item.create(id:2, name:"ラジオ(売けん　買ちゃ）", description_item:"ラジオです",category_id:368,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
+    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 ,buyer_id:3, auction_id:3,
+    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
+  Item.create(id:3, name:"自転車(売けん　取ぶー）", description_item:"自転車です",category_id:383,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
+    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 , auction_id: 2,
+    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
+  Item.create(id:4, name:"野菜(売けん　取いかりや）", description_item:"421です",category_id:421,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
+    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 , auction_id:4,
+    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
+  Item.create(id:5, name:"デグーの餌(売けん）", description_item:"えさです",category_id:417,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
+    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1,
+    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
+  

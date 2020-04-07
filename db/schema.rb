@@ -64,15 +64,26 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
   create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description_item", null: false
+    t.integer "category_id"
+    t.integer "brand_id"
     t.integer "condition_id"
-    t.string "shipping_charger_id"
-    t.string "shipping_method_id"
-    t.string "ship_from_id"
-    t.string "shipping_days_id"
+    t.integer "shipping_charger_id"
+    t.integer "shipping_method_id"
+    t.integer "ship_from_id"
+    t.integer "shipping_days_id"
     t.integer "price"
+    t.integer "sales_fee"
     t.integer "sales_profit"
+    t.integer "seller_id"
+    t.integer "buyer_id"
+    t.integer "auction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["auction_id"], name: "index_items_on_auction_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,11 +101,9 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
     t.string "email", default: "", null: false
     t.string "phone_number"
     t.string "password", default: "", null: false
-    t.integer "year"
-    t.integer "month"
-    t.integer "day"
+    t.date "birthday", null: false
     t.string "avatar"
-    t.string "encrypted_password", null: false
+    t.string "encrypted_password"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -117,6 +126,10 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
 
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "users", column: "auction_id"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "items", "categories"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
   add_foreign_key "users_transacts", "users", column: "transact_saler_id"
 end

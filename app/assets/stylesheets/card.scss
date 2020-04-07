@@ -1,3 +1,150 @@
-// Place all the styles related to the card controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.card_back{
+  background-color: white;
+  padding-top: 20px;
+  height: 600px;
+  .card-btn2{  
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    .card-btn3{
+      display: block;
+      margin: 0 auto;
+      width: 300px;
+      height: 50px;
+      background-color: red;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+     }
+  }
+}
+.mypageMainContainer__rightContnet__initial__card_maincontent{
+  width: 50%; 
+  margin: 20px auto;
+  background-color: white;
+  margin-bottom: 50px;
+    .card-box{
+      width: 100%;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+        
+    .card-infomations{
+      .card-infomation{
+        display: flex;
+        margin-bottom: 10px;
+        p{
+          margin-right: 20px;
+        }
+      }
+      .card-btn4{
+      display: block;
+      margin: 0 auto;
+      margin-top: 40px;
+      width: 300px;
+      height: 50px;
+      background-color: red;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      }
+    }
+  }
+  &__title{
+    display: flex;
+    justify-content: center;
+    border: solid #f8f8f8;
+    margin-bottom: 50px;
+    p{
+      margin: 0 auto;
+      font-size: 30px;
+    }
+  }
+  &__in-box{
+    height: 100%;
+    position: relative;
+    &__form-box{
+      &__subtitles{
+        margin-top: 10px;
+        display: flex;
+        &__subtitle{
+        }
+        &__must-mark{
+          margin-left: 10px;
+          background-color: red;
+          color: white;
+        }
+      
+    }
+        &__card-image{
+          display: flex;
+          position: absolute;
+          z-index: 1;
+          .card{
+            img{
+            margin-right: 5px;
+            width: 30px;
+            height: 30px;
+            }
+            .pickup-card{
+              width: 70px;
+              height: 70px;              
+            }
+          }
+
+        }
+      &__form{
+        height: 60px;
+        .card_form{
+          margin: 10px 0px;
+          height: 40px;
+          width: 100%;
+          font-size: 20px;
+        }
+        #exp_month{
+          margin-top: 10px;
+          height: 40px;
+          width: 100px;
+        }
+        #exp_year{
+          margin-top: 10px;
+          height: 40px;
+          width : 100px;
+        }
+        #card_token{
+          height: 50px;
+          width: 100%;
+          margin: 0 auto;
+          margin-top: 30px;
+          margin-bottom: 40px;
+          &:active{
+            margin-top: 40px;
+          }
+          .card-btn{
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            color: white;
+            
+          }
+        }
+      }
+    }
+  }
+  .after_card{
+   position: absolute;
+   top: 120px;
+   width: 100%;
+  }
+}
+.last-box{
+  margin-bottom:10px;
+}
+
+
