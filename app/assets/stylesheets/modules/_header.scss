@@ -69,7 +69,8 @@
         display: flex;
         &__item-first{
           line-height: 38px;
-          a{
+          position: relative;
+          .headerlink{
             padding-right: 30px;
             color: #333;
             &:hover {
@@ -79,7 +80,7 @@
         }
         &__item-second{
           line-height: 38px;
-          a{
+          .headerlink{
             padding-right: 30px;
             color: #333;
             &:hover {
@@ -87,12 +88,12 @@
             }
           }
         }
-      }
+      } 
       .list-right{
         margin-left: auto;
         line-height: 38px;
         &__item{
-          a{
+          .headerlink{
             color: #333;
           }
           .login-btn{
@@ -100,6 +101,8 @@
           }
         }
       }
-    }
+    
   }
 }
+}
+
