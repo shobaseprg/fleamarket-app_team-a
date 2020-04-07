@@ -1,7 +1,11 @@
 class ItemsController < ApplicationController
 
   def index
-
+    @items = Item.all
+    @images = ItemImage.all
+    @item = Item.new
+    parent_id = params[:parent_id]
+    @children = Category.find_by(parent_id).children
   end
 
   def new
