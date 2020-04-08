@@ -26,8 +26,8 @@
         - if user_signed_in?
           .list-right__item
             = link_to "ログアウト", destroy_user_session_path, method: :delete
-            = link_to "マイページ", "/users/#{current_user.id}", class:"new-member-btn"
+            = link_to "マイページ", user_path(current_user.id), class:"new-member-btn"
         - else
           .list-right__item
             = link_to "ログイン", new_user_session_path, class: "login-btn"
-            = link_to "新規会員登録", "/users/sign_up", class: "new-member-btn"
+            = link_to "新規会員登録", new_user_registration_path, class: "new-member-btn"

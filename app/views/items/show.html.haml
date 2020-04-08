@@ -12,14 +12,14 @@
             .itemBox__body
               %ul
                 %li
-                  %img.item-img{:src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"}/
+                  =image_tag "show1.png", class: "item-img"
                   %ul
                     %li
-                      %img.item-img{:height => "75", :src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", :width => "75"}/
+                      =image_tag "show1.png", class: "item-img", size: "75×75"
                     %li
-                      %img.item-img{:height => "75", :src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", :width => "75"}/
+                      =image_tag "show2.png", class: "item-img", size: "75×75"
                     %li
-                      %img.item-img{:height => "75", :src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", :width => "75"}/
+                      =image_tag "show3.png", class: "item-img", size: "75×75"
             / 商品値段
             .itemBox__price
               %span
@@ -42,11 +42,14 @@
                   %tr
                     %th カテゴリー
                     %td
-                      %a{:href => "#"} メンズ
+                      = link_to "", class: "a" do
+                        メンズ 
                       %br/
-                      %a{:href => "#"} ノーカラージャケット
+                      = link_to "", class: "a" do
+                        ノーカラージャケット
                       %br/
-                      %a{:href => "#"} ジャケット/アウター
+                      = link_to "", class: "a" do
+                        ジャケット/アウター
                   %tr
                     %th 商品の状態
                     %td 新品/未使用
@@ -56,7 +59,8 @@
                   %tr
                     %th 配送元の地域
                     %td
-                      %a{:href => "#"} 大阪
+                      = link_to "", class: "a" do
+                        大阪
                   %tr
                     %th 発送日の目安
                     %td 1-2日で発送
@@ -68,41 +72,41 @@
                   お気に入り
               %ul.optional
                 %li.optionalBtn
-                  %a{:href => "#"}
+                  = link_to "", class: "a" do
                     %i.fa.fa-flag
                     不適切な商品の通報
           / コメント欄
           .commentBox
-            -# %ul.commentContents
-            %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
-              %input{:name => "utf8", :type => "hidden", :value => "✔︎"}/
-              %input{:name => "authentictity_token", :type => "hidden", :value => "+tAmTX++F414Y5Zr+fy3UozWSptACIBHKxdgvgTNYJroBG48913gbcBArdUDwrerGulr7X557s8NaqOxZ7BXZA=="}/
-              %textarea#comment_body{:name => "comment[body]", :required => "required"}
-                -# :preserve
+            %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
+              %input{name: "utf8", type: "hidden", value: "✔︎"}/
+              %input{name: "authentictity_token", type: "hidden", value: "+tAmTX++F414Y5Zr+fy3UozWSptACIBHKxdgvgTNYJroBG48913gbcBArdUDwrerGulr7X557s8NaqOxZ7BXZA=="}/
+              %textarea#comment_body{name: "comment[body]", required: "required"}
+              
                   
               %p.noticeMsg
                 相手のことを考えて丁寧なコメントをこころがけましょう。
                 %br/
                 不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %br/
-              %button.commentBtn{:name => "button", :type => "submit"}
+              %button.commentBtn{name: "button", type: "submit"}
                 %i.fa.fa-comment
                 コメントする　
         / 前の商品、後ろの商品
         %ul.links
           %li
-            %a{:href => "#"}
+            = link_to "", class: "a" do
               %i.fa.fa-angle-left
               %span
               前の商品　
           %li
-            %a{:href => "#"}
+            = link_to "", class: "a" do
               %span 
               後ろの商品
               %i.fa.fa-angle-right
         .relatedItems
-          %a{:href => "#"} メンズをもっと見る
-          .productLists
+          = link_to "", class: "a" do
+            メンズをもっと見る
+            .productLists
 = render "bottom_banner"
 = render "footer"
 = render "sell_btn"
