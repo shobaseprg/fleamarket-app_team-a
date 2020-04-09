@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_current_user_items,only:[:i_OnSale,:i_trading,:i_SoldOut]
   before_action :set_user,only:[:i_OnSale,:i_trading,:i_SoldOut]
+ # before_action :set_item, except: [:index, :new, :create]
 
   def i_OnSale #出品中のアクション
 
@@ -42,9 +43,25 @@ class ItemsController < ApplicationController
   end
   
    # 子カテゴリーが選択された後に動くアクション
-   def category_grandchildren
-      @category_grandchildren = Category.find(params[:child_id]).children
-   end
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
+  # def edit
+  # end
+ 
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to root_path
+  #   else
+  #     render :edit
+  #   end
+  # end
+ 
+  # def destroy
+  #   @product.destroy
+  #   redirect_to root_path
+  # end
 
   private
 
@@ -61,6 +78,10 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image])
   end
+
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
 end
 
