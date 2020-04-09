@@ -1,12 +1,12 @@
-.category-downlists
+.category-downlists.non-show-list
   .category-downlist 
     .category-downlist__in#oya
-      -Category.roots.each do |category|
-        .category-downlist__in__one{"data-id" => "#{category.id}"}
-          -# カテゴリーのidをカスタム属性のdata-idに格納
-          = link_to category.name, "#"
-    .category-downlist__in#ko
-    .category-downlist__in#mago
-      .category-downlist__in__one
-
-      
+      .ones{"data-next" => "1"}
+        -Category.roots.each do |category|
+          .category-downlist__in__one{"data-id" => "#{category.id}"}
+            -# カテゴリーのidをカスタム属性のdata-idに格納
+            = link_to category.name, "#"
+    .category-downlist__in.ko
+      .ones{"data-next" => "2"}
+    .category-downlist__in.ko
+      .ones

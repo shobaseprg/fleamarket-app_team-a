@@ -2,48 +2,47 @@ $(function(){
   let btn = $(".category-btn")
   let category_downlists = $(".category-downlists")
   let oya = $("#oya")
-  let ko = $("#ko")
+  valGlobal1 = "nextbox"; // メソッドを超えて使用するのでグローバル変数
 
-  btn.hover(
+  btn.hover(  // カテゴリーボタンに乗った時
   function(){
-  console.log("in");
-  $(".category-downlists").removeClass("non-show-list").addClass("show-list");
-  });
+    category_downlists.removeClass("non-show-list").addClass("show-list");
+  });// リストの型枠を表示
 
-  category_downlists.mouseleave(
+  category_downlists.mouseleave(// カテゴリーダウンリストから外れた時
     function(){
-    $(".category-downlists").removeClass("show-list").addClass("non-show-list");
-    $("#ko").removeClass("show-list").addClass("non-show-list");
-    $("#mago").removeClass("show-list").addClass("non-show-list");
+      category_downlists.removeClass("show-list").addClass("non-show-list");
+    // 親リストを非常時にする。
+    $(".ones").eq(1).empty();
+    // 子を空にする
+    $(".ones").eq(2).empty();
+    // 孫を空にする
     });
 
-    oya.hover(
-      function(){
-      $("#ko").removeClass("non-show-list").addClass("show-list");
-      });
-
-    ko.hover(
-      function(){
-      $("#mago").removeClass("non-show-list").addClass("show-list");
-      });
-
-      function childrenDownBuild(children){
-        $("#ko").empty();
+      function childrenDownBuild(children){// 一個一個整形用
+        $(".ones").eq(nextBox).empty(); // すでに表示しているものを空にする
         $.each(children,
           function(index,child) {
           let html = 
           `<div class= "category-downlist__in__one" data-id = ${child.id}>
             <a href= "#">${child.name}</a>
           </div>`
-
-          $("#ko").append(html);
+          // json を取り出して表示。idはカテゴリーのid。nameはカテゴリの名前
+          $(".ones").eq(nextBox).append(html)// onesにhtmlを追加する
           });
-      }
+      };
+
+    $(".category-downlist").on("mouseenter","#oya",(function () {
+      $(".ones").eq(2).empty();// 親要素に乗った場合、孫を消去。孫から親に移動した時、孫が残り続けるのを防ぐ
+    }));
 
     let parentIDs = [];
     var jqxhr;
-      $(".category-downlist__in__one").mouseenter(function () {// マウスが一つ一つのブロックに入ったら発動
-        if(jqxhr){          // jqxhrが存在したら、abortで中断する
+      $(".ones").on("mouseenter",".category-downlist__in__one",(function () {// マウスが一つ一つのブロックに入ったら発動
+        // ※hoverメソッドは、動的なクラスに対し指定できないためonメソッドでmouseenterを使用する必要あり！！
+        nextBox = $(this).closest(".ones").data("next");
+        // マウスが入った親のカスタムデータ（親なら１、子なら２、孫ならnil）を取得
+        if(jqxhr){          // jqxhrが存在したら、abortで中断する。連続送信を避けるため
           jqxhr.abort();
           }
             let parentID = $(this).data('id'); //選択されたカテゴリーのカスタム属性data-id（つまり、そのかてごりーのid)を格納
@@ -72,6 +71,5 @@ $(function(){
                     if (textStatus === 'abort'){return;}
                     alert("カテゴリー取得に失敗しました");
                   })
-        });
-        
+        }));
 });
