@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
       flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
       redirect_to new_item_path
     end
+    
   end
 
      # 親カテゴリーが選択された後に動くアクション
