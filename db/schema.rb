@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
     t.datetime "updated_at", null: false
     t.index ["auction_id"], name: "index_items_on_auction_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
     t.index ["category_id"], name: "index_items_on_category_id"
   end
