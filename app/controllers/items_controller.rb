@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
      # 親カテゴリーが選択された後に動くアクション
   def category_children
       #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-      @category_children = Category.find(params[:parent_id]).children
+      @category_children = Category.find(params[:parent_id]).children # 親カテゴリのidに紐づく子カテゴリを格納
   end
   
    # 子カテゴリーが選択された後に動くアクション
