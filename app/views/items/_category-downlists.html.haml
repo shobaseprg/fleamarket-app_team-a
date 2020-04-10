@@ -5,8 +5,8 @@
         -Category.roots.each do |category|
           .category-downlist__in__one{"data-id" => "#{category.id}"}
             -# カテゴリーのidをカスタム属性のdata-idに格納
-            = link_to category.name, "#"
-    .category-downlist__in.ko
+            = link_to category.name, list_from_category_item_path(category.id)
+    .category-downlist__in
       .ones{"data-next" => "2"}
-    .category-downlist__in.ko
+    .category-downlist__in
       .ones

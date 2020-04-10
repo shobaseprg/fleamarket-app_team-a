@@ -11,7 +11,6 @@ $(function(){
 
   $(".header__inner__main").hover(
     function(){
-      console.log("ok");
       category_downlists.removeClass("show-list").addClass("non-show-list");
     // 親リストを非常時にする。
     $(".ones").eq(1).empty();
@@ -37,7 +36,7 @@ $(function(){
           function(index,child) {
           let html = 
           `<div class= "category-downlist__in__one" data-id = ${child.id}>
-            <a href= "#">${child.name}</a>
+            <a href= "/items/${child.id}/list_from_category">${child.name}</a>
           </div>`
           // json を取り出して表示。idはカテゴリーのid。nameはカテゴリの名前
           $(".ones").eq(nextBox).append(html)// onesにhtmlを追加する
