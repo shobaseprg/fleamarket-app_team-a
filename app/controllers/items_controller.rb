@@ -66,11 +66,13 @@ class ItemsController < ApplicationController
       # 配列の平坦化
    end
 
-   def show
+  def show
     @item = Item.find(params[:id])
     @user = User.find(@item.seller_id)
-    @images = Item_image.where(item_image: @item.id)
-   end
+    @images = @item.item_images
+    @imagesLENGTH = @images.length 
+    @category = @item.category
+  end
 
   private
 
