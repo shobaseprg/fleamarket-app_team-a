@@ -30,6 +30,10 @@ $(function(){
     // 孫を空にする
     });
 
+    $(".category-downlist").on("mouseenter","#oya",(function () {
+      $(".ones").eq(2).empty();// 親要素に乗った場合、孫を消去。孫から親に移動した時、孫が残り続けるのを防ぐ
+    }));
+
       function childrenDownBuild(children){// 一個一個整形用
         $(".ones").eq(nextBox).empty(); // すでに表示しているものを空にする
         $.each(children,
@@ -43,15 +47,17 @@ $(function(){
           });
       };
 
-    $(".category-downlist").on("mouseenter","#oya",(function () {
-      $(".ones").eq(2).empty();// 親要素に乗った場合、孫を消去。孫から親に移動した時、孫が残り続けるのを防ぐ
-    }));
+
+
+
 
     let parentIDs = [];
     var jqxhr;
       $(".ones").on("mouseenter",".category-downlist__in__one",(function () {// マウスが一つ一つのブロックに入ったら発動
         // ※hoverメソッドは、動的なクラスに対し指定できないためonメソッドでmouseenterを使用する必要あり！！
         nextBox = $(this).closest(".ones").data("next");
+        $(this).siblings().removeClass("red")
+        $(this).addClass("red");
         // マウスが入った親のカスタムデータ（親なら１、子なら２、孫ならnil）を取得
         if(jqxhr){          // jqxhrが存在したら、abortで中断する。連続送信を避けるため
           jqxhr.abort();
