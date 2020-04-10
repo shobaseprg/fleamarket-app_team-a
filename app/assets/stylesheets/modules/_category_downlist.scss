@@ -27,15 +27,15 @@
             height:100%;
             line-height: 30px;
           }
-          a:hover{
-            background-color: red;
-          }
-        
+      }
+      &__one:hover{
+        background-color: red;
+        a{color: white;
+        }
       }
 
       .red{
         background-color: red;
-        color: white;
       }
     }
   }
