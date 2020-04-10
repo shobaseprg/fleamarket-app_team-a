@@ -12,5 +12,8 @@
     = "価格：#{item.price}"
     - selluser = User.find(item.seller_id)
     = "出品者：#{selluser.nickname}"
+    = link_to "詳細", "/items/#{item.id}"
+
+
 
 
