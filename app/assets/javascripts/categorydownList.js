@@ -47,18 +47,16 @@ $(function(){
           });
       };
 
-
-
-
-
     let parentIDs = [];
     var jqxhr;
       $(".ones").on("mouseenter",".category-downlist__in__one",(function () {// マウスが一つ一つのブロックに入ったら発動
         // ※hoverメソッドは、動的なクラスに対し指定できないためonメソッドでmouseenterを使用する必要あり！！
         nextBox = $(this).closest(".ones").data("next");
-        $(this).siblings().removeClass("red")
-        $(this).addClass("red");
         // マウスが入った親のカスタムデータ（親なら１、子なら２、孫ならnil）を取得
+
+        $(this).siblings().removeClass("red");// 兄弟要素のredクラスを削除。親から子に行った時は削除しない
+        $(this).addClass("red");
+        // 自分を赤くする。親から子に遷移したときに残すよう。実際はcssのhoverで実装。（jqueryで実装すると動きがもたつくため）
         if(jqxhr){          // jqxhrが存在したら、abortで中断する。連続送信を避けるため
           jqxhr.abort();
           }
