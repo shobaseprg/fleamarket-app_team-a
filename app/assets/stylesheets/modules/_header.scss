@@ -67,17 +67,17 @@
       .list-left{
         position: relative;
         display: flex;
-        &__item-first{
-          line-height: 38px;
-          position: relative;
-          .headerlink{
-            padding-right: 30px;
-            color: #333;
-            &:hover {
-              color: #ffb340;
+          &__item-first{
+            line-height: 38px;
+            position: relative;
+            .headerlink{
+              padding-right: 30px;
+              color: #333;
+              &:hover {
+                color: #ffb340;
+              }
             }
           }
-        }
         &__item-second{
           line-height: 38px;
           .headerlink{

@@ -9,6 +9,18 @@ $(function(){
     category_downlists.removeClass("non-show-list").addClass("show-list");
   });// リストの型枠を表示
 
+  $(".header__inner__main").hover(
+    function(){
+      console.log("ok");
+      category_downlists.removeClass("show-list").addClass("non-show-list");
+    // 親リストを非常時にする。
+    $(".ones").eq(1).empty();
+    // 子を空にする
+    $(".ones").eq(2).empty();
+    // 孫を空にする
+    });
+  
+
   category_downlists.mouseleave(// カテゴリーダウンリストから外れた時
     function(){
       category_downlists.removeClass("show-list").addClass("non-show-list");
