@@ -54,6 +54,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
+       @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
       redirect_to root_path
     else
       render :edit
@@ -111,6 +112,5 @@ class ItemsController < ApplicationController
   #   @item = Item.find(params[:id])
   # end
 
+  
 end
-
-
