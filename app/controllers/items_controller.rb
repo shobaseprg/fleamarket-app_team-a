@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_current_user_items,only:[:i_OnSale,:i_trading,:i_SoldOut]
   before_action :set_user,only:[:i_OnSale,:i_trading,:i_SoldOut]
- # before_action :set_item, except: [:index, :new, :create]
+  #before_action :set_item, except: [:index, :new, :create, :edit, :show]
 
   def i_OnSale #出品中のアクション
 
@@ -17,13 +17,9 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.all
-    @images = ItemImage.all
-    @item = Item.new
-    parent_id = params[:parent_id]
-    @children = Category.find_by(parent_id).children
-    
-    items = Item.all
+    @item = Item.all
+
+    items = Item.all.order("id DESC")
     items1 = []
     items2 = [].take(10)
     items3 = [].take(10)
@@ -52,6 +48,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.sales_fee = @item.price / 10 
+    @item.sales_profit = @item.price - @item.sales_fee
     if @item.save!
       redirect_to root_path
     else
@@ -71,9 +69,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
  
   def update
+    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -82,27 +82,27 @@ class ItemsController < ApplicationController
   end
  
   def destroy
-    @product.destroy
+    @item.destroy
     redirect_to root_path
   end
 
-   def list_from_category
-      @categorysNAME = []
-      @items = []
-      over_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
-        over_categoryIDs.each do |categoryID|
-          @categorysNAME << Category.find(categoryID).name
-          # 選択されたカテゴリーと親のnameを格納
-        end
-      under_category = Category.find(params[:id]).subtree
-      # 自己と子供のカテゴリーを格納
-        under_category.each do |category|
-          item = category.items
-          @items.push(item)
-        end
-      @items.flatten!
-      # 配列の平坦化
-   end
+  def list_from_category
+    @categorysNAME = []
+    @items = []
+    over_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
+      over_categoryIDs.each do |categoryID|
+        @categorysNAME << Category.find(categoryID).name
+        # 選択されたカテゴリーと親のnameを格納
+      end
+    under_category = Category.find(params[:id]).subtree
+    # 自己と子供のカテゴリーを格納
+      under_category.each do |category|
+        item = category.items
+        @items.push(item)
+      end
+    @items.flatten!
+    # 配列の平坦化
+  end
 
   def show
     @item = Item.find(params[:id])
@@ -113,13 +113,25 @@ class ItemsController < ApplicationController
   end
 
   private
+
+
+  def set_current_user_items
+    if user_signed_in? 
+      @items = current_user.items.includes(:seller,:buyer,:auction,:item_images)
+    else
+      redirect_to new_user_session_path
+    end
+  end
+
+
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
 end
+
 
