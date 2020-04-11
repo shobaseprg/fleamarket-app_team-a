@@ -17,7 +17,11 @@ class ItemsController < ApplicationController
 
 
   def index
-    @item = Item.all
+    @items = Item.all
+    @images = ItemImage.all
+    @item = Item.new
+    parent_id = params[:parent_id]
+    @children = Category.find_by(parent_id).children
 
     items = Item.all.order("id DESC")
     items1 = []
@@ -48,8 +52,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.sales_fee = @item.price / 10 
-    @item.sales_profit = @item.price - @item.sales_fee
     if @item.save!
       redirect_to root_path
     else
@@ -111,17 +113,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
-
-  def set_current_user_items
-    if user_signed_in? 
-      @items = current_user.items.includes(:seller,:buyer,:auction,:item_images)
-    else
-      redirect_to new_user_session_path
-    end
-  end
-
-
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
@@ -130,10 +121,5 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
-
 end
-
 
