@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
   end
  
   def update
+    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController
   end
  
   def destroy
-    @product.destroy
+    @item.destroy
     redirect_to root_path
   end
 
