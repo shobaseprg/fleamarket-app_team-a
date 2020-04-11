@@ -22,8 +22,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @item2 = "terebi"
-    # @parents = Category.where(ancestry:nil)
   end
 
   def create
@@ -43,12 +41,30 @@ class ItemsController < ApplicationController
      # 親カテゴリーが選択された後に動くアクション
   def category_children
       #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-      @category_children = Category.find(params[:parent_id]).children
+      @category_children = Category.find(params[:parent_id]).children # 親カテゴリのidに紐づく子カテゴリを格納
   end
   
    # 子カテゴリーが選択された後に動くアクション
    def category_grandchildren
       @category_grandchildren = Category.find(params[:child_id]).children
+   end
+
+   def list_from_category
+      @categorysNAME = []
+      @items = []
+      over_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
+        over_categoryIDs.each do |categoryID|
+          @categorysNAME << Category.find(categoryID).name
+          # 選択されたカテゴリーと親のnameを格納
+        end
+      under_category = Category.find(params[:id]).subtree
+      # 自己と子供のカテゴリーを格納
+        under_category.each do |category|
+          item = category.items
+          @items.push(item)
+        end
+      @items.flatten!
+      # 配列の平坦化
    end
 
   private
