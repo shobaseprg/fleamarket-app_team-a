@@ -86,3 +86,6 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'active_hash'
 gem 'pry-rails'
+
+#gem 'therubyracer'
+

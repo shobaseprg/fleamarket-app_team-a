@@ -14,11 +14,12 @@ Rails.application.routes.draw do
     member do
      get  'list_from_category'
     end
+    resources 'purchase' ,only: [:index]
   end
-  
-  resources 'purchase' ,only: [:index]
 
   resources :categories, only: [:index] 
 
   resources :cards, only:[:index, :new, :create,:destroy]
+
 end
+
