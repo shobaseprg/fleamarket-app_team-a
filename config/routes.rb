@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     end
     resources 'purchase' ,only: [:index]
   end
-  
-  #resources 'purchase' ,only: [:index]
 
   resources :categories, only: [:index] 
 
   resources :cards, only:[:index, :new, :create,:destroy]
+
 end
+

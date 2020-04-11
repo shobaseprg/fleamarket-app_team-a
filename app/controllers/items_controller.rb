@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     else
       redirect_to new_item_path
     end
-    
   end
 
      # 親カテゴリーが選択された後に動くアクション
@@ -81,6 +80,14 @@ class ItemsController < ApplicationController
       @items.flatten!
       # 配列の平坦化
    end
+
+  def show
+    @item = Item.find(params[:id])
+    @user = User.find(@item.seller_id)
+    @images = @item.item_images
+    @imagesLENGTH = @images.length 
+    @category = @item.category
+  end
 
   private
 
