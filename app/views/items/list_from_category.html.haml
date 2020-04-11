@@ -1,0 +1,6 @@
+.wrapper
+  = render "header"
+  = render partial: "items/template_category/category_show",locals: { category: @category, items: @items } 
+  = render "bottom_banner"
+  = render "footer"
+  = render "sell_btn"

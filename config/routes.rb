@@ -11,8 +11,12 @@ Rails.application.routes.draw do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
     end
-    resources 'purchase' ,only: [:index]
+    member do
+     get  'list_from_category'
+    end
   end
+  
+  resources 'purchase' ,only: [:index]
 
   resources :categories, only: [:index] 
 

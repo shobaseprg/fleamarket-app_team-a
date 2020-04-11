@@ -1,5 +1,7 @@
 .header
   .header__inner
+    = render "items/category-downlists"
+    -# カテゴリーリスト部分テンプレート読みこみ
     .header__inner__main
       .icon
         = image_tag "header_logo.png", class: "image",size: "140x60"
@@ -15,11 +17,11 @@
     .header__inner__nav
       .list-left
         .list-left__item-first
-          = link_to 'カテゴリー', '#', class: "category-btn"
+          = link_to 'カテゴリー', categories_path, class: "category-btn headerlink"
         .list-left__item-second
-          = link_to "ブランド", "#", class:"brand-btn"
+          = link_to "ブランド", "#", class:"brand-btn headerlink"
         .list-left__item-second
-          = link_to "ホーム",items_path, class:"brand-btn"
+          = link_to "ホーム","/", class:"brand-btn headerlink"
         .list-left__item-second
           %p ０３０４
 
@@ -34,4 +36,3 @@
           .list-right__item
             = link_to "ログイン", new_user_session_path, class: "login-btn"
             = link_to "新規会員登録", new_user_registration_path, class: "new-member-btn"
-
