@@ -48,21 +48,21 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
 
-  # def edit
-  # end
+  def edit
+  end
  
-  # def update
-  #   if @item.update(item_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
  
-  # def destroy
-  #   @product.destroy
-  #   redirect_to root_path
-  # end
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
 
    def list_from_category
       @categorysNAME = []
@@ -95,12 +95,12 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
 

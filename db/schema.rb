@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
     t.datetime "updated_at", null: false
     t.index ["auction_id"], name: "index_items_on_auction_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["seller_id"], name: "index_items_on_seller_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "to_dos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -125,10 +125,10 @@ ActiveRecord::Schema.define(version: 2020_03_20_083820) do
 
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "auction_id"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
-  add_foreign_key "items", "categories"
   add_foreign_key "users_transacts", "users", column: "transact_buyer_id"
   add_foreign_key "users_transacts", "users", column: "transact_saler_id"
 end
