@@ -8,22 +8,25 @@
       .contentRight
         .topContent
           .itemBox
-            %h2.itemBox__name 餃子
+            %h2.itemBox__name 
+              = @item.name
             .itemBox__body
-              %ul
-                %li
-                  =image_tag "show1.png", class: "item-img"
-                  %ul
-                    %li
-                      =image_tag "show1.png", class: "item-img", size: "75×75"
-                    %li
-                      =image_tag "show2.png", class: "item-img", size: "75×75"
-                    %li
-                      =image_tag "show3.png", class: "item-img", size: "75×75"
+              .itemBox__body__mainIMAGE{"data-src" => "#{@images[0].image}"}
+                -# カスタムデータ属性でitem_imageのimage(画像のファイル名)をdata-srcとして与えておく
+                = image_tag "#{@images[0].image}", class: "item-main-img"
+                -# 配列化してるので、このように取り出す
+              .itemBox__body__subIMAGE
+                %ul
+                  - i = 0
+                  - while i < @imagesLENGTH
+                    -# 画像の枚数だけ繰り返す
+                    %li.imageNUMBER{"data-src" => "#{@images[i].image}"}
+                      = image_tag "#{@images[i].image}", class: "item-img"
+                      - i +=  1
             / 商品値段
             .itemBox__price
               %span
-                ¥ 20000
+                = @item.price
               .itemBox__price-detail
                 %span
                   (税込み)
@@ -31,39 +34,37 @@
                   送料込み
             / 商品説明
             .itemDetail
-              "親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰"
+              = @item.description_item
             / アイテムテーブル
             .table
               %table
                 %tbody
                   %tr
                     %th 出品者
-                    %td hoge
+                    %td 
+                      = link_to @user.nickname,user_path(@user.id)
                   %tr
                     %th カテゴリー
                     %td
-                      = link_to "", class: "a" do
-                        メンズ 
-                      %br/
-                      = link_to "", class: "a" do
-                        ノーカラージャケット
-                      %br/
-                      = link_to "", class: "a" do
-                        ジャケット/アウター
+                      = link_to @category.parent.parent.name,list_from_category_item_path(@category.parent.parent.id),class:"categroryLINK"
+                      = link_to @category.parent.name, list_from_category_item_path(@category.parent.id) ,class:"categroryLINK"
+                      = link_to @category.name, list_from_category_item_path(@category.id),class:"categroryLINK"
                   %tr
                     %th 商品の状態
-                    %td 新品/未使用
+                    %td 
+                      = @item.condition.name
                   %tr
                     %th 配送料の負担
-                    %td 着払い(購入者負担)
+                    %td 
+                      = @item.shipping_charger.name
                   %tr
                     %th 配送元の地域
                     %td
-                      = link_to "", class: "a" do
-                        大阪
+                      = @item.ship_from.name
                   %tr
                     %th 発送日の目安
-                    %td 1-2日で発送
+                    %td 
+                      = @item.shipping_days.name
             / お気に入り、不適切な商品の通報
             .optionalArea
               %ul
@@ -75,6 +76,8 @@
                   = link_to "", class: "a" do
                     %i.fa.fa-flag
                     不適切な商品の通報
+            .buyBTN
+              = link_to "購入する", "#"
           / コメント欄
           .commentBox
             %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
