@@ -24,6 +24,9 @@
           = link_to "ホーム","/", class:"brand-btn headerlink"
         .list-left__item-second
           %p ０３０４
+
+        -#= link_to '編集', edit_item_path(@item.ids)
+
       .list-right
         - if user_signed_in?
           .list-right__item

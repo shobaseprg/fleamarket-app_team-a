@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     end
     resources 'purchase' ,only: [:index]
   end
-  
 
   resources :categories, only: [:index] 
 
