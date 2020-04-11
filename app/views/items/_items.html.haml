@@ -17,7 +17,7 @@
         - @items1.each do |item|
           = link_to item_path(id: item.id) ,class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
-              = image_tag "#{@images[0].image}",size: "184x184"
+              = image_tag (item.item_images[0].image.url),size: "184x184"
             .goods__box__lists__list__anchor1__content
               .goods__box__lists__list__anchor1__content__name
                 =item.name
