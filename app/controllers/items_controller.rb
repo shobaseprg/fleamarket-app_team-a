@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     items3 = [].take(10)
     items4 = [].take(10)
     items.each do |item|
-      if item.category.id == 1
+      if item.category.parent.parent.id == 1
         items1.push(item)
       elsif item.category.parent.parent.id == 2
         items2.push(item)
