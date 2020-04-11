@@ -6,7 +6,8 @@
     .top.body__new__item
       .top.body__new__item__box
         .top.body__new__item__box__category
-          #{@category.name}の商品一覧
+          =@categorysName
+          の商品一覧
       .top.body__new__item__list
         - @items.each do |item|
           .top.body__new__item__list__show
