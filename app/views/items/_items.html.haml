@@ -26,6 +26,10 @@
                 %li
                   = item.price
                   円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
 
       .goods__new__item__box#mens-items
         .goods__new__item__box__category
