@@ -97,7 +97,7 @@ class ItemsController < ApplicationController
       under_category = Category.find(params[:id]).subtree
       # 自己と子供のカテゴリーを格納
         under_category.each do |category|
-          item = category.items
+          item = category.items.order("id DESC")
           @items.push(item)
         end
       @items.flatten!
