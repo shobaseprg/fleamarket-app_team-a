@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_current_user_items,only:[:i_OnSale,:i_trading,:i_SoldOut]
   before_action :set_user,only:[:i_OnSale,:i_trading,:i_SoldOut]
-  #before_action :set_item, except: [:index, :new, :create, :edit, :show]
+  before_action :set_item, only: [:show,:edit,:update]
 
   def i_OnSale #出品中のアクション
 
@@ -48,11 +48,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
  
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
        @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
       redirect_to root_path
@@ -85,7 +83,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @user = User.find(@item.seller_id)
     @images = @item.item_images
     @imagesLENGTH = @images.length 
@@ -108,9 +105,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   
 end
