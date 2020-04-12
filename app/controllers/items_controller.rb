@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_current_user_items,only:[:i_OnSale,:i_trading,:i_SoldOut]
   before_action :set_user,only:[:i_OnSale,:i_trading,:i_SoldOut]
- # before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, only: [:show,:edit,:update]
 
   def i_OnSale #出品中のアクション
 
@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
  
   def update
     if @item.update(item_params)
+       @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
       redirect_to root_path
     else
       render :edit
@@ -59,27 +60,28 @@ class ItemsController < ApplicationController
   end
  
   def destroy
-    @product.destroy
+    @item.destroy
     redirect_to root_path
   end
 
-   def list_from_category
-      @categorysNAME = []
-      @items = []
-      over_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
-        over_categoryIDs.each do |categoryID|
-          @categorysNAME << Category.find(categoryID).name
-          # 選択されたカテゴリーと親のnameを格納
-        end
-      under_category = Category.find(params[:id]).subtree
-      # 自己と子供のカテゴリーを格納
-          @items = under_category.map(&:items)
-      # 配列の平坦化
-      @items.flatten!
-   end
+
+  def list_from_category
+    @categorysNAME = []
+    @Items = []
+    self_ancestory_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
+    self_ancestory_categoryIDs.each do |categoryID|
+    @categorysNAME << Category.find(categoryID).name
+    # 選択されたカテゴリーと親のnameを格納
+  end
+    self_progeny = Category.find(params[:id]).subtree
+    # 自己と子供のカテゴリーを格納
+    @Items = self_progeny.map(&:items)
+    # 配列の平坦化
+    @Items.flatten!
+  end
+
 
   def show
-    @item = Item.find(params[:id])
     @user = User.find(@item.seller_id)
     @images = @item.item_images
     @imagesLENGTH = @images.length 
@@ -106,6 +108,5 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  
 end
-
-
