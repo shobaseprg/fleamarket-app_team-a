@@ -75,9 +75,9 @@ class ItemsController < ApplicationController
   end
     self_progeny = Category.find(params[:id]).subtree
     # 自己と子供のカテゴリーを格納
-    @Items = self_progeny.map(&:items)
+    @items = self_progeny.map(&:items)
     # 配列の平坦化
-    @Items.flatten!
+    @items.flatten!
   end
 
 
