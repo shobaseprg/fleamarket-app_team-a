@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index] 
 
-  resources :cards, only:[:new, :create]
+  resources :cards, only:[:index, :new, :create,:destroy]
+
 end
+
