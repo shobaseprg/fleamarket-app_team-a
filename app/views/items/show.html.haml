@@ -1,0 +1,115 @@
+= render "header"
+
+%body
+  / 真ん中商品写真部分
+  .main
+    .showMain
+      .contentleft
+      .contentRight
+        .topContent
+          .itemBox
+            %h2.itemBox__name 
+              = @item.name
+            .itemBox__body
+              .itemBox__body__mainIMAGE{"data-src" => "#{@images[0].image}"}
+                -# カスタムデータ属性でitem_imageのimage(画像のファイル名)をdata-srcとして与えておく
+                = image_tag "#{@images[0].image}", class: "item-main-img"
+                -# 配列化してるので、このように取り出す
+              .itemBox__body__subIMAGE
+                %ul
+                  - i = 0
+                  - while i < @imagesLENGTH
+                    -# 画像の枚数だけ繰り返す
+                    %li.imageNUMBER{"data-src" => "#{@images[i].image}"}
+                      = image_tag "#{@images[i].image}", class: "item-img"
+                      - i +=  1
+            / 商品値段
+            .itemBox__price
+              %span
+                = @item.price
+              .itemBox__price-detail
+                %span
+                  (税込み)
+                %span
+                  送料込み
+            / 商品説明
+            .itemDetail
+              = @item.description_item
+            / アイテムテーブル
+            .table
+              %table
+                %tbody
+                  %tr
+                    %th 出品者
+                    %td 
+                      = link_to @user.nickname,user_path(@user.id)
+                  %tr
+                    %th カテゴリー
+                    %td
+                      = link_to @category.parent.parent.name,list_from_category_item_path(@category.parent.parent.id),class:"categroryLINK"
+                      = link_to @category.parent.name, list_from_category_item_path(@category.parent.id) ,class:"categroryLINK"
+                      = link_to @category.name, list_from_category_item_path(@category.id),class:"categroryLINK"
+                  %tr
+                    %th 商品の状態
+                    %td 
+                      = @item.condition.name
+                  %tr
+                    %th 配送料の負担
+                    %td 
+                      = @item.shipping_charger.name
+                  %tr
+                    %th 配送元の地域
+                    %td
+                      = @item.ship_from.name
+                  %tr
+                    %th 発送日の目安
+                    %td 
+                      = @item.shipping_days.name
+            / お気に入り、不適切な商品の通報
+            .optionalArea
+              %ul
+                %li#likeBtn.optionalBtn.likeBtn
+                  %i.fa.fa-star
+                  お気に入り
+              %ul.optional
+                %li.optionalBtn
+                  = link_to "", class: "a" do
+                    %i.fa.fa-flag
+                    不適切な商品の通報
+            .buyBTN
+              = link_to "購入する", item_purchase_index_path(@item.id)
+          / コメント欄
+          .commentBox
+            %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
+              %input{name: "utf8", type: "hidden", value: "✔︎"}/
+              %input{name: "authentictity_token", type: "hidden", value: "+tAmTX++F414Y5Zr+fy3UozWSptACIBHKxdgvgTNYJroBG48913gbcBArdUDwrerGulr7X557s8NaqOxZ7BXZA=="}/
+              %textarea#comment_body{name: "comment[body]", required: "required"}
+              
+                  
+              %p.noticeMsg
+                相手のことを考えて丁寧なコメントをこころがけましょう。
+                %br/
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              %br/
+              %button.commentBtn{name: "button", type: "submit"}
+                %i.fa.fa-comment
+                コメントする　
+        / 前の商品、後ろの商品
+        %ul.links
+          %li
+            = link_to "", class: "a" do
+              %i.fa.fa-angle-left
+              %span
+              前の商品　
+          %li
+            = link_to "", class: "a" do
+              %span 
+              後ろの商品
+              %i.fa.fa-angle-right
+        .relatedItems
+          = link_to "", class: "a" do
+            メンズをもっと見る
+            .productLists
+= render "bottom_banner"
+= render "footer"
+= render "sell_btn"
