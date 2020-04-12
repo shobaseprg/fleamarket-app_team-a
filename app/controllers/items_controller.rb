@@ -73,12 +73,9 @@ class ItemsController < ApplicationController
         end
       under_category = Category.find(params[:id]).subtree
       # 自己と子供のカテゴリーを格納
-        under_category.each do |category|
-          item = category.items
-          @items.push(item)
-        end
-      @items.flatten!
+          @items = under_category.map(&:items)
       # 配列の平坦化
+      @items.flatten!
    end
 
   def show
