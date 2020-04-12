@@ -67,18 +67,18 @@ class ItemsController < ApplicationController
   def list_from_category
     @categorysNAME = []
     @Items = []
-    over_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
-    over_categoryIDs.each do |categoryID|
+    self_ancestory_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
+    self_ancestory_categoryIDs.each do |categoryID|
     @categorysNAME << Category.find(categoryID).name
     # 選択されたカテゴリーと親のnameを格納
   end
-    under_category = Category.find(params[:id]).subtree
+    self_progeny = Category.find(params[:id]).subtree
     # 自己と子供のカテゴリーを格納
-    @Items = under_category.map(&:items)
+    @Items = self_progeny.map(&:items)
     # 配列の平坦化
     @Items.flatten!
   end
-  
+
   def show
     @user = User.find(@item.seller_id)
     @images = @item.item_images
