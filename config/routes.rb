@@ -12,13 +12,9 @@ Rails.application.routes.draw do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
     end
-<<<<<<< Updated upstream
-    resources 'purchase' ,only: [:index]
-=======
     member do
      get  'list_from_category'
     end
->>>>>>> Stashed changes
   end
 
   resources :categories, only: [:index] 
