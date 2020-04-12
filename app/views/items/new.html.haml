@@ -29,6 +29,11 @@
                 .js-file_group{"data-index" => "#{@item.item_images.count}"}
                   = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
                   .js-remove 削除
+              #drop_area drag and drop
+              %br>/
+              or
+              %br>/
+              click here.
 
                
         .sell__main__content__form
