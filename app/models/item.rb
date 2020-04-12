@@ -24,7 +24,9 @@ class Item < ApplicationRecord
   # validates :images, presence: true
 
 
-  belongs_to :category
+  belongs_to :category,class_name:"Category",foreign_key: "category_id"
+  belongs_to :parent_category,class_name:"Category",foreign_key: "parent_category_id"
+  belongs_to :children_category,class_name:"Category",foreign_key: "children_category_id"
   # belongs_to :brand
   # has_many :goods
   # has_many :comments
