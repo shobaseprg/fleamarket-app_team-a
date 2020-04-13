@@ -40,10 +40,11 @@ class ItemsController < ApplicationController
     # @items2 = items2.first(10)
     # @items3 = items3.first(10)
     # @items4 = items4.first(10)
-    @items1 = Category.find(1).items.last(10)
-    @items2 = Category.find(2).items.last(10)
-    @items3 = Category.find(8).items.last(10)
-    @items4 = Category.find(6).items.last(10)
+  
+    @items1 = Item.where(parent_category_id:1).last(10)
+    @items1 = Item.where(parent_category_id:2).last(10)
+    @items1 = Item.where(parent_category_id:8).last(10)
+    @items1 = Item.where(parent_category_id:6).last(10)
   end
 
   def new
