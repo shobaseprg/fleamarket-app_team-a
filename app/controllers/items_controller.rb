@@ -17,10 +17,10 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items1 = Item.where(parent_category_id:1).last(10)
-    @items2 = Item.where(parent_category_id:2).last(10)
-    @items3 = Item.where(parent_category_id:8).last(10)
-    @items4 = Item.where(parent_category_id:6).last(10)
+    @items1 = Item.where(parent_category_id:1).order("id DESC").last(10)
+    @items2 = Item.where(parent_category_id:2).order("id DESC").last(10)
+    @items3 = Item.where(parent_category_id:8).order("id DESC").last(10)
+    @items4 = Item.where(parent_category_id:6).order("id DESC").last(10)
   end
 
   def new
