@@ -52,7 +52,11 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select#parent_box
-                = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, { prompt: "選択してください" }, { class: "sell__main__content__form__box__group__select__form", id: "parent_form" }
+                = @item.parent_category.name
+              .sell__main__content__form__box__group__select#child_box
+                = @item.children_category.name
+              .sell__main__content__form__box__group__select#grandchild_box
+                = @item.category.name
               %label
                 ブランド
                 %span.form-require_brand
