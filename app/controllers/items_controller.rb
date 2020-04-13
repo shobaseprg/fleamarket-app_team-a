@@ -17,34 +17,10 @@ class ItemsController < ApplicationController
 
 
   def index
-    # @items = Item.all
-    # parent_id = params[:parent_id]
-
-    # items = Item.all.order("id DESC")
-    # items1 = []
-    # items2 = [].take(10)
-    # items3 = [].take(10)
-    # items4 = [].take(10)
-    # items.each do |item|
-    #   if item.category.parent.parent.id == 1
-    #     items1.push(item)
-    #   elsif item.category.parent.parent.id == 2
-    #     items2.push(item)
-    #   elsif item.category.parent.parent.id == 8
-    #     items3.push(item)
-    #   elsif item.category.parent.parent.id == 6
-    #     items4.push(item)
-    #   end
-    # end
-    # @items1 = items1.first(10)
-    # @items2 = items2.first(10)
-    # @items3 = items3.first(10)
-    # @items4 = items4.first(10)
-  
     @items1 = Item.where(parent_category_id:1).last(10)
-    @items1 = Item.where(parent_category_id:2).last(10)
-    @items1 = Item.where(parent_category_id:8).last(10)
-    @items1 = Item.where(parent_category_id:6).last(10)
+    @items2 = Item.where(parent_category_id:2).last(10)
+    @items3 = Item.where(parent_category_id:8).last(10)
+    @items4 = Item.where(parent_category_id:6).last(10)
   end
 
   def new
