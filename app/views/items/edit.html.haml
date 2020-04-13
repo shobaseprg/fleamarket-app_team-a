@@ -51,22 +51,16 @@
                 カテゴリー
                 %span.form-require
                   必須
-              .sell__main__content__form__box__group__select#parent_box.edit-parent
-                .sell__main__content__form__box__group__select__form#edit-parent_form
-                  .edit-form
-                    = f.collection_select :parent_category_id, Category.where(id: @item.parent_category.id ), :id, :name 
-              .sell__main__content__form__box__group__select#child_box.edit-child
-                .sell__main__content__form__box__group__select__form#edit-child_form
-                  .edit-form
-                    = f.collection_select :parent_category_id, Category.where(id: @item.children_category.id ), :id, :name 
-              .sell__main__content__form__box__group__select#grandchild_box.edit-grand-child
-                .sell__main__content__form__box__group__select__form#edit-grandchild_form
-                  .edit-form
-                    = f.collection_select :parent_category_id, Category.where(id: @item.category.id ), :id, :name
-              %label
-                ブランド
-                %span.form-require_brand
-                  任意
+              .sell__main__content__form__box__group__select#parent_box
+                .edit-box
+                  = @item.parent_category.name
+                .edit-box
+                  = @item.children_category.name
+                .edit-box
+                  = @item.category.name
+              ブランド
+              %span.form-require_brand
+                任意
               .sell__main__content__form__box__group__select
                 = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "選択してください"}, class: "sell__main__content__form__box__group__select__form"
               %label
