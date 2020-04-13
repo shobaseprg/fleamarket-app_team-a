@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
 
   resources :items do
+    resources 'purchase' ,only: [:index]
     collection do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
     member do
      get  'list_from_category'
     end
-    resources 'purchase' ,only: [:index]
   end
 
   resources :categories, only: [:index] 

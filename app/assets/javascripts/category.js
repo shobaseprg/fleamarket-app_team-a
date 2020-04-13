@@ -8,7 +8,7 @@ $(function () {
   function childBox(insertHTML) {
     let childBoxHTML = `<div class="sell__main__content__form__box__group__select" id="child_box">
                         <i class="icon-arrow-bottom"></i>
-                        <select class="sell__main__content__form__box__group__select__form" id="child_form" name="item[child_id]">
+                        <select class="sell__main__content__form__box__group__select__form" id="child_form" name="item[children_category_id]">
                           <option value="">選択してください</option>
                           ${insertHTML}
                       </select>
