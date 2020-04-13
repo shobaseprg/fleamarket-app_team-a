@@ -28,7 +28,8 @@ $(function () {
   }
   // 親カテゴリー選択後のイベント（イベント発火後、子要素のセレクトボックスが出現）
   $(function () {
-    $("#parent_form").on('change', function () {
+    $("#category-select-box_list").on('change',"#parent_form", function () {
+      console.log("oya")
       let parentValue = $(this).val(); //選択された親カテゴリーの名前を取得
       if (parentValue != "") { //親カテゴリーが初期値でないことを確認
         $.ajax({
@@ -89,6 +90,39 @@ $(function () {
         $("#grandchild_box").remove()
       }
     })
-  })
+  });
+  // 編集画面用
+  $(function(){
+
+    let edit_parent =
+      `
+        <select class="sell__main__content__form__box__group__select__form" id="parent_form" name="item[parent_category_id]">
+          <option value="">選択してください</option>
+          <option value="1">レディース</option>
+          <option value="2">メンズ</option>
+          <option value="3">redy</option>
+          <option value="4">redy</option>
+          <option value="5">redy</option>
+          <option value="6">redy</option>
+          <option value="7">redy</option>
+          <option value="8">redy</option>
+          <option value="9">redy</option>
+          <option value="10">redy</option>
+          <option value="11">redy</option>
+          <option value="12">redy</option>
+          <option value="13">redy</option>
+          </select>
+          </div>`
+
+    $("#category-select-box_list").on('click', ".edit-parent",function(){
+      $(".edit-parent").empty();
+      $(".edit-child").empty();
+      $(".edit-grand-child").empty();
+      $("#parent_box").removeClass("edit-parent");
+    $("#parent_box").append(edit_parent);
+    });
+
+  });
+  
 });
 
