@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
 
   def list_from_category
     @categorysNAME = []
-    @Items = []
+    @items = []
     self_ancestory_categoryIDs = Category.find(params[:id]).path_ids # 選択されたカテゴリーの自分と先祖のidを全て取得
     self_ancestory_categoryIDs.each do |categoryID|
     @categorysNAME << Category.find(categoryID).name
