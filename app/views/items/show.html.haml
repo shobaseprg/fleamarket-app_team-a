@@ -46,9 +46,9 @@
                   %tr
                     %th カテゴリー
                     %td
-                      = link_to @category.parent.parent.name,list_from_category_item_path(@category.parent.parent.id),class:"categroryLINK"
-                      = link_to @category.parent.name, list_from_category_item_path(@category.parent.id) ,class:"categroryLINK"
-                      = link_to @category.name, list_from_category_item_path(@category.id),class:"categroryLINK"
+                      = link_to @oya.name,list_from_category_item_path(@oya.id),class:"categroryLINK"
+                      = link_to @ko.name, list_from_category_item_path(@ko.id) ,class:"categroryLINK"
+                      = link_to @mago.name, list_from_category_item_path(@mago.id),class:"categroryLINK"
                   %tr
                     %th 商品の状態
                     %td 

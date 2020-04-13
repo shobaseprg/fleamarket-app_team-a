@@ -85,7 +85,9 @@ class ItemsController < ApplicationController
     @user = User.find(@item.seller_id)
     @images = @item.item_images
     @imagesLENGTH = @images.length 
-    @category = @item.category
+    @mago = @item.category
+    @ko = @item.children_category
+    @oya = @item.parent_category
   end
 
   private
