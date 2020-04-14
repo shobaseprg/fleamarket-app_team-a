@@ -29,7 +29,6 @@ $(function () {
   // 親カテゴリー選択後のイベント（イベント発火後、子要素のセレクトボックスが出現）
   $(function () {
     $("#category-select-box_list").on('change',"#parent_form", function () {
-      console.log("oya")
       let parentValue = $(this).val(); //選択された親カテゴリーの名前を取得
       if (parentValue != "") { //親カテゴリーが初期値でないことを確認
         $.ajax({
@@ -111,8 +110,8 @@ $(function () {
           <option value="11">チケット</option>
           <option value="12">自動車・オートバイ</option>
           <option value="13">その他</option>
-          </select>
-          </div>`
+        </select>
+`
 
     $(".edit-box").click(function(){
       $("#parent_box").empty();
