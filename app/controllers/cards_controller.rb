@@ -46,4 +46,36 @@ class CardsController < ApplicationController
     end
   end
 
+  def show 
+    @item = Item.find(params[:id])
+      card = Card.where(user_id: current_user.id).first
+      #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
+      if card.blank?
+        #登録された情報がない場合にカード登録画面に移動
+        redirect_to cards_path
+      else
+        Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+        #保管した顧客IDでpayjpから情報取得
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+        @card_information = customer.cards.retrieve(card.card_id)
+      end
+  end
+
+  def pay
+    @item = Item.find(params[:id])
+    @item.update(buyer_id: current_user.id)
+    # 現在のユーザーを購入者に登録
+    card = Card.where(user_id: current_user.id).first
+    Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+    Payjp::Charge.create(
+    :amount => @item.price, 
+    :customer => card.customer_id, 
+    :currency => 'jpy', #日本円
+  )
+  redirect_to item_purchase_index_path(@item.id)
+  # 購入確認画面に遷移
+  end
+
+
 end
