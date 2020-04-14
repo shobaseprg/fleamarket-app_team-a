@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
  
   def update
     if @item.update(item_params)
-       @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
+      @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
       redirect_to root_path
     else
       render :edit
