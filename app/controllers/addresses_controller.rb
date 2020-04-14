@@ -28,6 +28,7 @@ class AddressesController < ApplicationController
     if @address.update(address_params)
       flash[:notice] = '編集完了しました'
       redirect_to root_path
+      binding.pry
     else
       flash[:alert] = '編集できませんでした'
       redirect_to edit_address_path(current_user.address.id)
