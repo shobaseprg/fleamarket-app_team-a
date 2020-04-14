@@ -17,7 +17,10 @@ class ItemsController < ApplicationController
 
 
   def index
-    @item = Item.all
+    @items1 = Item.where(parent_category_id:1).order("id DESC").last(10)
+    @items2 = Item.where(parent_category_id:2).order("id DESC").last(10)
+    @items3 = Item.where(parent_category_id:8).order("id DESC").last(10)
+    @items4 = Item.where(parent_category_id:6).order("id DESC").last(10)
   end
 
   def new
@@ -27,8 +30,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.sales_fee = @item.price / 10 
-    @item.sales_profit = @item.price - @item.sales_fee
     if @item.save!
       redirect_to root_path
     else
@@ -80,7 +81,6 @@ class ItemsController < ApplicationController
     @items.flatten!
   end
 
-
   def show
     @user = User.find(@item.seller_id)
     @images = @item.item_images
@@ -91,17 +91,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
-
-  def set_current_user_items
-    if user_signed_in? 
-      @items = current_user.items.includes(:seller,:buyer,:auction,:item_images)
-    else
-      redirect_to new_user_session_path
-    end
-  end
-
-
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :children_category_id,:parent_category_id,:condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
@@ -110,5 +99,5 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  
+
 end
