@@ -18,7 +18,7 @@ $(function(){
   }
 
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  let fileIndex = [1,2,3,4,5,6,7,8,9];
   // 既に使われているindexを除外「:lastは最後の要素を取得している」「data()はHTML要素内に付与されたdata属性に対して、取得・設定・変更などが簡単に行えるようになる」
   lastIndex = $('.js-file_group:last').data('index');
   // splice()メソッドは古い要素の削除しながら、新しい要素を追加することで、配列の内容を変更します。
@@ -45,13 +45,21 @@ $(function(){
     } else {  // 新規画像追加の処理
       // 「append()」は、対象の要素の末尾にテキストやHTML要素を追加するメソッド
       $('#previews').append(buildImg(targetIndex, blobUrl));
-    // fileIndexの先頭の数字を使ってinputを作る
+    // $(".js-file_group:last").data("index");で最新のidと最新のindex番号を取得。
+    let limitFileField = $(".js-file_group:last").data("index");
+    //もしlimitFileFieldが９以上ならreturn falseで、これ以上入力フォームは作らず処理から抜ける。
+    if(limitFileField >= 9 ){
+      return false;
+    } else {
+      //else以下は、limitFileFieldが８以下なら入力フォームを生成する処理が続く。
     $('#image-box').append(buildFileField(fileIndex[0]));
     //shiftメソッドは0番目のインデックスの要素を削除してインデックスの連番の値をシフトし、 削除した値を返します。
     fileIndex.shift();
     // 末尾の数に1足した数を追加する
     //push()メソッドは配列の最後に1つ以上の要素を追加し、新しい配列のlengthを返します。
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+    fileIndex.push(fileIndex[fileIndex.length - 1] )
+    console.log(fileIndex)
+     }
     }
   });
 
