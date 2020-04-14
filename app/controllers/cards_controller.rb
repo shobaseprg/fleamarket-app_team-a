@@ -46,7 +46,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def show
+  def show 
     @item = Item.find(params[:id])
       card = Card.where(user_id: current_user.id).first
       #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
@@ -64,6 +64,8 @@ class CardsController < ApplicationController
 
   def pay
     @item = Item.find(params[:id])
+    @item.update(buyer_id: current_user.id)
+    # 現在のユーザーを購入者に登録
     card = Card.where(user_id: current_user.id).first
     Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
@@ -72,6 +74,7 @@ class CardsController < ApplicationController
     :currency => 'jpy', #日本円
   )
   redirect_to item_purchase_index_path(@item.id)
+  # 購入確認画面に遷移
   end
 
 
