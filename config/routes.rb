@@ -19,7 +19,11 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index] 
 
-  resources :cards, only:[:index, :new, :create,:destroy]
+  resources :cards, only:[:index, :new, :create,:destroy,:show] do
+    member do
+      post 'pay'
+    end
+  end
 
 end
 
