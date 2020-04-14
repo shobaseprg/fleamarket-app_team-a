@@ -25,8 +25,10 @@ class CardsController < ApplicationController
       ) 
       @card = Card.new(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
+        flash[:notice] = '登録しました'
         redirect_to "/"
       else
+        flash[:alert] = '登録できませんでした'
         redirect_to action: "new"
       end
     end
