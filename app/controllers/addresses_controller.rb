@@ -20,7 +20,12 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = Address.find(params[:id])
+    if user_signed_in? && current_user.id == params[:id].to_i
+      @address = Address.find(params[:id])
+    else
+      flash[:alert] = "他のユーザーの住所は変更できません"
+      redirect_to root_path
+    end
   end
 
   def update
@@ -35,12 +40,17 @@ class AddressesController < ApplicationController
   end
    
   def destroy
-    @address = Address.find(params[:id])
-    if @address.destroy
-      flash[:notice] = '削除しました'
-      redirect_to root_path
+    if user_signed_in? && current_user.address.id == params[:id].to_i
+      @address = Address.find(params[:id])
+      if @address.destroy
+        flash[:notice] = '削除しました'
+        redirect_to root_path
+      else
+        flash[:alert] = '編集できませんでした'
+        redirect_to root_path
+      end
     else
-      flash[:alert] = '編集できませんでした'
+      flash[:alert] = "他のユーザーの住所は変更できません"
       redirect_to root_path
     end
   end
