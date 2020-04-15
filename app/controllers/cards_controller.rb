@@ -9,7 +9,7 @@ class CardsController < ApplicationController
   before_action :set_api_key
 
   
-  def index #CardのデータをPayjpに送って情報を取り出す
+  def index 
     if @card.present?
       set_customer
       set_card_information
@@ -17,7 +17,6 @@ class CardsController < ApplicationController
   end
 
   def create
-    # credential.yamlからPayjp.api_keyを設定（秘密鍵）
     if params['payjp-token'].blank?
       redirect_to action: "new"
       # トークンが取得出来てなければループ
@@ -87,6 +86,7 @@ class CardsController < ApplicationController
   def set_api_key
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
   end
+
 
   def set_customer
     @customer = Payjp::Customer.retrieve(@card.customer_id)
