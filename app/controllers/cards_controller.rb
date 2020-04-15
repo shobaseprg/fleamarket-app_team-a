@@ -12,12 +12,20 @@ class CardsController < ApplicationController
     @customer = Payjp::Customer.retrieve(@card.customer_id)
   end
 
+  def set_card_information
+    @card_information = @customer.cards.retrieve(@card.card_id)
+  end
+
+  def take_card
+    @card = Card.where(user_id: current_user.id).first
+  end
+
 
   def index #CardのデータをPayjpに送って情報を取り出す
     if @card.present?
       set_api_key
       set_customer
-      @card_information = @customer.cards.retrieve(@card.card_id)
+      set_card_information
     end
   end
 
@@ -56,7 +64,7 @@ class CardsController < ApplicationController
   end
 
   def show 
-      @card = Card.where(user_id: current_user.id).first
+      take_card
       #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
       if @card.blank?
         #登録された情報がない場合にカード登録画面に移動
@@ -64,16 +72,16 @@ class CardsController < ApplicationController
       else
         set_api_key
         #保管した顧客IDでpayjpから情報取得
-        @customer = Payjp::Customer.retrieve(@card.customer_id)
+        set_customer
         #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
-        @card_information = @customer.cards.retrieve(@card.card_id)
+        set_card_information
       end
   end
 
   def pay
     @item.update(buyer_id: current_user.id)
     # 現在のユーザーを購入者に登録
-    @card = Card.where(user_id: current_user.id).first
+    take_card
     set_api_key
     Payjp::Charge.create(
     :amount => @item.price, 
@@ -86,11 +94,11 @@ class CardsController < ApplicationController
 
   private
 
-  def set_card
-    @item = Item.find(params[:id])
-  end
+    def set_card
+      @item = Item.find(params[:id])
+    end
 
-  def card_present
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-  end
+    def card_present
+      @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    end
 end
