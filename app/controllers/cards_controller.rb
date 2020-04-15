@@ -1,26 +1,11 @@
 
 class CardsController < ApplicationController
+
   require 'payjp'
+
   before_action :set_card, only: [:show,:pay]
   before_action :card_present,only:[:index,:destroy]
   
-  def set_api_key
-    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
-  end
-
-  def set_customer
-    @customer = Payjp::Customer.retrieve(@card.customer_id)
-  end
-
-  def set_card_information
-    @card_information = @customer.cards.retrieve(@card.card_id)
-  end
-
-  def take_card
-    @card = Card.where(user_id: current_user.id).first
-  end
-
-
   def index #CardのデータをPayjpに送って情報を取り出す
     if @card.present?
       set_api_key
@@ -87,18 +72,35 @@ class CardsController < ApplicationController
     :amount => @item.price, 
     :customer => @card.customer_id, 
     :currency => 'jpy', #日本円
-  )
-  redirect_to item_purchase_index_path(@item.id)
+   )
+    redirect_to item_purchase_index_path(@item.id)
   # 購入確認画面に遷移
   end
 
   private
 
-    def set_card
-      @item = Item.find(params[:id])
-    end
+  def set_card
+    @item = Item.find(params[:id])
+  end
 
-    def card_present
-      @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    end
+  def card_present
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
+  def set_api_key
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+  end
+
+  def set_customer
+    @customer = Payjp::Customer.retrieve(@card.customer_id)
+  end
+
+  def set_card_information
+    @card_information = @customer.cards.retrieve(@card.card_id)
+  end
+
+  def take_card
+    @card = Card.where(user_id: current_user.id).first
+  end
+  
 end
