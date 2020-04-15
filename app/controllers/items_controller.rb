@@ -20,8 +20,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.price
-      set_price
+      if @item.price
+        set_price
     if @item.save!
       redirect_to root_path
     else
@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update(item_params)
       if @item.price
-       set_price
+        set_price
       end
       flash[:notice] = '登録しました'
       redirect_to root_path
