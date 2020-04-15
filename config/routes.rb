@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :users, only: :show
+  
+  resources :addresses,only: [:index,:new,:create,:edit,:update,:destroy]
 
   resources :items do
     resources 'purchase' ,only: [:index]

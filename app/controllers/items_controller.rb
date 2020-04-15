@@ -20,12 +20,20 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    set_price
+      if @item.price
+        set_price
     if @item.save!
       redirect_to root_path
     else
       redirect_to new_item_path
     end
+      if @item.save
+        flash[:notice] = '出品しました'
+        redirect_to root_path
+      else
+        flash[:alert] = '登録できませんでした'
+        redirect_to new_item_path
+      end
   end
 
      # 親カテゴリーが選択された後に動くアクション
@@ -44,10 +52,14 @@ class ItemsController < ApplicationController
  
   def update
     if @item.update(item_params)
-      set_price
+      if @item.price
+        set_price
+      end
+      flash[:notice] = '登録しました'
       redirect_to root_path
     else
-      render :edit
+      flash[:alert] = '登録できませんでした'
+      redirect_to edit_item_path(@item.id)
     end
   end
  
