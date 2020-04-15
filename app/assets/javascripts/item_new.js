@@ -41,7 +41,8 @@ $(function(){
     // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       // 「setAttribute」は、指定の要素に新しい属性を追加します。または指定の要素に存在する属性の値を変更します。
-      img.setAttribute('image', blobUrl);
+      img.setAttribute('src', blobUrl);
+      console.log(img);
     } else {  // 新規画像追加の処理
       // 「append()」は、対象の要素の末尾にテキストやHTML要素を追加するメソッド
       $('#previews').append(buildImg(targetIndex, blobUrl));
@@ -52,14 +53,13 @@ $(function(){
       return false;
     } else {
       //else以下は、limitFileFieldが８以下なら入力フォームを生成する処理が続く。
-    $('#image-box').append(buildFileField(fileIndex[0]));
-    //shiftメソッドは0番目のインデックスの要素を削除してインデックスの連番の値をシフトし、 削除した値を返します。
-    fileIndex.shift();
-    // 末尾の数に1足した数を追加する
-    //push()メソッドは配列の最後に1つ以上の要素を追加し、新しい配列のlengthを返します。
-    fileIndex.push(fileIndex[fileIndex.length - 1] )
-    console.log(fileIndex)
-     }
+      $('#image-box').append(buildFileField(fileIndex[0]));
+      //shiftメソッドは0番目のインデックスの要素を削除してインデックスの連番の値をシフトし、 削除した値を返します。
+      fileIndex.shift();
+      // 末尾の数に1足した数を追加する
+      //push()メソッドは配列の最後に1つ以上の要素を追加し、新しい配列のlengthを返します。
+      fileIndex.push(fileIndex[fileIndex.length - 1] )
+    }
     }
   });
 
