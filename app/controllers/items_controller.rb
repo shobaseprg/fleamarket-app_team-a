@@ -22,11 +22,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
       if @item.price
         set_price
-    if @item.save!
-      redirect_to root_path
-    else
-      redirect_to new_item_path
-    end
+      end
       if @item.save
         flash[:notice] = '出品しました'
         redirect_to root_path
