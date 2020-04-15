@@ -12,7 +12,7 @@
       ゆうびんばんごう：
       = @address.postal_code
       県：
-      = @address.prefectures
+      = ShipFrom.data[@address.prefectures.to_i - 1][:name]
       市：
       = @address.municipality
       番地：
@@ -22,3 +22,5 @@
 
       = link_to "編集する",edit_address_path(current_user.address.id)
       = link_to "削除する",address_path(current_user.address.id),method: :DELETE
+      
+      
