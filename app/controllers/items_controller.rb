@@ -1,19 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_current_user_items,only:[:i_OnSale,:i_trading,:i_SoldOut]
-  before_action :set_user,only:[:i_OnSale,:i_trading,:i_SoldOut]
+
   before_action :set_item, only: [:show,:edit,:update]
 
-  def i_OnSale #出品中のアクション
-
-  end
-
-  def i_trading  #取引中のアクション
-
-  end
-
-  def i_SoldOut    #売却済みのアクション
-
-  end
 
 
   def index
@@ -107,6 +95,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 
 end
