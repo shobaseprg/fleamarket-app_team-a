@@ -1,18 +1,28 @@
 
 class CardsController < ApplicationController
   require 'payjp'
+  before_action :set_card, only: [:show,:pay]
+  before_action :card_present,only:[:index,:destroy]
+  
+  def set_api_key
+    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+  end
+
+  def set_customer
+    @customer = Payjp::Customer.retrieve(@card.customer_id)
+  end
+
 
   def index #CardのデータをPayjpに送って情報を取り出す
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
     if @card.present?
-      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @card_information = customer.cards.retrieve(@card.card_id)
+      set_api_key
+      set_customer
+      @card_information = @customer.cards.retrieve(@card.card_id)
     end
   end
 
   def create
-    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+    set_api_key
     # credential.yamlからPayjp.api_keyを設定（秘密鍵）
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -33,10 +43,9 @@ class CardsController < ApplicationController
   end
 
   def destroy #PayjpとCardのデータベースを削除
-    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
-    customer = Payjp::Customer.retrieve(@card.customer_id)
-    customer.delete
+    set_api_key
+    set_customer
+    @customer.delete
     if @card.destroy #削除に成功した時にポップアップを表示します。
       flash[:notice2] = '削除しました'
       redirect_to action: "index"
@@ -47,35 +56,41 @@ class CardsController < ApplicationController
   end
 
   def show 
-    @item = Item.find(params[:id])
-      card = Card.where(user_id: current_user.id).first
+      @card = Card.where(user_id: current_user.id).first
       #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
-      if card.blank?
+      if @card.blank?
         #登録された情報がない場合にカード登録画面に移動
         redirect_to cards_path
       else
-        Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+        set_api_key
         #保管した顧客IDでpayjpから情報取得
-        customer = Payjp::Customer.retrieve(card.customer_id)
+        @customer = Payjp::Customer.retrieve(@card.customer_id)
         #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
-        @card_information = customer.cards.retrieve(card.card_id)
+        @card_information = @customer.cards.retrieve(@card.card_id)
       end
   end
 
   def pay
-    @item = Item.find(params[:id])
     @item.update(buyer_id: current_user.id)
     # 現在のユーザーを購入者に登録
-    card = Card.where(user_id: current_user.id).first
-    Rails.application.credentials[:payjp][:PAYJP_PRIVATE_KEY]
+    @card = Card.where(user_id: current_user.id).first
+    set_api_key
     Payjp::Charge.create(
     :amount => @item.price, 
-    :customer => card.customer_id, 
+    :customer => @card.customer_id, 
     :currency => 'jpy', #日本円
   )
   redirect_to item_purchase_index_path(@item.id)
   # 購入確認画面に遷移
   end
 
+  private
 
+  def set_card
+    @item = Item.find(params[:id])
+  end
+
+  def card_present
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
 end

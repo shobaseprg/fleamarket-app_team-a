@@ -1,26 +1,16 @@
 class ItemsController < ApplicationController
-  before_action :set_current_user_items,only:[:i_OnSale,:i_trading,:i_SoldOut]
-  before_action :set_user,only:[:i_OnSale,:i_trading,:i_SoldOut]
+
   before_action :set_item, only: [:show,:edit,:update]
-
-  def i_OnSale #出品中のアクション
-
-  end
-
-  def i_trading  #取引中のアクション
-
-  end
-
-  def i_SoldOut    #売却済みのアクション
-
-  end
-
 
   def index
     @items1 = Item.where(parent_category_id:1).order("id DESC").last(10)
     @items2 = Item.where(parent_category_id:2).order("id DESC").last(10)
     @items3 = Item.where(parent_category_id:8).order("id DESC").last(10)
     @items4 = Item.where(parent_category_id:6).order("id DESC").last(10)
+  end
+
+  def set_price
+    @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
   end
 
   def new
@@ -30,7 +20,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
+    set_price
     if @item.save!
       redirect_to root_path
     else
@@ -54,7 +44,7 @@ class ItemsController < ApplicationController
  
   def update
     if @item.update(item_params)
-       @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
+      set_price
       redirect_to root_path
     else
       render :edit
@@ -99,6 +89,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
-
 end
