@@ -5,17 +5,18 @@ class CardsController < ApplicationController
 
   before_action :set_card, only: [:show,:pay]
   before_action :card_present,only:[:index,:destroy]
+  before_action :take_card,only:[:show,:pay]
+  before_action :set_api_key
+
   
   def index #CardのデータをPayjpに送って情報を取り出す
     if @card.present?
-      set_api_key
       set_customer
       set_card_information
     end
   end
 
   def create
-    set_api_key
     # credential.yamlからPayjp.api_keyを設定（秘密鍵）
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -38,7 +39,6 @@ class CardsController < ApplicationController
   end
 
   def destroy #PayjpとCardのデータベースを削除
-    set_api_key
     set_customer
     @customer.delete
     if @card.destroy #削除に成功した時にポップアップを表示します。
@@ -51,13 +51,10 @@ class CardsController < ApplicationController
   end
 
   def show 
-      take_card
-      #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
       if @card.blank?
         #登録された情報がない場合にカード登録画面に移動
         redirect_to cards_path
       else
-        set_api_key
         #保管した顧客IDでpayjpから情報取得
         set_customer
         #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
@@ -68,8 +65,6 @@ class CardsController < ApplicationController
   def pay
     @item.update(buyer_id: current_user.id)
     # 現在のユーザーを購入者に登録
-    take_card
-    set_api_key
     Payjp::Charge.create(
     :amount => @item.price, 
     :customer => @card.customer_id, 
