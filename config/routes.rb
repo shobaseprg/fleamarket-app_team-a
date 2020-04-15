@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :users, only: :show
+  
+  resources :addresses,only: [:index,:new,:create,:edit,:update,:destroy]
 
   resources :items do
     resources 'purchase' ,only: [:index]
@@ -19,7 +21,11 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index] 
 
-  resources :cards, only:[:index, :new, :create,:destroy]
+  resources :cards, only:[:index, :new, :create,:destroy,:show] do
+    member do
+      post 'pay'
+    end
+  end
 
 end
 
