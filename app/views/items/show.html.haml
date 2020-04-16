@@ -81,8 +81,12 @@
                 .buyBTN
                   = link_to "編集する",  edit_item_path(@item)
               - else
-                .buyBTN
-                  = link_to "購入する", card_path(@item.id)
+                - if user_signed_in?
+                  .buyBTN
+                    = link_to "購入する", card_path(@item.id)
+                - else
+                  .buyBTN
+                    = link_to "ログインして購入する",new_user_session_path
             - else
               .buyBTN
                 販売終了
