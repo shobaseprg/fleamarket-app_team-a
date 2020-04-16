@@ -10,9 +10,10 @@
         .purchaseConfirmation__main__content__item__inner
           .purchaseConfirmation__main__content__item__inner__box
             .purchaseConfirmation__main__content__item__inner__box__image
-              = image_tag "#{@item.item_images[0].image}", class: "item-main-img"
+              = image_tag "#{@item.item_images[0].image}", class: "item-main-img", size: "64x64"
             .purchaseConfirmation__main__content__item__inner__box__detail
               .purchaseConfirmation__main__content__item__inner__box__detail__name
+                = @item.name
               .purchaseConfirmation__main__content__item__inner__box__detail__price
                 .purchaseConfirmation__main__content__item__inner__box__detail__price__money              
                   = "¥" + "#{@item.price}" 
@@ -22,7 +23,6 @@
         .purchaseConfirmation__main__content__payment__price
           .purchaseConfirmation__main__content__payment__price__box
             .purchaseConfirmation__main__content__payment__price__box__text
-              = @item.name
               支払い金額
             .purchaseConfirmation__main__content__payment__price__box__money
               = "¥" + "#{@item.price}" 
