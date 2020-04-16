@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    if user_signed_in? && current_user.id == params[:id].to_i
+    if user_signed_in? && current_user.address.id == params[:id].to_i
       @address = Address.find(params[:id])
     else
       flash[:alert] = "他のユーザーの住所は変更できません"
