@@ -58,6 +58,9 @@ class UsersController < ApplicationController
       @todos = todos.reverse
       @saling_item_quantity = Item.where(seller_id: params[:id]).where(buyer_id: nil).where(auction_id: nil).length
 
+      @sale_items = Item.where(seller_id: current_user.id).where(buyer_id:nil).last(5)
+      @soldout_items = Item.where(seller_id: current_user.id).where.not(buyer_id:nil).last(5)
+
     else
       redirect_to root_path
       flash[:alert] = "異なるユーザーのマイページです"
@@ -65,8 +68,11 @@ class UsersController < ApplicationController
 
   end
 
+  #  販売商品表示用
     def sale_saling_items
+      # 販売者が自分で、購入者がいない
       @sale_items = Item.where(seller_id: current_user.id).where(buyer_id:nil).last(15)
+      # 販売者が自分で、購入者がいる
       @soldout_items = Item.where(seller_id: current_user.id).where.not(buyer_id:nil).last(15)
     end
 
@@ -83,5 +89,30 @@ class UsersController < ApplicationController
     def sale_all_soldout_items
       @title_kind = 2
       @all_soldout_items = Item.where(seller_id: current_user.id).where.not(buyer_id:nil)
+    end
+
+  # 購入商品表示用
+    def buy_trading_items
+      # 取引者が自分で、販売者が自分でない
+      @trading_items = Item.where(auction_id: current_user.id).where.not(seller_id:nil).last(15)
+      # 購入者が自分
+      @buyed_items = Item.where(buyer_id: current_user.id).last(15)
+    end
+
+    def buy_buyed_items
+      # 取引者が自分で、販売者が自分でない
+      @trading_items = Item.where(auction_id: current_user.id).where.not(seller_id:nil).last(15)
+      # 購入者が自分
+      @buyed_items = Item.where(buyer_id: current_user.id).last(15)
+    end
+
+    def buy_all_trading_items
+      @title_kind = 3
+      @all_trading_items =  Item.where(auction_id: current_user.id).where.not(seller_id:nil)
+    end
+
+    def buy_all_buyed_items
+      @title_kind = 4
+      @all_buyed_items = Item.where(buyer_id: current_user.id)
     end
 end

@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       get 'sale_soldout_items'
       get 'sale_all_saling_items'
       get 'sale_all_soldout_items'
+
+      get 'buy_trading_items'
+      get 'buy_buyed_items'
+      get 'buy_all_trading_items'
+      get 'buy_all_buyed_items'
     end
   end
   

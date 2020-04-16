@@ -1,11 +1,19 @@
 .categoryROOT
   .categoryROOT__title
-    - if @title_kind == 1
-      %p
-        出品中の商品
-    - else
-      %p
-        売却済の商品
+    - case  @title_kind
+      - when 1
+        %p
+          出品中の商品
+      - when 2
+        %p
+          売却済の商品
+      - when 3
+        %p
+          取引中の商品
+      - when 4
+        %p
+          購入済の商品
+      
 .goods__new
   .goods__new__item
     .goods__new__item__box#ladies-items
