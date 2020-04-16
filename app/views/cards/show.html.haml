@@ -37,7 +37,7 @@
             .purchaseConfirmation__main__content__payment__card__method__text
               支払い方法
             .purchaseConfirmation__main__content__payment__card__method__change
-              = link_to '変更する',"#", class: "change"
+              = link_to '変更する', cards_path, class: "change"
           .purchaseConfirmation__main__content__payment__card__info
             .purchaseConfirmation__main__content__payment__card__info__name
               クレジットカード
@@ -53,7 +53,7 @@
             .purchaseConfirmation__main__content__payment__address__method__text
               配送先
             .purchaseConfirmation__main__content__payment__address__method__change
-              = link_to '変更する',"#", class: "change"
+              = link_to '変更する', edit_address_path, class: "change"
           .purchaseConfirmation__main__content__payment__address__number
             = "〒" + "#{@address.postal_code}" 
           .purchaseConfirmation__main__content__payment__address__text
