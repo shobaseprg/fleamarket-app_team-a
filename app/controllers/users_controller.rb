@@ -73,4 +73,11 @@ class UsersController < ApplicationController
       @soldout_items = Item.where(seller_id: current_user.id).where.not(buyer_id:nil).last(15)
     end
 
+    def sale_all_saling_items
+      @all_sale_items = Item.where(seller_id: current_user.id).where(buyer_id:nil)
+    end
+
+    def sale_all_soldout_items
+      @all_soldout_items = Item.where(seller_id: current_user.id).where.not(buyer_id:nil)
+    end
 end

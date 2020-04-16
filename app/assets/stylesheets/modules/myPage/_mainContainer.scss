@@ -211,8 +211,6 @@ ul{
     padding-top:50px;
     display: flex;
     flex-wrap: wrap;
-
-    
     &__item-box{
       width: 20%;
       height: 200px;
@@ -240,6 +238,7 @@ ul{
         }
         &__image{
           margin: 0 auto;
+          margin-top:10px;
           display: block;
         }
         &__name{
