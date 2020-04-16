@@ -76,11 +76,16 @@
                   = link_to "", class: "a" do
                     %i.fa.fa-flag
                     不適切な商品の通報
-            -# - if user_signed_in? && current_user.id == params[:id].to_i
-            .buyBTN
-              = link_to "購入する", card_path(@item.id)
-            .buyBTN
-              = link_to "編集する",  edit_item_path(@item)
+            - if @item.buyer == nil
+              - if user_signed_in? && current_user.id == @item.seller.id
+                .buyBTN
+                  = link_to "編集する",  edit_item_path(@item)
+              - else
+                .buyBTN
+                  = link_to "購入する", card_path(@item.id)
+            - else
+              .buyBTN
+                販売終了
           / コメント欄
           .commentBox
             %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
