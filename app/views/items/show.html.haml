@@ -76,6 +76,7 @@
                   = link_to "", class: "a" do
                     %i.fa.fa-flag
                     不適切な商品の通報
+            -# - if user_signed_in? && current_user.id == params[:id].to_i
             .buyBTN
               = link_to "購入する", card_path(@item.id)
             .buyBTN

@@ -3,7 +3,7 @@ class CardsController < ApplicationController
 
   require 'payjp'
 
-  before_action :set_card, only: [:show,:pay]
+  before_action :set_item, only: [:show,:pay]
   before_action :card_present,only:[:index,:destroy]
   before_action :take_card,only:[:show,:pay]
   before_action :set_api_key
@@ -75,7 +75,7 @@ class CardsController < ApplicationController
 
   private
 
-  def set_card
+  def set_item
     @item = Item.find(params[:id])
   end
 
