@@ -33,19 +33,13 @@
     .boxes__box
       .boxes__box__inner
         .boxes__box__inner__text
-          = link_to "出品した商品ー出品中", "/users/1"
+          = link_to "出品した商品ー出品中・取引中", sale_saling_items_users_path
         = icon('fab','chevron-right')
   .boxes
     .boxes__box
       .boxes__box__inner
         .boxes__box__inner__text
-          = link_to "出品した商品ー取引中", "/users/1"
-        = icon('fab','chevron-right')
-  .boxes
-    .boxes__box
-      .boxes__box__inner
-        .boxes__box__inner__text
-          = link_to "出品した商品ー売却済", "/users/1"
+          = link_to "出品した商品ー売却済", sale_soldout_items_users_path
         = icon('fab','chevron-right')
   .boxes
     .boxes__box

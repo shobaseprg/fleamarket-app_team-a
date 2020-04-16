@@ -1,0 +1,36 @@
+.wrapper
+  = render "items/header"
+
+
+  .mypageMainContainer
+    .mypageMainContainer__leftContnet
+      = render partial: "mypageLeft"
+
+    .mypageMainContainer__rightContnet
+      .mypageMainContainer__rightContnet__initial
+        .box-title
+          出品した商品
+        %ul.tabs.jq-initial-item-tabs
+          %li.two-tab.jq-initial-item-tab
+            .tabMessage
+              販売中・取引中の商品
+          %li.two-tab.jq-initial-item-tab.activeTab
+            .tabMessage
+              売却済の商品
+        .box-contets
+          .box-content.non-active
+            - if @sale_items
+              - @sale_items.each do |item|
+                = item.name
+            - else
+              販売中・取引中の商品はありません。  
+          .box-content.non-active.active
+            - if @soldout_items
+              - @soldout_items.each do |item|
+                = item.name
+            - else
+              売却済の商品はありません。
+              
+  = render "items/bottom_banner"
+  = render "items/footer"
+  = render "items/sell_btn"

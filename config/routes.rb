@@ -4,7 +4,14 @@ Rails.application.routes.draw do
 
   root to: "items#index"
 
-  resources :users, only: :show
+  resources :users, only: :show do
+    collection do
+      get 'sale_saling_items'
+      get 'sale_soldout_items'
+      get 'sale_all_saling_items'
+      get 'sale_all_soldout_items'
+    end
+  end
   
   resources :addresses,only: [:index,:new,:create,:edit,:update,:destroy]
 

@@ -62,5 +62,15 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:alert] = "異なるユーザーのマイページです"
     end
+
   end
+
+    def sale_saling_items
+      @sale_items = Item.where(seller_id: current_user.id).where(buyer_id:nil).last(15)
+    end
+
+    def sale_soldout_items
+      @soldout_items = Item.where(seller_id: current_user.id).where.not(buyer_id:nil).last(15)
+    end
+
 end
