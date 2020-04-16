@@ -1,0 +1,60 @@
+.wrapper
+  = render "items/header"
+
+
+  .mypageMainContainer
+    .mypageMainContainer__leftContnet
+      = render partial: "mypageLeft"
+
+    .mypageMainContainer__rightContnet
+      .mypageMainContainer__rightContnet__initial
+        .box-title
+          購入した商品
+        %ul.tabs.jq-initial-item-tabs
+          %li.two-tab.jq-initial-item-tab.activeTab
+            .tabMessage
+              取引中の商品
+          %li.two-tab.jq-initial-item-tab
+            .tabMessage
+              購入済の商品
+        .box-contets
+          .box-content.non-active.active
+            - if @trading_items == true
+              .box-content__in
+                - @trading_items.each do |item|
+                  .box-content__in__item-box
+                    .box-content__in__item-box__inner 
+                      = link_to item_path(id: item.id) ,class:"box-content__in__item-box__inner__link" do
+                        .box-content__in__item-box__inner__image 
+                          = image_tag (item.item_images[0].image.url),size: "100x100" ,class: "box-content__in__item-box__inner__image "
+                        .box-content__in__item-box__inner__name
+                          = item.name
+                        .box-content__in__item-box__inner__price
+                          = item.price
+              .box-content__in__all-select
+                = link_to "すべて表示",buy_all_trading_items_users_path
+            - else
+              nothing
+          .box-content.non-active
+            - if @buyed_items
+              .box-content__in
+                - @buyed_items.each do |item|
+                  .box-content__in__item-box
+                    .box-content__in__item-box__inner
+                      .soldout_mark 
+                        購入済
+                      = link_to item_path(id: item.id) ,class:"box-content__in__item-box__inner__link" do
+                        .box-content__in__item-box__inner__image 
+                          = image_tag (item.item_images[0].image.url),size: "100x100" ,class: "box-content__in__item-box__inner__image "
+                        .box-content__in__item-box__inner__name
+                          = item.name
+                        .box-content__in__item-box__inner__price
+                          = item.price
+              .box-content__in__all-select
+                = link_to "すべて表示",buy_all_buyed_items_users_path
+            - else
+              noting
+        
+  = render "items/bottom_banner"
+  = render "items/footer"
+  = render "items/sell_btn"
