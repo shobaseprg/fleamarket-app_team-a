@@ -20,17 +20,41 @@
         .box-contets
           .box-content.non-active
             - if @sale_items
-              - @sale_items.each do |item|
-                = item.name
+              .box-content__in
+                - @sale_items.each do |item|
+                  .box-content__in__item-box
+                    .box-content__in__item-box__inner 
+                      = link_to item_path(id: item.id) ,class:"box-content__in__item-box__inner__link" do
+                        .box-content__in__item-box__inner__image 
+                          = image_tag (item.item_images[0].image.url),size: "100x100" ,class: "box-content__in__item-box__inner__image "
+                        .box-content__in__item-box__inner__name
+                          = item.name
+                        .box-content__in__item-box__inner__price
+                          = item.price
+              .box-content__in__all-select
+                = link_to "すべて表示",sale_all_saling_items_users_path
             - else
-              販売中・取引中の商品はありません。  
+              nothing
           .box-content.non-active.active
             - if @soldout_items
-              - @soldout_items.each do |item|
-                = item.name
+              .box-content__in
+                - @soldout_items.each do |item|
+                  .box-content__in__item-box
+                    .box-content__in__item-box__inner
+                      .soldout_mark 
+                        売却済
+                      = link_to item_path(id: item.id) ,class:"box-content__in__item-box__inner__link" do
+                        .box-content__in__item-box__inner__image 
+                          = image_tag (item.item_images[0].image.url),size: "100x100" ,class: "box-content__in__item-box__inner__image "
+                        .box-content__in__item-box__inner__name
+                          = item.name
+                        .box-content__in__item-box__inner__price
+                          = item.price
+              .box-content__in__all-select
+                = link_to "すべて表示",sale_all_soldout_items_users_path
             - else
-              売却済の商品はありません。
-              
+              noting
+        
   = render "items/bottom_banner"
   = render "items/footer"
   = render "items/sell_btn"

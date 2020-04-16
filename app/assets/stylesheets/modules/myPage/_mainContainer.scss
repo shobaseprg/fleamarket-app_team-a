@@ -223,6 +223,14 @@ ul{
         border: solid 1px gray; 
         padding-top:5px;
         position: relative;
+        .soldout_mark{
+          position: absolute;
+          top:30px;
+          left: 40px;
+          color:white;
+          z-index: 400;
+          background-color: red;
+        }
         &__link{
           position: absolute;
           top:0;

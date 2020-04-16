@@ -1,6 +1,11 @@
 .categoryROOT
   .categoryROOT__title
-    出品中の商品
+    - if @title_kind == 1
+      %p
+        出品中の商品
+    - else
+      %p
+        売却済の商品
 .goods__new
   .goods__new__item
     .goods__new__item__box#ladies-items
