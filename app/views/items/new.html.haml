@@ -125,8 +125,8 @@
                   \-
         .sell__main__content__button
           = f.submit "出品する",class:"sell__main__content__button__red"
-          %a.sell__main__content__button__white
-            もどる
+          = link_to "/" do
+            .sell__main__content__button__white 戻る
   %header.sell__footer
     %ul
       %li

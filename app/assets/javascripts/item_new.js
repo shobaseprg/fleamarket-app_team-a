@@ -23,17 +23,12 @@ $(function(){
   $('#image-box').on('change', '.js-file', function(e) {
     
     const targetIndex = $(this).parent().data('index');
-    const file = e.target.files[0]; //ファイル名とインデント０をfileに代入
+    const file = e.target.files[0];
 
 
     if(!file){
-      // const deleteTarget = $(`js-file_group[data-index="${targetIndex}"]`);
-      // console.log(deleteTarget);
       $(`.js-file_group[data-index=${targetIndex}]`).find(".js-remove").trigger("click");
       return false;
-      // const deleteTarget = $(`js-file_group[data-index="${targetIndex}"]`);
-      // $(".js-remove").trigger("click");
-      // return false;
     }
     
       var blobUrl = window.URL.createObjectURL(file);
