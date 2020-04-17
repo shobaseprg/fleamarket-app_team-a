@@ -19,7 +19,7 @@
               売却済の商品
         .box-contets
           .box-content.non-active.active
-            - if @sale_items
+            - if @sale_items == true
               .box-content__in
                 - @sale_items.each do |item|
                   .box-content__in__item-box
@@ -34,9 +34,9 @@
               .box-content__in__all-select
                 = link_to "すべて表示",sale_all_saling_items_users_path
             - else
-              nothing
+
           .box-content.non-active
-            - if @soldout_items
+            - if @soldout_items == true
               .box-content__in
                 - @soldout_items.each do |item|
                   .box-content__in__item-box
@@ -53,7 +53,7 @@
               .box-content__in__all-select
                 = link_to "すべて表示",sale_all_soldout_items_users_path
             - else
-              noting
+
         
   = render "items/bottom_banner"
   = render "items/footer"
