@@ -19,7 +19,7 @@
               購入済の商品
         .box-contets
           .box-content.non-active
-            - if @trading_items
+            - if @trading_items == true
               .box-content__in
                 - @trading_items.each do |item|
                   .box-content__in__item-box
@@ -34,9 +34,9 @@
               .box-content__in__all-select
                 = link_to "すべて表示",buy_all_trading_items_users_path
             - else
-              nothing
+
           .box-content.non-active.active
-            - if @buyed_items
+            - if @buyed_items == true
               .box-content__in
                 - @buyed_items.each do |item|
                   .box-content__in__item-box
@@ -53,7 +53,7 @@
               .box-content__in__all-select
                 = link_to "すべて表示",buy_all_buyed_items_users_path
             - else
-              noting
+
         
   = render "items/bottom_banner"
   = render "items/footer"
