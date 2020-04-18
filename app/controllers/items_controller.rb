@@ -2,8 +2,6 @@ class ItemsController < ApplicationController
   
   before_action :set_item, only: [:show,:edit,:update]
 
-  before_action :set_item, only: [:show,:edit,:update]
-
   def index
     @items1 = Item.where(parent_category_id:1).order("id DESC").last(10)
     @items2 = Item.where(parent_category_id:2).order("id DESC").last(10)

@@ -16,11 +16,6 @@ $(function(){
     return html;
   }
 
-  // let fileIndex = [1,2,3,4,5,6,7,8,9];
-  // lastIndex = $('.js-file_group:last').data('index');
-  // fileIndex.splice(0, lastIndex);
-
-
   $('.hidden-destroy').hide();
   
   $('#image-box').on('change', '.js-file', function(e) {
@@ -47,8 +42,6 @@ $(function(){
     } else {
       $('#image-box').append(buildFileField(fileIndex));
 
-      // fileIndex.shift();
-      // fileIndex.push(fileIndex[fileIndex.length - 1] )
     }
     }
   });
@@ -63,4 +56,3 @@ $(function(){
     if ((targetIndex == limitFileField ) || ($(".js-file_group").length >= 9)) ($('#image-box').append(buildFileField(fileIndex)));
   });
 });
-
