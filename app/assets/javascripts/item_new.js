@@ -1,5 +1,5 @@
 $(function(){
-  let fileIndex = 0
+  let fileIndex = 1
   const buildFileField = (num)=> {
     const html = `<div class="js-file_group" data-index="${num}">
                     <input class="js-file" type="file"
@@ -61,6 +61,7 @@ $(function(){
     $(this).parent().remove();
     $(`img[data-index="${targetIndex}"]`).remove();
     if (targetIndex == limitFileField ) $('#image-box').append(buildFileField(fileIndex));
+    if ($(".js-file_group").length >= 9)  $('#image-box').append(buildFileField(fileIndex));
   });
 });
 
