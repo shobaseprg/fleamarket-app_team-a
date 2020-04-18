@@ -78,6 +78,7 @@ class ItemsController < ApplicationController
     @items = self_progeny.map(&:items)
     # 配列の平坦化
     @items.flatten!
+    @items = Item.page(params[:page]).per(100)
   end
 
   def show

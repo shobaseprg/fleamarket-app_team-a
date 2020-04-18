@@ -9,7 +9,7 @@ class BrandsController < ApplicationController
 
   def show
     @brandsNAME = []
-    @items = Item.where(brand_id: params[:id]).order("id DESC")
+    @items = Item.where(brand_id: params[:id]).order("id DESC").page(params[:page]).per(100)
     @brandsNAME << Brand.find(params[:id]).name
   end
 
