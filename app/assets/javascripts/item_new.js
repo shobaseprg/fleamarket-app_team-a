@@ -60,8 +60,7 @@ $(function(){
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
     $(`img[data-index="${targetIndex}"]`).remove();
-    if (targetIndex == limitFileField ) $('#image-box').append(buildFileField(fileIndex));
-    if ($(".js-file_group").length >= 9)  $('#image-box').append(buildFileField(fileIndex));
+    if ((targetIndex == limitFileField ) || ($(".js-file_group").length >= 9)) ($('#image-box').append(buildFileField(fileIndex)));
   });
 });
 
