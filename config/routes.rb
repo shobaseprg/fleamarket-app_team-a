@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :users, only: :show
+  
+  resources :addresses,only: [:index,:new,:create,:edit,:update,:destroy]
 
   resources :items do
+    resources 'purchase' ,only: [:index]
     collection do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
@@ -14,12 +17,15 @@ Rails.application.routes.draw do
     member do
      get  'list_from_category'
     end
-    resources 'purchase' ,only: [:index]
   end
 
   resources :categories, only: [:index] 
 
-  resources :cards, only:[:index, :new, :create,:destroy]
+  resources :cards, only:[:index, :new, :create,:destroy,:show] do
+    member do
+      post 'pay'
+    end
+  end
 
 end
 
