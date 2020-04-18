@@ -37,21 +37,21 @@ class Item < ApplicationRecord
   # has_one :to_do, dependent: :destroy 
 
    with_options presence: true do
-     validates :name
-     validates :description_item 
-     validates :price
-     validates :category_id
-     validates :children_category_id
-     validates :parent_category_id
-     validates :brand_id
-     validates :condition_id
-     validates :ship_from_id
-     validates :shipping_charger_id
-     validates :shipping_method_id
-     validates :shipping_days_id
-     validates :sales_fee
-     validates :sales_profit
-     validates :seller_id
+    validates :name
+    validates :description_item 
+    validates :price
+    validates :category_id
+    validates :children_category_id
+    validates :parent_category_id
+    validates :brand_id
+    validates :condition_id
+    validates :ship_from_id
+    validates :shipping_charger_id
+    validates :shipping_method_id
+    validates :shipping_days_id
+    validates :sales_fee
+    validates :sales_profit
+    validates :seller_id
    end
 end
 
