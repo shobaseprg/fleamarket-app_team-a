@@ -55,5 +55,6 @@ class UsersController < ApplicationController
                   }
                 ]
     @todos = todos.reverse
+    @saling_item_quantity = Item.where(seller_id: params[:id]).where(buyer_id: nil).where(auction_id: nil).length
   end
-  end
+end

@@ -117,7 +117,7 @@
     .boxes__box
       .boxes__box__inner
         .boxes__box__inner__text
-          = link_to "支払い方法", "/users/1"
+          = link_to "支払い方法", cards_path
         = icon('fab','chevron-right')
   .boxes
     .boxes__box
@@ -141,7 +141,7 @@
     .boxes__box
       .boxes__box__inner
         .boxes__box__inner__text
-          = link_to "ログアウト", "/users/1"
+          = link_to "ログアウト", destroy_user_session_path ,method: :DELETE
         = icon('fab','chevron-right')
 
   

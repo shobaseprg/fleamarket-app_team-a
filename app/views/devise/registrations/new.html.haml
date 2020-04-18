@@ -1,0 +1,94 @@
+.signup
+  %header.signup__head
+    = link_to "/" do
+      = image_tag "header_logo.png", class: "sell__head__img",size: "150x65"
+  .signup__main
+    .signup__main__content
+      %h2.signup__main__content__head
+        会員情報入力
+      
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .signup__main__content__item
+          .signup__main__content__item__inner
+            .signup__main__content__item__inner__box
+              .field
+                .field-label 
+                  = f.label 'ニックネーム'
+                %span.form-require 必須
+                .field-input
+                  = f.text_field :nickname, class: "field-input-full", autofocus: true, autocomplete: "nickname", placeholder: "例）メルカリ太郎"
+              .field
+                .field-label
+                  = f.label 'メールアドレス'
+                %span.form-require 必須
+                .field-input
+                  = f.email_field :email, class: "field-input-full", autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+              .field
+                .field-label 
+                  = f.label 'パスワード'
+                  %span.form-require 必須
+                .field-input
+                  = f.password_field :password, class: "field-input-full", autocomplete: "off", autocomplete: "password", placeholder: "7文字以上の半角英数字"
+                .field-info
+                  ※ 英字と数字の両方を含めて設定してください
+              .field
+                .field-info-title 本人確認
+                .field-info-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません
+              .field
+                .field-label 
+                  = f.label 'お名前(全角)'
+                %span.form-require 必須
+                .field-name
+                  .field-input
+                    = f.text_field :family_name, class: "field-input-half", autofocus: true, autocomplete: "family_name", placeholder: "例）山田"
+                  .field-input
+                    = f.text_field :first_name, class: "field-input-half", autofocus: true, autocomplete: "first_name", placeholder: "例）綾"               
+              .field
+                .field-label 
+                  = f.label 'お名前カナ(全角)'
+                %span.form-require 必須
+                .field-name
+                  .field-input
+                    = f.text_field :family_name_reading, class: "field-input-half", autofocus: true, autocomplete: "family_name_reading", placeholder: "例）ヤマダ"  
+                  .field-input
+                    = f.text_field :first_name_reading, class: "field-input-half", autofocus: true, autocomplete: "first_name_reading", placeholder: "例）アヤ"               
+              .field
+                .field-label 
+                  = f.label '生年月日'
+                %span.form-require 必須
+                .birthday-select
+                  = raw sprintf(f.date_select( :birthday, use_two_digit_numbers: true, prompt: "--", start_year: Time.now.year, end_year: 1900, date_separator: '%s'), '年 ', '月 ') + '日'
+                .field-info
+                  ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+              .field
+                .field-label 
+                = f.label '携帯電話の番号'
+                %span.form-require 必須
+                = f.text_field :phone_number, class: "field-input-full", autocomplete: "phone_namber", placeholder: "携帯電話の番号を入力"
+                .field-info
+                  ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。               
+              .actions
+                = f.submit "登録", class: 'btn'
+              .form-info-footer
+                This site is protected by reCAPTCHA and the Google
+                %a{href:"https://policies.google.com/privacy", target:"_blank"} Privacy Policy
+                and
+                %a{href:"https://policies.google.com/terms", target:"_blank"} Terms of Service
+                apply.
+
+  %header.signup__footer
+    %ul
+      %li
+        = link_to "", target: "_blank" do
+          プライバシーポリシー
+      %li
+        = link_to "", target: "_blank" do
+          フリマ利用規約
+      %li
+        = link_to "", target: "_blank" do
+          特定商取引に関する表記
+    .signup__footer__logo
+      = link_to "/" do
+        = image_tag "footer_logo.png",size: "140x55"
+      %small
+        ©FURIMA

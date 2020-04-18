@@ -1,0 +1,18 @@
+.categoryROOT
+  .categoryROOT__title
+    カテゴリー
+  - @categorysNAME.each do |categoryNAME|
+    .categoryROOT__arrow
+      = ">"
+    .categoryROOT__name
+      = categoryNAME
+- @items.each do |item|
+  .items
+    = "商品名：#{item.name}"
+    = "価格：#{item.price}"
+    - selluser = User.find(item.seller_id)
+    = "出品者：#{selluser.nickname}"
+    = link_to "詳細", item_path(item.id)
+
+
+

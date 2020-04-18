@@ -1,16 +1,26 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/user";
 @import "mixin/_mixin_rightContnetForm";
 @import "modules/header";
-@import "modules/homes";
-@import "modules/goods";
+@import "modules/main";
+@import "modules/items";
 @import "modules/bottom_banner";
 @import "modules/footer";
 @import "modules/sell_btn";
+@import "modules/new";
 
+@import "modules/category_downlist";
+
+
+@import "modules/flash";
+@import "modules/purchase/index";
 @import "modules/myPage/mainContainer";
 @import "modules/myPage/leftContainer";
+@import "modules/categories";
 
-@import "modules/new";
-@import"categories";
+@import "card";
+@import "modules/item-show";
+
+@import "modules/category_all_items"
