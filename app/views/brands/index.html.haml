@@ -18,7 +18,7 @@
         .goods__new__item__box__category
           シャネル新着アイテム
         .goods__new__item__box__more
-          =link_to"もっと見る ＞",""
+          =link_to"もっと見る ＞","/brands/1"
       .goods__new__item__list
         - @items1.each do |item|
           = link_to item_path(id: item.id) ,class:"goods__new__item__list__show" do
@@ -41,7 +41,7 @@
         .goods__new__item__box__category
           ナイキ新着アイテム
         .goods__new__item__box__more
-          =link_to"もっと見る ＞",""
+          =link_to"もっと見る ＞","/brands/2"
       .goods__new__item__list
         - @items2.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
@@ -64,7 +64,7 @@
         .goods__new__item__box__category
           ルイヴィトン新着アイテム
         .goods__new__item__box__more
-          =link_to"もっと見る ＞",""
+          =link_to"もっと見る ＞","/brands/3"
       .goods__new__item__list
         - @items3.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
@@ -87,7 +87,7 @@
         .goods__new__item__box__category
           シュプリーム新着アイテム
         .goods__new__item__box__more
-          =link_to"もっと見る ＞",""
+          =link_to"もっと見る ＞","/brands/4"
       .goods__new__item__list
         - @items4.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
@@ -110,7 +110,7 @@
         .goods__new__item__box__category
           アディダス新着アイテム
         .goods__new__item__box__more
-          =link_to"もっと見る ＞",""
+          =link_to"もっと見る ＞","/brands/5"
       .goods__new__item__list
         - @items5.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do

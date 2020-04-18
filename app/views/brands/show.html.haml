@@ -1,10 +1,12 @@
-.categoryROOT
-  .categoryROOT__title
+= render "items/header"
+
+.root
+  .root__title
     ブランド
   - @brandsNAME.each do |brandsNAME|
-    .categoryROOT__arrow
+    .root__arrow
       = ">"
-    .categoryROOT__name
+    .root__name
       = brandsNAME
 .goods__new
   .goods__new__item
@@ -28,3 +30,7 @@
               .items__sold
                 .items__sold__inner
                   SOLD
+
+= render "items/bottom_banner"
+= render "items/footer"
+= render "items/sell_btn"

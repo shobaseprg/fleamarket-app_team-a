@@ -21,12 +21,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index] 
 
-  resources :brands, only: [:index] do
-    member do
-      get  'list'
-     end
-   end
-
+  resources :brands, only: [:index,:show] 
 
   resources :cards, only:[:index, :new, :create,:destroy,:show] do
     member do
