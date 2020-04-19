@@ -36,6 +36,17 @@
       vertical-align: top;
       font-weight: 600;
     }
+    .toggle{ 
+      position: relative;
+      .checkbox-field{
+        position: absolute;
+        right: 15px;
+        top: 45px;
+        .checkbox {
+          display: none;
+        }
+      }
+    }
     #user_birthday_1i {
       width: 76px;
       margin: 8px 0 0;
@@ -255,6 +266,17 @@
     .field-label{
       font-weight: bold;
       float: left;
+    }
+    .toggle{ 
+      position: relative;
+      .checkbox-field{
+        position: absolute;
+        right: 15px;
+        top: 45px;
+        .checkbox {
+          display: none;
+        }
+      }
     }
     .field-input-full {
       width: 100%;
