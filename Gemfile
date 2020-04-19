@@ -46,6 +46,9 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'capistrano-yarn'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
@@ -87,6 +90,5 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'active_hash'
 gem 'pry-rails'
-
-#gem 'therubyracer'
+gem 'kaminari'
 

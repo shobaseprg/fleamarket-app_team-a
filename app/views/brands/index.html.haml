@@ -1,0 +1,134 @@
+= render "items/header"
+
+.brands
+  .brands__main
+    .brands__main__title
+      %h3="ブランド一覧"
+
+    .brands__main__links
+      = link_to "シャネル", "#chanel"
+      = link_to "ナイキ", "#nike"
+      = link_to "ルイヴィトン", "#louisvuitton"
+      = link_to "シュプリーム", "#supreme"
+      = link_to "アディダス", "#adidas"
+
+  .goods__new
+    .goods__new__item
+      .goods__new__item__box#chanel
+        .goods__new__item__box__category
+          シャネル新着アイテム
+        .goods__new__item__box__more
+          =link_to"もっと見る ＞","/brands/1"
+      .goods__new__item__list
+        - @chanel.each do |item|
+          = link_to item_path(id: item.id) ,class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "184x184"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+
+      .goods__new__item__box#nike
+        .goods__new__item__box__category
+          ナイキ新着アイテム
+        .goods__new__item__box__more
+          =link_to"もっと見る ＞","/brands/2"
+      .goods__new__item__list
+        - @nike.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "184x184"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+
+      .goods__new__item__box#louisvuitton
+        .goods__new__item__box__category
+          ルイヴィトン新着アイテム
+        .goods__new__item__box__more
+          =link_to"もっと見る ＞","/brands/3"
+      .goods__new__item__list
+        - @louisvuitton.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "184x184"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+
+      .goods__new__item__box#supreme
+        .goods__new__item__box__category
+          シュプリーム新着アイテム
+        .goods__new__item__box__more
+          =link_to"もっと見る ＞","/brands/4"
+      .goods__new__item__list
+        - @supreme.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "184x184"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+
+      .goods__new__item__box#adidas
+        .goods__new__item__box__category
+          アディダス新着アイテム
+        .goods__new__item__box__more
+          =link_to"もっと見る ＞","/brands/5"
+      .goods__new__item__list
+        - @adidas.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "184x184"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+
+= render "items/bottom_banner"
+= render "items/footer"
+= render "items/sell_btn"

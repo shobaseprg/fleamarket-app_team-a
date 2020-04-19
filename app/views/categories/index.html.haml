@@ -14,16 +14,19 @@
         %h3{id: "category_#{category.id}", class: "categories__main__contents__title"}=category.name
         .categories__main__contents__body
           .categories__main__contents__body__category-all
-            = link_to "すべて"
+            = link_to list_from_category_item_path(category.id) do
+              = "すべて"
           - category.children.each do |category_child|
             .categories__main__contents__body__category-title
               = category_child.name
             .categories__main__contents__body__category-list
               .categories__main__contents__body__category-list__item
-                =link_to "すべて"
+                = link_to list_from_category_item_path(category_child.id) do
+                  = "すべて"
               - category_child.children.each do |category_grandchild|
                 .categories__main__contents__body__category-list__item
-                  =link_to category_grandchild.name
+                  = link_to list_from_category_item_path(category_grandchild.id) do
+                    = category_grandchild.name
 
 = render "items/bottom_banner"
 = render "items/footer"
