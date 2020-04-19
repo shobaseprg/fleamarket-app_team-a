@@ -3,10 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show,:edit,:update,:destroy]
 
   def index
-    @items1 = Item.where(parent_category_id:1).order("id DESC").last(10)
-    @items2 = Item.where(parent_category_id:2).order("id DESC").last(10)
-    @items3 = Item.where(parent_category_id:8).order("id DESC").last(10)
-    @items4 = Item.where(parent_category_id:6).order("id DESC").last(10)
+    @items_of_ladies = Item.where(parent_category_id:1).order("id DESC").last(10)
+    @items_of_mens = Item.where(parent_category_id:2).order("id DESC").last(10)
+    @items_of_electricAppliances = Item.where(parent_category_id:8).order("id DESC").last(10)
+    @items_of_toyHobby = Item.where(parent_category_id:6).order("id DESC").last(10)
   end
 
   def set_price
