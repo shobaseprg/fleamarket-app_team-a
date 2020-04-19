@@ -20,7 +20,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/brands/1"
       .goods__new__item__list
-        - @items1.each do |item|
+        - @chanel.each do |item|
           = link_to item_path(id: item.id) ,class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -43,7 +43,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/brands/2"
       .goods__new__item__list
-        - @items2.each do |item|
+        - @nike.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -66,7 +66,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/brands/3"
       .goods__new__item__list
-        - @items3.each do |item|
+        - @louisvuitton.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -89,7 +89,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/brands/4"
       .goods__new__item__list
-        - @items4.each do |item|
+        - @supreme.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -112,7 +112,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/brands/5"
       .goods__new__item__list
-        - @items5.each do |item|
+        - @adidas.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
