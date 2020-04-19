@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  
   before_action :set_item, only: [:show,:edit,:update]
 
   def index
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
   def set_price
     @item.update(sales_fee: @item.price/10, sales_profit: @item.price - (@item.price/10))
+
   end
 
   def new

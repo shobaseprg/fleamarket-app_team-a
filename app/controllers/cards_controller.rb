@@ -77,6 +77,7 @@ class CardsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+    @address = Address.find(params[:id])
   end
 
   def card_present
