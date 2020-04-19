@@ -1,7 +1,6 @@
 FactoryBot.define do
 
   factory :item do
-    id {"1"}
     name {"テレビ"}
     description_item {"テレビです"}
 

@@ -1,7 +1,6 @@
 FactoryBot.define do
 
   factory :user do
-    id{"1"}
     first_name{"山田"}
     family_name{"太郎"}
     first_name_reading{"ヤマダ"}
@@ -14,3 +13,5 @@ FactoryBot.define do
   end
 
 end
+
+lib/locales/ja.yml 
