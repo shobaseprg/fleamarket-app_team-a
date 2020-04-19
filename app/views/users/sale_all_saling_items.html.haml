@@ -1,0 +1,6 @@
+.wrapper
+  = render "items/header"
+  = render partial: "users/my-all-item-lists",locals: { all_sale_items: @all_sale_items} 
+  = render "items/bottom_banner"
+  = render "items/footer"
+  = render "items/sell_btn"
