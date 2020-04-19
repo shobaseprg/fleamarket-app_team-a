@@ -84,6 +84,7 @@ class ItemsController < ApplicationController
     @items = self_progeny.map(&:items)
     # 配列の平坦化
     @items.flatten!
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(100)
   end
 
   def show
