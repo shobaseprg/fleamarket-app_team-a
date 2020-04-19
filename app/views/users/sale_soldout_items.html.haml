@@ -19,7 +19,7 @@
               売却済の商品
         .box-contets
           .box-content.non-active
-            - if @sale_items == true
+            - if @sale_items
               .box-content__in
                 - @sale_items.each do |item|
                   .box-content__in__item-box
@@ -36,7 +36,7 @@
             - else
 
           .box-content.non-active.active
-            - if @soldout_items == true
+            - if @soldout_items
               .box-content__in
                 - @soldout_items.each do |item|
                   .box-content__in__item-box

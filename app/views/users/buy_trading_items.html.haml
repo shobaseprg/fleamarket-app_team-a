@@ -19,7 +19,7 @@
               購入済の商品
         .box-contets
           .box-content.non-active.active
-            - if @trading_items == true
+            - if @trading_items
               .box-content__in
                 - @trading_items.each do |item|
                   .box-content__in__item-box
@@ -36,7 +36,7 @@
             - else
 
           .box-content.non-active
-            - if @buyed_items == true
+            - if @buyed_items
               .box-content__in
                 - @buyed_items.each do |item|
                   .box-content__in__item-box

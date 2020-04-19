@@ -10,9 +10,10 @@
         .purchaseConfirmation__main__content__item__inner
           .purchaseConfirmation__main__content__item__inner__box
             .purchaseConfirmation__main__content__item__inner__box__image
-              = image_tag "#{@item.item_images[0].image}", class: "item-main-img"
+              = image_tag "#{@item.item_images[0].image}", class: "item-main-img", size: "64x64"
             .purchaseConfirmation__main__content__item__inner__box__detail
               .purchaseConfirmation__main__content__item__inner__box__detail__name
+                = @item.name
               .purchaseConfirmation__main__content__item__inner__box__detail__price
                 .purchaseConfirmation__main__content__item__inner__box__detail__price__money              
                   = "¥" + "#{@item.price}" 
@@ -22,7 +23,6 @@
         .purchaseConfirmation__main__content__payment__price
           .purchaseConfirmation__main__content__payment__price__box
             .purchaseConfirmation__main__content__payment__price__box__text
-              = @item.name
               支払い金額
             .purchaseConfirmation__main__content__payment__price__box__money
               = "¥" + "#{@item.price}" 
@@ -37,7 +37,7 @@
             .purchaseConfirmation__main__content__payment__card__method__text
               支払い方法
             .purchaseConfirmation__main__content__payment__card__method__change
-              = link_to '変更する',"#", class: "change"
+              = link_to '変更する', cards_path, class: "change"
           .purchaseConfirmation__main__content__payment__card__info
             .purchaseConfirmation__main__content__payment__card__info__name
               クレジットカード
@@ -53,13 +53,13 @@
             .purchaseConfirmation__main__content__payment__address__method__text
               配送先
             .purchaseConfirmation__main__content__payment__address__method__change
-              = link_to '変更する',"#", class: "change"
+              = link_to '変更する', edit_address_path, class: "change"
           .purchaseConfirmation__main__content__payment__address__number
-            = "〒" + "***-****"
+            = "〒" + "#{@address.postal_code.first(3)}" + "-" + "#{@address.postal_code.last(4)}" 
           .purchaseConfirmation__main__content__payment__address__text
-            大阪府 大阪市天王寺区 上本町1丁目 1-1-1
+            = ShipFrom.data[@address.prefectures.to_i - 1][:name] + @address.municipality + @address.block_number + @address.building
           .purchaseConfirmation__main__content__payment__address__name
-            やまだ あや
+            = @address.address_family_name + " " + @address.address_first_name
       .purchaseConfirmation__main__content__bottom
         .purchaseConfirmation__main__content__bottom__actions
           .btn 
