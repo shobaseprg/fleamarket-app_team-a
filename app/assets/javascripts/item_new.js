@@ -49,6 +49,7 @@ $(function(){
   $('#image-box').on('click', '.js-remove', function() {
     let limitFileField = $(".js-file_group:last").data("index");
     const targetIndex = $(this).parent().data('index')
+    console.log(targetIndex);
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();

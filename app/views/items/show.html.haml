@@ -80,6 +80,9 @@
               = link_to "購入する", card_path(@item.id)
             .buyBTN
               = link_to "編集する",  edit_item_path(@item)
+            - if user_signed_in? && current_user.id == @item.seller_id
+              .buyBTN
+                = link_to "削除する",  item_path(@item),method: :delete
           / コメント欄
           .commentBox
             %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
@@ -102,7 +105,7 @@
             = link_to "", class: "a" do
               %i.fa.fa-angle-left
               %span
-              前の商品　
+              前の商品
           %li
             = link_to "", class: "a" do
               %span 
