@@ -22,9 +22,9 @@ class Item < ApplicationRecord
   
 
 
-
   belongs_to :category,class_name:"Category",optional: true,foreign_key: "category_id"
   belongs_to :parent_category,class_name:"Category",optional: true,foreign_key: "parent_category_id"
+  belongs_to :children_category,class_name:"Category",optional: true,foreign_key: "children_category_id"
 
   belongs_to :seller, class_name: "User" , optional: true,foreign_key: "seller_id"
   belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"

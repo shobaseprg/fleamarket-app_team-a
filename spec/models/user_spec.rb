@@ -65,7 +65,7 @@ describe User do
       user = build(:user, first_name_reading: "")
       expect(user.valid?).to be_falsey
     end
-
+# --------------------------------------------------------
     it "自己紹介が１０００文字以上なら登録できないこと" do
       user = build(:user, self_introduction: Faker::Base.regexify("[あ]{1001}"))
       expect(user.valid?).to be_falsey
@@ -75,7 +75,7 @@ describe User do
       user = build(:user, self_introduction: Faker::Base.regexify("[あ]{1000}"))
       expect(user.valid?).to be_truthy
     end
-
+# -------------------------------------------------------
     it "パスワードが６文字なら登録できないこと" do
       user = build(:user, password: "12345a")
       expect(user.valid?).to be_falsey
@@ -90,6 +90,23 @@ describe User do
     it "パスワードが全て数字なら文字なら登録できないこと" do
       user = build(:user, password: "111111111")
       expect(user.valid?).to be_falsey
+    end
+
+    it "パスワードが全て数字なら文字なら登録できないこと" do
+      user = build(:user, password: "111111111")
+      expect(user.valid?).to be_falsey
+    end
+# ----------------------------------------------------------
+    it "重複したemailでは登録できないこと" do
+      user1 = create(:user,id:1,phone_number:"08011111111",email: "9@gmail.com")
+      user2 = build(:user,id:2,phone_number:"08022222222",email: "9@gmail.com")
+      expect(user2.valid?).to be_falsey
+    end
+
+    it "重複した電話番号では登録できないこと" do
+      user1 = create(:user,id:1,phone_number:"08011111111",email: "1@gmail.com")
+      user2 = build(:user,id:2,phone_number:"08011111111",email: "9@gmail.com")
+      expect(user2.valid?).to be_falsey
     end
     
   end
