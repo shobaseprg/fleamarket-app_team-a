@@ -21,13 +21,29 @@ describe ItemsController, type: :controller do
       expect(assigns(:ko)).to eq category14
       expect(assigns(:oya)).to eq category1
       # 上記で作った変数の中身と、アクションを経由して作成されたデータが同一であるかをチェック
-      binding.pry
     end
 
     it "show.html.hamlに遷移すること" do
       get :show, params:{ id: item.id}
       expect(response).to render_template :show
     end
-
   end
-end 
+
+  describe 'GET #index' do
+      let(:category1) { create(:category) }
+      let(:category_out_ladyes) { create(:category, id:2)}
+      # メンズカテゴリー
+      let(:category14) { create(:category, id: 14,name: "トップス",ancestry:"1") }
+      let(:category81) { create(:category, id: 81,name: "Tシャツ",ancestry:"1/14") }
+      let(:user){create(:user)}
+      let(:items_of_lady){create_list(:item,10,seller_id:user.id,parent_category_id:category1.id,children_category_id:category14.id,category_id:category81.id)}
+    
+    it "レディースのみをitems1に格納できているか。idの降順となっているか" do
+      items_of_lady
+      get :index
+        expect(assigns(:items1)).to match(items_of_lady.sort{ |a, b| b.id <=> a.id } )
+        binding.pry
+      end
+  end
+
+end
