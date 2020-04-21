@@ -6,6 +6,7 @@ FactoryBot.define do
     created_at{"2020-04-17 07:51:02"}
     updated_at{"2020-04-17 07:51:02"}
     item_id{"1"}
+
   end
 
 end
