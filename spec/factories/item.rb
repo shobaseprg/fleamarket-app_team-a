@@ -1,7 +1,7 @@
 FactoryBot.define do
 
   factory :item do
-    id{"1"}
+    sequence(:id){|n| "#{n}"}
     name {"テレビ"}
     description_item {"テレビです"}
 
