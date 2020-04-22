@@ -1,11 +1,23 @@
-.categoryROOT{
-  margin-top: 50px;
-  margin-bottom: 50px;
+.root{
+  margin: 50px 30px;
   display:flex;
+  font-size: 18px;
   &__title{
+    p{
+      font-size: 30px;
+
+    }
   }
   &__arrow{
     margin-left: 20px;
     margin-right: 20px;
   }
+}
+
+.pagination {
+  text-align: center;
+  background-color: whitesmoke;
+  font-size: 20px;
+  padding-bottom: 30px;
+  
 }

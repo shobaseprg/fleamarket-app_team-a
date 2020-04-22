@@ -11,7 +11,7 @@
             %h2.itemBox__name 
               = @item.name
             .itemBox__body
-              .itemBox__body__mainIMAGE{"data-src" => "#{@images[0].image}"}
+              .itemBox__body__mainIMAGE{"data-src": "#{@images[0].image}"}
                 -# カスタムデータ属性でitem_imageのimage(画像のファイル名)をdata-srcとして与えておく
                 = image_tag "#{@images[0].image}", class: "item-main-img"
                 -# 配列化してるので、このように取り出す
@@ -20,7 +20,7 @@
                   - i = 0
                   - while i < @imagesLENGTH
                     -# 画像の枚数だけ繰り返す
-                    %li.imageNUMBER{"data-src" => "#{@images[i].image}"}
+                    %li.imageNUMBER{"data-src": "#{@images[i].image}"}
                       = image_tag "#{@images[i].image}", class: "item-img"
                       - i +=  1
             / 商品値段
@@ -46,9 +46,9 @@
                   %tr
                     %th カテゴリー
                     %td
-                      = link_to @category.parent.parent.name,list_from_category_item_path(@category.parent.parent.id),class:"categroryLINK"
-                      = link_to @category.parent.name, list_from_category_item_path(@category.parent.id) ,class:"categroryLINK"
-                      = link_to @category.name, list_from_category_item_path(@category.id),class:"categroryLINK"
+                      = link_to @oya.name,list_from_category_item_path(@oya.id),class:"categroryLINK"
+                      = link_to @ko.name, list_from_category_item_path(@ko.id) ,class:"categroryLINK"
+                      = link_to @mago.name, list_from_category_item_path(@mago.id),class:"categroryLINK"
                   %tr
                     %th 商品の状態
                     %td 
@@ -76,10 +76,23 @@
                   = link_to "", class: "a" do
                     %i.fa.fa-flag
                     不適切な商品の通報
-            .buyBTN
-              = link_to "購入する", "#"
-            .buyBTN
-              = link_to "編集する",  edit_item_path(@item)
+            - if @item.buyer == nil
+              - if user_signed_in? && current_user.id == @item.seller.id
+                .buyBTN
+                  = link_to "編集する",  edit_item_path(@item)
+              - else
+                - if user_signed_in?
+                  .buyBTN
+                    = link_to "購入する", card_path(@item.id)
+                - else
+                  .buyBTN
+                    = link_to "ログインして購入する",new_user_session_path
+            - else
+              .buyBTN
+                販売終了
+            - if user_signed_in? && current_user.id == @item.seller_id
+              .buyBTN
+                = link_to "削除する",  item_path(@item),method: :delete
           / コメント欄
           .commentBox
             %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
@@ -102,7 +115,7 @@
             = link_to "", class: "a" do
               %i.fa.fa-angle-left
               %span
-              前の商品　
+              前の商品
           %li
             = link_to "", class: "a" do
               %span 

@@ -19,14 +19,11 @@
         .list-left__item-first
           = link_to 'カテゴリー', categories_path, class: "category-btn headerlink"
         .list-left__item-second
-          = link_to "ブランド", "#", class:"brand-btn headerlink"
+          = link_to "ブランド", brands_path, class:"brand-btn headerlink"
         .list-left__item-second
           = link_to "ホーム","/", class:"brand-btn headerlink"
         .list-left__item-second
-          %p ０３０４
-
-        -#= link_to '編集', edit_item_path(@item.ids)
-
+          %p 0414
       .list-right
         - if user_signed_in?
           .list-right__item

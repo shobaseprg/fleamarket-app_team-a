@@ -1,4 +1,5 @@
 $(function(){
+  let fileIndex = 1
   const buildFileField = (num)=> {
     const html = `<div class="js-file_group" data-index="${num}">
                     <input class="js-file" type="file"
@@ -6,6 +7,7 @@ $(function(){
                     id="item_item_images_attributes_${num}_image">
                     <span class="js-remove">削除</span>
                   </div>`;
+    fileIndex += 1
     return html;
   }
 
@@ -13,10 +15,6 @@ $(function(){
     const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   }
-
-  let fileIndex = [1,2,3,4,5,6,7,8,9];
-  lastIndex = $('.js-file_group:last').data('index');
-  fileIndex.splice(0, lastIndex);
 
   $('.hidden-destroy').hide();
   
@@ -39,23 +37,22 @@ $(function(){
       $('#previews').append(buildImg(targetIndex, blobUrl));
     let limitFileField = $(".js-file_group:last").data("index");
     
-    if(limitFileField >= 9 ){
+    if($(".js-file_group").length >= 10 ){
       return false;
     } else {
-      $('#image-box').append(buildFileField(fileIndex[0]));
-      fileIndex.shift();
-      fileIndex.push(fileIndex[fileIndex.length - 1] )
+      $('#image-box').append(buildFileField(fileIndex));
+
     }
     }
   });
 
   $('#image-box').on('click', '.js-remove', function() {
+    let limitFileField = $(".js-file_group:last").data("index");
     const targetIndex = $(this).parent().data('index')
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
     $(`img[data-index="${targetIndex}"]`).remove();
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    if ((targetIndex == limitFileField ) || ($(".js-file_group").length >= 9)) ($('#image-box').append(buildFileField(fileIndex)));
   });
 });
-

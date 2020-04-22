@@ -45,6 +45,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-yarn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
@@ -92,4 +96,6 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 
 #gem 'therubyracer'
+
+gem 'kaminari'
 

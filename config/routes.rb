@@ -7,9 +7,24 @@ Rails.application.routes.draw do
 
   root to: "items#index"
 
-  resources :users, only: :show
+  resources :users, only: :show do
+    collection do
+      get 'sale_saling_items'
+      get 'sale_soldout_items'
+      get 'sale_all_saling_items'
+      get 'sale_all_soldout_items'
+
+      get 'buy_trading_items'
+      get 'buy_buyed_items'
+      get 'buy_all_trading_items'
+      get 'buy_all_buyed_items'
+    end
+  end
+  
+  resources :addresses,only: [:index,:new,:create,:edit,:update,:destroy]
 
   resources :items do
+    resources 'purchase' ,only: [:index]
     collection do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
@@ -17,12 +32,17 @@ Rails.application.routes.draw do
     member do
      get  'list_from_category'
     end
-    resources 'purchase' ,only: [:index]
   end
 
   resources :categories, only: [:index] 
 
-  resources :cards, only:[:index, :new, :create,:destroy]
+  resources :brands, only: [:index,:show] 
+
+  resources :cards, only:[:index, :new, :create,:destroy,:show] do
+    member do
+      post 'pay'
+    end
+  end
 
 end
 
