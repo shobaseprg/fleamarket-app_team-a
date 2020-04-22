@@ -95,8 +95,19 @@
                 = link_to "削除する",  item_path(@item),method: :delete
           / コメント欄
           .commentBox
+            .comment-list
+              - @commentALL.each do |comment|
+                - if comment.user_id == current_user.id
+                  .comment-Me
+                    .comment-content
+                      = comment.comment
+                    .comment-user-name
+                      = comment.user.nickname                  
+                - else
+                  .comment-Other
+                    = comment.comment
             = form_with model:@comment ,class:"new_comment", local: true do |f|
-              = f.text_field :comment,id: "comment_body"
+              = f.text_area :comment,id: "comment_body",wrap: "soft"
               %p.noticeMsg
                 相手のことを考えて丁寧なコメントをこころがけましょう。
                 %br/

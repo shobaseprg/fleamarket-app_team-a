@@ -97,6 +97,7 @@ class ItemsController < ApplicationController
     @oya = @item.parent_category
     @comment = Comment.new
     # form_withを使用しているためからのモデルを送る
+  @commentALL = Comment.where(item_id:params[:id])
   end
 
 
