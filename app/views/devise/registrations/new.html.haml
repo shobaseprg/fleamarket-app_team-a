@@ -24,11 +24,18 @@
                 .field-input
                   = f.email_field :email, class: "field-input-full", autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
               .field
+              - if @sns_id.present?
+                = hidden_field_tag :sns_auth, true
+              - else
                 .field-label 
-                  = f.label 'パスワード'
+                  = f.label :password, 'パスワード'
                   %span.form-require 必須
+                  - if @minimum_password_length
+                    %em
+                      (#{@minimum_password_length} characters minimum)
+                  %br/
                 .field-input
-                  = f.password_field :password, class: "field-input-full", autocomplete: "off", autocomplete: "password", placeholder: "7文字以上の半角英数字"
+                  = f.password_field :password, autocomplete: "new-password", class: "field-input-full"  #autocomplete: "off", autocomplete: "password", placeholder: "7文字以上の半角英数字"
                 .field-info
                   ※ 英字と数字の両方を含めて設定してください
               .field
