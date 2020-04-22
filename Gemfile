@@ -87,5 +87,9 @@ gem 'binding_of_caller'
 gem 'active_hash'
 gem 'pry-rails'
 
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
+
 #gem 'therubyracer'
 
