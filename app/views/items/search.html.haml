@@ -31,12 +31,20 @@
   .detailed_search__main
     %p
       検索結果
-      .detailed_search__main__grid
+      .goods__new__item__list
         - @items.each do |item|
-          %ul.grid_box
-            %li.image
-              = link_to image_tag(item.item_images[0].image.url), item_path(id: item.id)
-            %li.name
-              = item.name
-            %li.price
-              = number_to_currency(item.price, unit: "¥", precision: 0)
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "158x158"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
