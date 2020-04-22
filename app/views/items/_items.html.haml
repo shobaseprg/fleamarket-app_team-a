@@ -14,7 +14,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/items/1/list_from_category"
       .goods__new__item__list
-        - @items1.each do |item|
+        - @items_of_ladies.each do |item|
           = link_to item_path(id: item.id) ,class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -37,7 +37,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/items/2/list_from_category"
       .goods__new__item__list
-        - @items2.each do |item|
+        - @items_of_mens.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -60,7 +60,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/items/8/list_from_category"
       .goods__new__item__list
-        - @items3.each do |item|
+        - @items_of_electricAppliances.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
@@ -83,7 +83,7 @@
         .goods__new__item__box__more
           =link_to"もっと見る ＞","/items/6/list_from_category"
       .goods__new__item__list
-        - @items4.each do |item|
+        - @items_of_toyHobby.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
             .goods__new__item__list__show__image
               = image_tag (item.item_images[0].image.url),size: "184x184"
