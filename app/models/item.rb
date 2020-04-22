@@ -30,6 +30,8 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
   belongs_to :auction, class_name: "User", optional: true,foreign_key: "auction_id"
 
+  has_many :comments, dependent: :destroy
+
 
    with_options presence: true do
     validates :name

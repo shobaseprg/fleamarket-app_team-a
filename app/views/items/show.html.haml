@@ -95,12 +95,8 @@
                 = link_to "削除する",  item_path(@item),method: :delete
           / コメント欄
           .commentBox
-            %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
-              %input{name: "utf8", type: "hidden", value: "✔︎"}/
-              %input{name: "authentictity_token", type: "hidden", value: "+tAmTX++F414Y5Zr+fy3UozWSptACIBHKxdgvgTNYJroBG48913gbcBArdUDwrerGulr7X557s8NaqOxZ7BXZA=="}/
-              %textarea#comment_body{name: "comment[body]", required: "required"}
-              
-                  
+            = form_with model:@comment ,class:"new_comment", local: true do |f|
+              = f.text_field :comment,id: "comment_body"
               %p.noticeMsg
                 相手のことを考えて丁寧なコメントをこころがけましょう。
                 %br/
