@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only: [:show,:edit,:update]
+  before_action :set_item, only: [:show,:edit,:update,:destroy]
 
   def index
-    @items1 = Item.where(parent_category_id:1).order("id DESC").last(10)
-    @items2 = Item.where(parent_category_id:2).order("id DESC").last(10)
-    @items3 = Item.where(parent_category_id:8).order("id DESC").last(10)
-    @items4 = Item.where(parent_category_id:6).order("id DESC").last(10)
+    @items_of_ladies = Item.where(parent_category_id:1).order("id DESC").last(10)
+    @items_of_mens = Item.where(parent_category_id:2).order("id DESC").last(10)
+    @items_of_electricAppliances = Item.where(parent_category_id:8).order("id DESC").last(10)
+    @items_of_toyHobby = Item.where(parent_category_id:6).order("id DESC").last(10)
   end
 
   def set_price
@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    
   end
  
   def update
@@ -84,6 +85,7 @@ class ItemsController < ApplicationController
     @items = self_progeny.map(&:items)
     # 配列の平坦化
     @items.flatten!
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(100)
   end
 
   def show
@@ -99,6 +101,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :children_category_id,:parent_category_id,:condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
+  
 
   def set_item
     @item = Item.find(params[:id])

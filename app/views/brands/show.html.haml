@@ -1,11 +1,13 @@
+= render "items/header"
+
 .root
   .root__title
-    カテゴリー
-  - @categorysNAME.each do |categoryNAME|
+    ブランド
+  - @brandsNAME.each do |brandsNAME|
     .root__arrow
       = ">"
     .root__name
-      = categoryNAME
+      = brandsNAME
 .goods__new
   .goods__new__item
     .goods__new__item__box
@@ -28,4 +30,8 @@
               .items__sold
                 .items__sold__inner
                   SOLD
-= paginate(@items) 
+= paginate(@items)
+
+= render "items/bottom_banner"
+= render "items/footer"
+= render "items/sell_btn"
