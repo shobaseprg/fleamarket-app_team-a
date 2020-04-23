@@ -48,8 +48,8 @@ describe ItemsController, type: :controller do
       items_of_mens
       # letは遅延評価のため呼び出す必要あり
       get :index
-        expect(assigns(:items1)).to match(items_of_lady.sort{ |a, b| b.id <=> a.id } )
-    end
+       expect(assigns(:items_of_ladies)).to match(items_of_lady.sort{ |a, b| b.id <=> a.id } )
+      end
     
     it "index.html.hamlに遷移すること" do
       get :index

@@ -14,12 +14,12 @@
                 .field-label
                   = f.label :email
                 .field-input
-                  = f.email_field :email, class: "field-input-full", autofocus: true, placeholder: "メールアドレス"
+                  = f.email_field :email, class: "field-input-full", id: "email",autofocus: true, placeholder: "メールアドレス"
               .field
                 .field-label
                   = f.label :password
                 .field-input
-                  = f.password_field :password, class: "field-input-full", autocomplete: "off", placeholder: "パスワード"
+                  = f.password_field :password, class: "field-input-full", id:"password",autocomplete: "off", placeholder: "パスワード"
               .actions
                 = f.submit "ログイン", class: 'btn'
   %header.login__footer
