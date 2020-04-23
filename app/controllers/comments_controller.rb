@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    @comment.update(comment: "出品者によって、このコメントは削除されました。
+                              下ネタはやめてください！")
     redirect_to item_path(@comment.item_id)
   end
 
