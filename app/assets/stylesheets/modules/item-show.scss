@@ -209,6 +209,10 @@ tr {
       }
     }
 
+// ===================================
+// コメント部分
+// ===================================
+
     .commentBox {
       padding: 24px;
       background-color: #fff;
@@ -223,7 +227,7 @@ tr {
             justify-content: flex-end;
               .comment-content{
               position: relative;
-              display: inline-block;
+              // display: inline-block;
               margin: 20px 20px 20px 0px;
               padding: 7px 10px;
               width: 70%;
@@ -232,6 +236,19 @@ tr {
               background:pink;
               min-height: 80px;
               word-wrap: break-word;
+              .comment-delete{
+
+                position: absolute;
+                background-color: red;
+                bottom:5px;
+                right: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                a{
+                color: white;
+                font-size: 12px;
+                }
+              }
               }
               .comment-content:before {
                 content: "";

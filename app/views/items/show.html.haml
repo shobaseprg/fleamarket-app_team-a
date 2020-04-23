@@ -101,6 +101,9 @@
                   .comment-Me
                     .comment-content
                       = comment.comment
+                      - if comment.item.seller_id == current_user.id
+                        .comment-delete
+                          = link_to '削除する', comment_path(comment.id) ,method: :delete
                     .comment-user-name
                       = comment.user.nickname                  
                 - else
@@ -109,6 +112,9 @@
                       = comment.user.nickname    
                     .comment-content-other
                       = comment.comment
+                      - if comment.item.seller_id == current_user.id
+                        .comment-delete
+                          = link_to '削除する', comment_path(comment.id) ,method: :delete
             = form_with model:@comment ,class:"new_comment", local: true do |f|
               = f.text_area :comment,id: "comment_body",wrap: "soft"
               %p.noticeMsg

@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments, only:[:destroy]
+
   resources :categories, only: [:index] 
 
   resources :brands, only: [:index,:show] 
