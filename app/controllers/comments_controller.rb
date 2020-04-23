@@ -1,9 +1,15 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.create(comment_params)
-
-
-    redirect_to item_path(params[:id])
+    @comment = Comment.new(comment_params)
+    @user_of_item = User.find(@comment.item.seller_id)
+    if @comment.save
+        respond_to do |format|
+        format.json
+      end
+    else
+      flash[:aleat] = "保存できていません"
+      redirect_to item_path(params[:id])
+    end
   end
 
   def destroy
