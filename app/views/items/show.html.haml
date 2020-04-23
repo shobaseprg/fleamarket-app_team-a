@@ -105,7 +105,10 @@
                       = comment.user.nickname                  
                 - else
                   .comment-Other
-                    = comment.comment
+                    .comment-user-name
+                      = comment.user.nickname    
+                    .comment-content-other
+                      = comment.comment
             = form_with model:@comment ,class:"new_comment", local: true do |f|
               = f.text_area :comment,id: "comment_body",wrap: "soft"
               %p.noticeMsg

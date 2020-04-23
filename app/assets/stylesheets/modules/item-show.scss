@@ -246,12 +246,40 @@ tr {
                 width: 100px;
                 display: flex;
                 align-items: center;
-
               }
           }
-        .comment-Other{
-
-        }
+          .comment-Other {
+            display: flex;
+            display: flex;
+            justify-content: flex-start;
+              .comment-content-other{
+                position: relative;
+                display: inline-block;
+                margin: 1.5em 0 1.5em 15px;
+                padding: 7px 10px;
+                width: 70%;
+                color: #555;
+                font-size: 16px;
+                background: #e0edff;
+                min-height: 80px;
+                word-wrap: break-word;
+              }
+              .comment-content-other:before {
+                content: "";
+                  position: absolute;
+                  top: 50%;
+                  left: -30px;
+                  margin-top: -15px;
+                  border: 15px solid transparent;
+                  border-right: 15px solid #e0edff;
+              }
+              .comment-user-name{
+                width: 100px;
+                display: flex;
+                align-items: center;
+              }
+          }
+       
       }
 
       .new_comment #comment_body {
