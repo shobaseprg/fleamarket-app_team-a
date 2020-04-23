@@ -92,5 +92,4 @@ gem 'active_hash'
 gem 'pry-rails'
 gem 'kaminari'
 gem 'ransack'
-gem 'rspec-rails'
 

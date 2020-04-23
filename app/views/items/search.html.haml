@@ -4,7 +4,6 @@
   .detailed_search__side
     = search_form_for(@search,url:search_items_path) do |f|
       .detailed_search__side__sort
-        = icon('fas','angle-down')
         = f.select( :sorts, {"並び替え": "id desc", "安い順": "price ask", "高い順": "price desc"},{onchange: "this.form.submit()"})
         
       .detailed_search__form
@@ -12,12 +11,9 @@
           %h3 詳細検索
         .detailed_search__form__group
           .detailed_search__form__group__label
-            = icon('fas', 'search-plus', class: "search-icon")
             %p キーワードを追加する
           = f.search_field :name_cont, placeholder: "キーワード検索"
-        .detailed_search__form__group
           .detailed_search__form__group__label
-            = icon('fas', 'search-plus', class: "search-icon")
             %p 価格
           .detailed_search__form__group__price
             = f.search_field :price_gteq, placeholder: "¥ Min"
