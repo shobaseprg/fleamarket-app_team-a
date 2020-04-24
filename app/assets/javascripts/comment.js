@@ -49,7 +49,7 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
-  })
+    })
   .done(function(comment_data){
     var html = new_comment(comment_data);
     $(".comment-list").append(html)
