@@ -25,8 +25,30 @@
           = f.submit "完了"
 
   .detailed_search__main
-    %p
-      検索結果
+    -if @items.count == 0
+      該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+      .detailed_search__main__title
+        新着商品
+      .goods__new__item__list
+        - @items_all.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "158x158"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+    - else
+      .detailed_search__main__result
+        検索結果
       .goods__new__item__list
         - @items.each do |item|
           = link_to item_path(id: item.id),class:"goods__new__item__list__show" do

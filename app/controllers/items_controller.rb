@@ -99,7 +99,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = @search.result
+    @items = @search.result.order("id DESC").page(params[:page]).per(100)
+    @items_all = Item.all.order("id DESC").page(params[:page]).per(100)
   end
 
   private
