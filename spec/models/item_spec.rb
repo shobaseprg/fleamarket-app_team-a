@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Item do
   describe '#create' do
-    it "正常な入力でパスすること" do
+    it "正常な入力でパスすること" do 
       item = build(:item)
       item.valid?
       expect(item.valid?).to be_truthy
