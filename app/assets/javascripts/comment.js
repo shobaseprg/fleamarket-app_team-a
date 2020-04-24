@@ -51,9 +51,7 @@ $(function(){
       contentType: false
   })
   .done(function(comment_data){
-    console.log(comment_data)
     var html = new_comment(comment_data);
-    console.log(html)
     $(".comment-list").append(html)
     $('#comment_body').val("");
     $('.comment-list').animate({ scrollTop: $('.comment-list')[0].scrollHeight});
