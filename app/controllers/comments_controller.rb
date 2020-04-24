@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
+  def update
     @comment = Comment.find(params[:id])
     @comment.update(comment: "出品者によって、このコメントは削除されました。
                               下ネタはやめてください！")
