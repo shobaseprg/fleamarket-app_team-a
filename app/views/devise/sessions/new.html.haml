@@ -14,12 +14,16 @@
                 .field-label
                   = f.label :email
                 .field-input
-                  = f.email_field :email, class: "field-input-full", autofocus: true, placeholder: "メールアドレス"
+                  = f.email_field :email, class: "field-input-full", id: "email",autofocus: true, placeholder: "メールアドレス"
               .field
                 .field-label
                   = f.label :password
-                .field-input
-                  = f.password_field :password, class: "field-input-full", autocomplete: "off", placeholder: "パスワード"
+                .field-input.toggle
+                  = f.password_field :password, class: "field-input-full", autocomplete: "off", placeholder: "パスワード", id:'password'
+                  .checkbox-field
+                    %input#js-passcheck.checkbox.js-password-toggle{type: "checkbox"}
+                    %label.btn-label.js-password-label{for: "js-passcheck"}
+                      %i.fas.fa-eye-slash{style: "font-size:20px;color:#808080"}
               .actions
                 = f.submit "ログイン", class: 'btn'
   %header.login__footer
