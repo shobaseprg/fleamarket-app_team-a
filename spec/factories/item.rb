@@ -1,13 +1,13 @@
 FactoryBot.define do
 
   factory :item do
-    id {"1"}
+    sequence(:id){|n| "#{n}"}
     name {"テレビ"}
     description_item {"テレビです"}
 
-    category_id {"81"}
+    category_id {"1"}
     parent_category_id {"1"}
-    children_category_id {"14"}
+    children_category_id {"1"}
 
     brand_id{"1"}
     condition_id{"1"}
@@ -17,14 +17,15 @@ FactoryBot.define do
     ship_from_id{"1"}
     shipping_days_id{"1"}
 
-    price{"3000"}
-    sales_fee{"300"}
-    sales_profit{"2700"}
+    price{3000}
+    sales_fee{300}
+    sales_profit{2700}
     seller_id{"1"}
     buyer_id{""}
     auction_id{""}
     created_at{"2020-04-17 07:51:02"}
     updated_at{"2020-04-17 07:51:02"}
+
   end
 
 end
