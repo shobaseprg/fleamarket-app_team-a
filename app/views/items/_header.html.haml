@@ -7,13 +7,11 @@
         = image_tag "header_logo.png", class: "image",size: "140x60"
         = link_to "",items_path
       .searchbox
-        %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
-          %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input.searchbox__input{name: "key", placeholder: "キーワードから探す"}
-          %button{type: "submit"}
-            .searchbox__icon
-              = image_tag "icon-search 1.png", size: "19x19"
-              %input{name: "authenticity_token", type: "hidden", value: ""}
+        = search_form_for(@search, url:search_items_path) do |f|
+          = f.text_field :name_cont, placeholder: 'キーワードから探す', class: "search"
+          = button_tag type: 'submit', class: "searchbox__icon" do
+            = image_tag(src= "icon-search 1.png", size: "19x19",class: "button")
+              
     .header__inner__nav
       .list-left
         .list-left__item-first

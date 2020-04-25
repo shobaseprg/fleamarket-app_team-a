@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   
   before_action :set_item, only: [:show,:edit,:update,:destroy]
 
+
   def index
     @items_of_ladies = Item.where(parent_category_id:1).order("id DESC").last(10)
     @items_of_mens = Item.where(parent_category_id:2).order("id DESC").last(10)
@@ -95,6 +96,11 @@ class ItemsController < ApplicationController
     @mago = @item.category
     @ko = @item.children_category
     @oya = @item.parent_category
+  end
+
+  def search
+    @items = @search.result.order("id DESC").page(params[:page]).per(100)
+    @items_all = Item.all.order("id DESC").page(params[:page]).per(100)
   end
 
   private

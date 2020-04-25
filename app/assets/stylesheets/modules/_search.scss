@@ -1,0 +1,22 @@
+.detailed_search{
+  margin: 40px auto 0;
+  width: 1250px;
+  padding: 0 0 40px;
+  overflow: hidden;
+
+  &__side{
+    float: left;
+    width: 300px;
+    margin: 0 40px;
+
+}
+  &__main{
+    &__title{
+    font-size: 25px;
+    padding-top: 40px;
+  }
+    &__result{
+      font-size: 25px;
+    } 
+  }
+}
