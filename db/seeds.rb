@@ -156,12 +156,12 @@ end
 
 @parents = Category.where(ancestry: nil)
 
-p = 0
+c = 0
 @parents.each do |parent|
-  children[p].each do |child|
+  children[c].each do |child|
     parent.children.create(name: child)
     end
-  p += 1
+  c += 1
 end
 
 g =0

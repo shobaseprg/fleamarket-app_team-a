@@ -1,0 +1,68 @@
+= render "header"
+
+.detailed_search
+  .detailed_search__side
+    = search_form_for(@search,url:search_items_path) do |f|
+      .detailed_search__side__sort
+        = f.select( :sorts, {"並び替え": "id desc", "安い順": "price ask", "高い順": "price desc"},{onchange: "this.form.submit()"})
+        
+      .detailed_search__form
+        .detailed_search__form__title
+          %h3 詳細検索
+        .detailed_search__form__group
+          .detailed_search__form__group__label
+            %p キーワードを追加する
+          = f.search_field :name_cont, placeholder: "キーワード検索"
+          .detailed_search__form__group__label
+            %p 価格
+          .detailed_search__form__group__price
+            = f.search_field :price_gteq, placeholder: "¥ Min"
+            %p 〜
+            = f.search_field :price_lteq, placeholder: "¥ Max"
+        .detailed_search__form__btns
+          .detailed_search__btn__grey
+            = link_to "クリア", search_items_path, type:"button"
+          = f.submit "完了"
+
+  .detailed_search__main
+    -if @items.count == 0
+      該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+      .detailed_search__main__title
+        新着商品
+      .goods__new__item__list
+        - @items_all.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "158x158"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD
+    - else
+      .detailed_search__main__result
+        検索結果
+      .goods__new__item__list
+        - @items.each do |item|
+          = link_to item_path(id: item.id),class:"goods__new__item__list__show" do
+            .goods__new__item__list__show__image
+              = image_tag (item.item_images[0].image.url),size: "158x158"
+            .goods__box__lists__list__anchor1__content
+              .goods__box__lists__list__anchor1__content__name
+                =item.name
+            .goods__box__lists__list__anchor1__content__description
+              %ul
+                %li
+                  = item.price
+                  円
+            -if item.buyer_id.present?
+              .items__sold
+                .items__sold__inner
+                  SOLD

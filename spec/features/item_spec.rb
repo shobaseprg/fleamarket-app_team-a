@@ -22,7 +22,6 @@ feature 'item', type: :feature do
     # ログインしたらルートに遷移する。
     click_on 'もっと見る ＞', match: :first
     expect(current_path).to eq list_from_category_item_path(1)
-    binding.pry
     page.first("#test").click
     click_on '購入する'
     expect(current_path).to eq cards_path

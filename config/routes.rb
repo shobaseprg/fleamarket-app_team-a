@@ -25,11 +25,19 @@ Rails.application.routes.draw do
     collection do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
+      get 'search'
     end
+
     member do
-     get  'list_from_category'
+      resources 'comments',only: [:create]
+    end
+
+    member do
+      get  'list_from_category'
     end
   end
+
+  resources :comments, only:[:update]
 
   resources :categories, only: [:index] 
 

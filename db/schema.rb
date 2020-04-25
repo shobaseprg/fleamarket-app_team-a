@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_055424) do
+ActiveRecord::Schema.define(version: 2020_04_19_034554) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_first_name", null: false
@@ -47,9 +47,13 @@ ActiveRecord::Schema.define(version: 2020_04_14_055424) do
   end
 
   create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "comment"
+    t.integer "item_id", null: false
+    t.integer "user_id", null: false
+    t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "evaluations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_055424) do
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["children_category_id"], name: "index_items_on_children_category_id"
+    t.index ["name"], name: "index_items_on_name"
     t.index ["parent_category_id"], name: "index_items_on_parent_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
@@ -140,6 +145,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_055424) do
     t.index ["transact_saler_id"], name: "index_users_transacts_on_transact_saler_id"
   end
 
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"

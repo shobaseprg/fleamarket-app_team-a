@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   
   before_action :set_item, only: [:show,:edit,:update,:destroy]
 
+
   def index
     @items_of_ladies = Item.where(parent_category_id:1).order("id DESC").last(10)
     @items_of_mens = Item.where(parent_category_id:2).order("id DESC").last(10)
@@ -95,12 +96,21 @@ class ItemsController < ApplicationController
     @mago = @item.category
     @ko = @item.children_category
     @oya = @item.parent_category
+    @comment = Comment.new
+    # form_withを使用しているためからのモデルを送る
+  @commentALL = Comment.where(item_id:params[:id])
+  end
+
+  def search
+    @items = @search.result.order("id DESC").page(params[:page]).per(100)
+    @items_all = Item.all.order("id DESC").page(params[:page]).per(100)
   end
 
   private
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :children_category_id,:parent_category_id,:condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
+
   
 
   def set_item
