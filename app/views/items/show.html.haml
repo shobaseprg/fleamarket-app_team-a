@@ -96,39 +96,41 @@
           / コメント欄
           .commentBox
             .comment-list
-              - @commentALL.each do |comment|
-                - if comment.user_id == current_user.id
-                  .comment-Me
-                    .comment-content
-                      = comment.comment
-                      .comment_create_at
-                        = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                      - if comment.item.seller_id == current_user.id
-                        .comment-delete
-                          = link_to '削除する', comment_path(comment.id) ,method: :patch
-                    .comment-user-name
-                      = comment.user.nickname                  
-                - else
-                  .comment-Other
-                    .comment-user-name
-                      = comment.user.nickname    
-                    .comment-content-other
-                      = comment.comment
-                      .comment_create_at
-                        = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                      - if comment.item.seller_id == current_user.id
-                        .comment-delete
-                          = link_to '削除する', comment_path(comment.id) ,method: :patch
-            = form_with model:@comment ,class:"new_comment", local: true do |f|
-              = f.text_area :comment,id: "comment_body",wrap: "soft"
-              %p.noticeMsg
-                相手のことを考えて丁寧なコメントをこころがけましょう。
+              - if user_signed_in?
+                - @commentALL.each do |comment|
+                  - if comment.user_id == current_user.id
+                    .comment-Me
+                      .comment-content
+                        = comment.comment
+                        .comment_create_at
+                          = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                        - if comment.item.seller_id == current_user.id
+                          .comment-delete
+                            = link_to '削除する', comment_path(comment.id) ,method: :patch
+                      .comment-user-name
+                        = comment.user.nickname                  
+                  - else
+                    .comment-Other
+                      .comment-user-name
+                        = comment.user.nickname    
+                      .comment-content-other
+                        = comment.comment
+                        .comment_create_at
+                          = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                        - if comment.item.seller_id == current_user.id
+                          .comment-delete
+                            = link_to '削除する', comment_path(comment.id) ,method: :patch
+            - if user_signed_in?              
+              = form_with model:@comment ,class:"new_comment", local: true do |f|
+                = f.text_area :comment,id: "comment_body",wrap: "soft"
+                %p.noticeMsg
+                  相手のことを考えて丁寧なコメントをこころがけましょう。
+                  %br/
+                  不快な言葉遣いなどは利用制限や退会処分となることがあります。
                 %br/
-                不快な言葉遣いなどは利用制限や退会処分となることがあります。
-              %br/
-              %button.commentBtn{name: "button", type: "submit"}
-                %i.fa.fa-comment
-                コメントする
+                %button.commentBtn{name: "button", type: "submit"}
+                  %i.fa.fa-comment
+                  コメントする
         / 前の商品、後ろの商品
         %ul.links
           %li
