@@ -50,5 +50,6 @@ class Item < ApplicationRecord
     validates :sales_profit
     validates :seller_id
    end
+
 end
 
