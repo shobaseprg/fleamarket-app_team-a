@@ -96,6 +96,9 @@ class ItemsController < ApplicationController
     @mago = @item.category
     @ko = @item.children_category
     @oya = @item.parent_category
+    @comment = Comment.new
+    # form_withを使用しているためからのモデルを送る
+  @commentALL = Comment.where(item_id:params[:id])
   end
 
   def search
@@ -107,6 +110,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description_item, :brand_id, :category_id, :children_category_id,:parent_category_id,:condition_id, :shipping_charger_id, :shipping_method_id, :ship_from_id, :shipping_days_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
+
   
 
   def set_item

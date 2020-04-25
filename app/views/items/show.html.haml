@@ -95,12 +95,32 @@
                 = link_to "削除する",  item_path(@item),method: :delete
           / コメント欄
           .commentBox
-            %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
-              %input{name: "utf8", type: "hidden", value: "✔︎"}/
-              %input{name: "authentictity_token", type: "hidden", value: "+tAmTX++F414Y5Zr+fy3UozWSptACIBHKxdgvgTNYJroBG48913gbcBArdUDwrerGulr7X557s8NaqOxZ7BXZA=="}/
-              %textarea#comment_body{name: "comment[body]", required: "required"}
-              
-                  
+            .comment-list
+              - @commentALL.each do |comment|
+                - if comment.user_id == current_user.id
+                  .comment-Me
+                    .comment-content
+                      = comment.comment
+                      .comment_create_at
+                        = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                      - if comment.item.seller_id == current_user.id
+                        .comment-delete
+                          = link_to '削除する', comment_path(comment.id) ,method: :patch
+                    .comment-user-name
+                      = comment.user.nickname                  
+                - else
+                  .comment-Other
+                    .comment-user-name
+                      = comment.user.nickname    
+                    .comment-content-other
+                      = comment.comment
+                      .comment_create_at
+                        = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                      - if comment.item.seller_id == current_user.id
+                        .comment-delete
+                          = link_to '削除する', comment_path(comment.id) ,method: :patch
+            = form_with model:@comment ,class:"new_comment", local: true do |f|
+              = f.text_area :comment,id: "comment_body",wrap: "soft"
               %p.noticeMsg
                 相手のことを考えて丁寧なコメントをこころがけましょう。
                 %br/
