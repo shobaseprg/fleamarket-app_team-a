@@ -2,7 +2,7 @@
   .category-downlist 
     .category-downlist__in#oya
       .ones{"data-next" => "1"}
-        -Category.roots.each do |category|
+        - Category.roots.each do |category|
           .category-downlist__in__one{"data-id" => "#{category.id}"}
             -# カテゴリーのidをカスタム属性のdata-idに格納
             = link_to category.name, list_from_category_item_path(category.id)

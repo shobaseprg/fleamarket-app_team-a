@@ -1,7 +1,6 @@
 $(function(){
   let btn = $(".category-btn")
   let category_downlists = $(".category-downlists")
-  let oya = $("#oya")
   valGlobal1 = "nextbox"; // メソッドを超えて使用するのでグローバル変数
 
   btn.hover(  // カテゴリーボタンに乗った時
