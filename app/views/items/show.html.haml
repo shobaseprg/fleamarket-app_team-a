@@ -98,60 +98,28 @@
             .comment-list
               - if user_signed_in?
                 - @commentALL.each do |comment|
-                  - if comment.user_id == current_user.id 
-                    -# コメントユーザーとログインユーザーが同一の場合
-                    .comment-Me                   
-                      - if comment.delete_check == 1
-                        -# 削除済の場合
-                        .comment-content
-                          出品者によりこのコメントは削除されました。
-                      - else
-                        -# 削除されていない場合
-                        .comment-content
-                          = comment.comment
-                          .comment_create_at
-                            = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                          - if comment.item.seller_id == current_user.id
-                            -# 出品者とログインユーザーが同一の場合
-                            - if comment.delete_check == 1
-                              -# 削除済の場合
-                              .comment-delete
-                                復元する
-                              .comment-delete
-                                完全に削除する
-                            - else
-                              -# 削除されていない場合
-                              .comment-delete
-                                = link_to '削除する', comment_path(comment.id) ,method: :patch
+                  - if comment.user_id == current_user.id
+                    .comment-Me
+                      .comment-content
+                        = comment.comment
+                        .comment_create_at
+                          = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                        - if comment.item.seller_id == current_user.id
+                          .comment-delete
+                            = link_to '削除する', comment_path(comment.id) ,method: :patch
                       .comment-user-name
                         = comment.user.nickname                  
                   - else
-                    -# コメントユーザーとログインユーザーが異なる場合
-                    .comment-Other  
+                    .comment-Other
                       .comment-user-name
-                        = comment.user.nickname                  
-                      - if comment.delete_check == 1
-                        -# 削除済の場合
-                        .comment-content-other
-                          出品者によりこのコメントは削除されました。
-                      - else
-                        -# 削除されていない場合
-                        .comment-content-other
-                          = comment.comment
-                          .comment_create_at
-                            = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                          - if comment.item.seller_id == current_user.id
-                            -# 出品者とログインユーザーが同一の場合
-                            - if comment.delete_check == 1
-                              -# 削除済の場合
-                              .comment-delete
-                                復元する
-                              .comment-delete
-                                完全に削除する
-                            - else
-                              -# 削除されていない場合
-                              .comment-delete
-                                = link_to '削除する', comment_path(comment.id) ,method: :patch
+                        = comment.user.nickname    
+                      .comment-content-other
+                        = comment.comment
+                        .comment_create_at
+                          = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                        - if comment.item.seller_id == current_user.id
+                          .comment-delete
+                            = link_to '削除する', comment_path(comment.id) ,method: :patch
             - if user_signed_in?              
               = form_with model:@comment ,class:"new_comment", local: true do |f|
                 = f.text_area :comment,id: "comment_body",wrap: "soft"

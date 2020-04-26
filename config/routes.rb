@@ -32,18 +32,12 @@ Rails.application.routes.draw do
       resources 'comments',only: [:create]
     end
 
-
     member do
       get  'list_from_category'
     end
   end
 
-  resources :comments, only:[:update,:destroy] do
-    member do
-      get 'restore'
-    end
-  end
-
+  resources :comments, only:[:update]
 
   resources :categories, only: [:index] 
 
