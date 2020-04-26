@@ -19,15 +19,15 @@ class CommentsController < ApplicationController
     redirect_to item_path(@comment.item_id)
   end
 
-  def reupdate
-    @comment = Comment.find(params[:id])
-    @comment.update(delete_check:0)
-    redirect_to item_path(@comment.item_id)
-  end
-
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    redirect_to item_path(@comment.item_id)
+  end
+
+  def restore
+    @comment = Comment.find(params[:id])
+    @comment.update(delete_check:0)
     redirect_to item_path(@comment.item_id)
   end
 

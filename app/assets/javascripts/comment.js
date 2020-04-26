@@ -15,6 +15,9 @@ $(function(){
         </div>
         <div class="comment-user-name">
           ${comment_data.user_nickname}
+          <div class="seller-display">
+          出品者
+          </div>
         </div>
       </div> 
       `
