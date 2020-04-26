@@ -8,15 +8,18 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_NAME_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
   VALID_KATAKANA_REGEX = /\A[ァ-ヶー－]+\z/
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
 
+  validates :nickname, presence: true, length: { maximum: 20 }
   validates :self_introduction, length: { maximum: 1000 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password, length: { minimum: 7 }, format: { with: VALID_PASSWORD_REGEX }
-  validates :phone_number,uniqueness: true, length: { maximum: 11 }
-  validates :first_name, format: { with: VALID_NAME_REGEX }
-  validates :family_name, format: { with: VALID_NAME_REGEX }
-  validates :first_name_reading, format: { with: VALID_KATAKANA_REGEX }
-  validates :family_name_reading, format: { with: VALID_KATAKANA_REGEX }
+  validates :password, presence: true, length: { minimum: 7 }, format: { with: VALID_PASSWORD_REGEX }
+  validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
+  validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }
+  validates :family_name, presence: true, format: { with: VALID_NAME_REGEX }
+  validates :first_name_reading, presence: true, format: { with: VALID_KATAKANA_REGEX }
+  validates :family_name_reading, presence: true, format: { with: VALID_KATAKANA_REGEX }
+  validates :birthday, presence: true
 
   has_many :saling_items, -> { where("seller_id is not NULL && buyer_id is NULL") }, class_name: "Item"
   has_many :auction_items, -> { where("seller_id is not NULL && auction_id is not NULL && buyer_id is NULL") }, class_name: "Item"

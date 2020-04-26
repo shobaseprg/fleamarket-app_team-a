@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  devise_scope :users do
+    get '/users', to: redirect("/users/sign_up")
+  end
+
   root to: "items#index"
 
   resources :users, only: :show do
