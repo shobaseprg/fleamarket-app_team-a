@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_034554) do
+ActiveRecord::Schema.define(version: 2020_04_14_055424) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_first_name", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_034554) do
   create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "user_id", null: false
+    t.integer "delete_check", default: 0
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,7 +103,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_034554) do
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["children_category_id"], name: "index_items_on_children_category_id"
-    t.index ["name"], name: "index_items_on_name"
     t.index ["parent_category_id"], name: "index_items_on_parent_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
