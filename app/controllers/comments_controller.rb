@@ -14,10 +14,14 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(comment: "出品者によって、このコメントは削除されました。
-                              下ネタはやめてください！")
+    @comment.update(delete_check:1)
     redirect_to item_path(@comment.item_id)
   end
+
+  def reupdate
+    @comment = Comment.find(params[:id])
+    @comment.update(delete_check:0)
+    redirect_to item_path(@comment.item_id)
 
 private
   def comment_params
