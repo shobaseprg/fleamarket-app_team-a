@@ -28,16 +28,9 @@
                 .input-error
                   = resource.errors.full_messages_for(:email)[0]
               .field
-              - if @sns_id.present?
-                = hidden_field_tag :sns_auth, true
-              - else
                 .field-label 
                   = f.label :password, 'パスワード'
                   %span.form-require 必須
-                  - if @minimum_password_length
-                    %em
-                      (#{@minimum_password_length} characters minimum)
-                  %br/
                 .field-input.toggle
                   = f.password_field :password, class: "field-input-full", autocomplete: "off", autocomplete: "password", placeholder: "7文字以上の半角英数字", id:'password'
                   .checkbox-field
