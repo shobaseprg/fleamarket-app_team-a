@@ -28,9 +28,9 @@ Rails.application.routes.draw do
       get 'search'
     end
 
-    member do
-      resources 'comments',only: [:create]
-    end
+    # member do
+    #   resources 'comments',only: [:create]
+    # end
 
 
     member do
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :comments, only:[:update,:destroy] do
+  resources :comments, only:[:create,:update,:destroy] do
     member do
       get 'restore'
     end
