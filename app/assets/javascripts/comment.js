@@ -10,7 +10,7 @@ $(function(){
             ${comment_data.created_at}
           </div>
           <div class="comment-delete">
-            <a rel="nofollow" data-method="delete" href="/comments/${comment_data.id}">削除する</a>
+            <a rel="nofollow" data-method="patch" href="/comments/${comment_data.id}">削除する</a>
           </div>
         </div>
         <div class="comment-user-name">
