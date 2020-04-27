@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @user_of_item = User.find(@comment.item.seller_id)
+    @seller_of_item = User.find(@comment.item.seller_id)
     if @comment.save
         respond_to do |format|
         format.json
@@ -26,7 +26,9 @@ class CommentsController < ApplicationController
 
   def restore
     @comment.update(delete_check:0)
-    redirect_to item_path(@comment.item_id)
+    @seller_of_item = User.find(@comment.item.seller_id)
+    respond_to do |format|
+    format.json
   end
 
 private

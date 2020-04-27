@@ -107,12 +107,7 @@
                     .comment-Me.comment-one-block{data:{index: comment.id}}                   
                       - if comment.delete_check == 1   # 削除済の場合
                         .comment-content
-                          出品者によりこのコメントは削除されました。
-                          - if comment.item.seller == current_user   # 出品者とログインユーザーが等しい場合
-                            .comment-restore
-                              = link_to "復元する",restore_comment_path(comment.id)
-                            .comment-delete.complete-delete{data:{index: comment.id}}     
-                              = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete,class: "complete-delete"
+                          = render 'items/template_comment/comment_delete_restore_btn',comment: comment 
                       - else   # 削除されていない場合
                         .comment-content
                           = comment.comment
@@ -121,30 +116,16 @@
                           - if comment.item.seller == current_user
                             .comment-delete.me-pre-delete{data:{index: comment.id}}     
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
-                      .comment-user-name
-                        = comment.user.nickname
-                        - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合
-                          .seller-display
-                            出品者
-                        
+                      = render 'items/template_comment/comment_name',comment: comment                    
                   - else 
                     -#   ===================================
                     -#   コメントユーザーとログインユーザーが異なる場合の場合  
                     -#   ===================================
-                    .comment-Other.comment-one-block{data:{index: comment.id}}     
-                      .comment-user-name
-                        = comment.user.nickname  
-                        - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合
-                          .seller-display
-                            出品者                
-                      - if comment.delete_check == 1    # 削除済の場合
+                    .comment-Other.comment-one-block{data:{index: comment.id}}    
+                      = render 'items/template_comment/comment_name',comment: comment               
+                      - if comment.delete_check == 1   # 削除済の場合
                         .comment-content-other
-                          出品者によりこのコメントは削除されました。
-                          - if comment.item.seller == current_user    # 出品者とログインユーザーが等しい場合
-                            .comment-restore
-                              = link_to "復元する",restore_comment_path(comment.id)
-                            .comment-delete.complete-delete{data:{index: comment.id}}     
-                              = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete,class: "complete-delete"
+                          = render 'items/template_comment/comment_delete_restore_btn',comment: comment               
                       - else    # 削除されていない場合
                         .comment-content-other
                           = comment.comment

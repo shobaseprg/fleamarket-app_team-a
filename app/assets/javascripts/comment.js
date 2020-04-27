@@ -1,6 +1,6 @@
 $(function(){
 // ===================================
-// 新規コメント用フォーム
+// 新規コメント表示用
 // ===================================
   function new_comment(comment_data){
     var HTML_content_time = 
@@ -34,7 +34,7 @@ $(function(){
         </div>
       </div> 
       `
-    if (comment_data.item_user.id == comment_data.user_id){
+    if (comment_data.item_seller.id == comment_data.user_id){
         // 出品者とコメントしたユーザーが等しい場合
       var html = HTML_content_time + HTML_deleteBtn + HTML_nickname + HTML_sellerMark + HTML_endDiv
     }else{
@@ -46,7 +46,7 @@ $(function(){
   }
 
 // ===================================
-// 仮削除用フォーム
+// 仮削除表示用
 // ===================================
 
 function PLEdelete(index){
@@ -57,7 +57,7 @@ function PLEdelete(index){
   <a href="/comments/${index}/restore">復元する</a>
   </div>
   <div class="comment-delete complete-delete" data-index=${index}>
-  <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
+  <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する</a>
   </div>`
 
 return html;
@@ -91,13 +91,21 @@ return html;
 });
 
 // ===================================
-// 完全削除した場合
+// 復元した場合
 // ===================================
-  $(".comment-list").on('click','.complete-delete',function(e){
+$(".comment-list").on('click',".comment-restore",function(e){
   e.preventDefault()
-  var index = $(this).data("index");
-  $(`.comment-one-block[data-index=${index}]`).remove();
-  });
+  var index = $(this).data("index")
+  $.ajax({
+    url: "/comments/${index}/restore",
+    type: "POST",
+    data: formData,
+    dataType: 'json',
+    processData: false,
+    contentType: false
+  })
+});
+  
 
 // ===================================
 // 自分のコメントを仮削除した場合
@@ -122,5 +130,14 @@ var content =  $(`.comment-one-block[data-index=${index}]`).find(".comment-conte
 content.empty();
 content.append(PLEdelete(index));
 });
+
+// ===================================
+// 完全削除した場合
+// ===================================
+$(".comment-list").on('click','.complete-delete',function(e){
+  e.preventDefault()
+  var index = $(this).data("index");
+  $(`.comment-one-block[data-index=${index}]`).remove();
+  });
 
 })
