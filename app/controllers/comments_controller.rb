@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(delete_check:1)
-    redirect_to item_path(@comment.item_id)
   end
 
   def destroy

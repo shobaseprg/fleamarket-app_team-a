@@ -114,7 +114,7 @@
                           .comment_create_at
                             = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
                           - if comment.item.seller == current_user
-                            .comment-delete{"data-index" => "#{comment.id}"}      
+                            .comment-delete.me-pre-delete{"data-index" => "#{comment.id}"}      
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
                       .comment-user-name
                         = comment.user.nickname
@@ -143,7 +143,7 @@
                           .comment_create_at
                             = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
                           - if comment.item.seller == current_user   # 出品者とログインユーザーが等しい場合
-                            .comment-delete
+                            .comment-delete.other-pre-delete{"data-index" => "#{comment.id}"}  
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
 
             - if user_signed_in?              
