@@ -1,9 +1,7 @@
 $(function(){
-
 // ===================================
-// コメント作成
+// 新規コメント用フォーム
 // ===================================
-
   function new_comment(comment_data){
     var HTML_content_time = 
       `
@@ -19,7 +17,7 @@ $(function(){
           <a rel="nofollow" data-method="patch" href="/comments/${comment_data.id}">削除する</a>
         </div>
         `
-     var HTML_nickname =
+    var HTML_nickname =
         `
         </div>
         <div class="comment-user-name">
@@ -47,6 +45,28 @@ $(function(){
     return html;
   }
 
+// ===================================
+// 仮削除用フォーム
+// ===================================
+
+function PLEdelete(index){
+  var html = 
+  `
+  出品者によりこのコメントは削除されました。
+  <div class="comment-restore">
+  <a href="/comments/${index}/restore">復元する</a>
+  </div>
+  <div class="comment-delete complete-delete" data-index=${index}>
+  <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
+  </div>`
+
+return html;
+};
+
+
+// ===================================
+// コメント作成した場合
+// ===================================
   $('.new_comment').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);
@@ -71,7 +91,7 @@ $(function(){
 });
 
 // ===================================
-// 完全削除
+// 完全削除した場合
 // ===================================
   $(".comment-list").on('click','.complete-delete',function(e){
   e.preventDefault()
@@ -80,57 +100,27 @@ $(function(){
   });
 
 // ===================================
-// 自分のコメントを仮削除
+// 自分のコメントを仮削除した場合
 // ===================================
-function PLEdelete(index){
-    var html = 
-    `
-    出品者によりこのコメントは削除されました。
-    <div class="comment-restore">
-    <a href="/comments/${index}/restore">復元する</a>
-    </div>
-    <div class="comment-delete complete-delete" data-index=${index}>
-    <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
-    </div>`
-
-
- return html;
-};
 
 $(".comment-list").on('click',".me-pre-delete",function(e){
   e.preventDefault()
   var index = $(this).data("index");
   var content =  $(`.comment-one-block[data-index=${index}]`).find(".comment-content");
   content.empty();
-  var html = PLEdelete(index);
-  content.append(html);
+  content.append(PLEdelete(index));
 });
 
 // ===================================
-// 他人のコメントを仮削除
+// 他人のコメントを仮削除した場合
 // ===================================
-function PLEdelete(index){
-  var html = 
-  `
-  出品者によりこのコメントは削除されました。
-  <div class="comment-restore">
-  <a href="/comments/${index}/restore">復元する</a>
-  </div>
-  <div class="comment-delete complete-delete" data-index=${index}>
-  <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
-  </div>`
-
-
-return html;
-};
 
 $(".comment-list").on('click',".other-pre-delete",function(e){
 e.preventDefault()
 var index = $(this).data("index");
 var content =  $(`.comment-one-block[data-index=${index}]`).find(".comment-content-other");
 content.empty();
-var html = PLEdelete(index);
-content.append(html);
+content.append(PLEdelete(index));
 });
 
 })

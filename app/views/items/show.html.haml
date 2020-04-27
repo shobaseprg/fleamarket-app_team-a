@@ -93,12 +93,17 @@
             - if user_signed_in? && current_user.id == @item.seller_id
               .buyBTN
                 = link_to "削除する",  item_path(@item),method: :delete
-          / コメント欄
+          -# ===================================
+          -# コメント全体
+          -# ===================================
           .commentBox
             .comment-list
               - if user_signed_in?
                 - @commentALL.each do |comment|
-                  - if comment.user_id == current_user.id    # コメントユーザーとログインユーザーが同一の場合
+                  - if comment.user_id == current_user.id   
+                    -#   ===================================
+                    -#   コメントユーザーとログインユーザーが同一の場合  
+                    -#   ===================================
                     .comment-Me.comment-one-block{data:{index: comment.id}}                   
                       - if comment.delete_check == 1   # 削除済の場合
                         .comment-content
@@ -122,7 +127,10 @@
                           .seller-display
                             出品者
                         
-                  - else  # コメントユーザーとログインユーザーが異なる場合
+                  - else 
+                    -#   ===================================
+                    -#   コメントユーザーとログインユーザーが異なる場合の場合  
+                    -#   ===================================
                     .comment-Other.comment-one-block{data:{index: comment.id}}     
                       .comment-user-name
                         = comment.user.nickname  
@@ -145,7 +153,9 @@
                           - if comment.item.seller == current_user   # 出品者とログインユーザーが等しい場合
                             .comment-delete.other-pre-delete{data:{index: comment.id}}     
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
-
+            -#   ===================================
+            -#   投稿フォーム
+            -#   ===================================
             - if user_signed_in?              
               = form_with model:@comment ,class:"new_comment", local: true do |f|
                 = f.text_area :comment,id: "comment_body",wrap: "soft"
@@ -159,6 +169,8 @@
                 %button.commentBtn{name: "button", type: "submit"}
                   %i.fa.fa-comment
                   コメントする
+
+
         / 前の商品、後ろの商品
         %ul.links
           %li
