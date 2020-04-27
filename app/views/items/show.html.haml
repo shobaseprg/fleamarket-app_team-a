@@ -107,7 +107,7 @@
                             .comment-restore
                               = link_to "復元する",restore_comment_path(comment.id)
                             .comment-delete
-                              = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete
+                              = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete,class: "complete-delete"
                       - else   # 削除されていない場合
                         .comment-content
                           = comment.comment
@@ -136,7 +136,7 @@
                             .comment-restore
                               = link_to "復元する",restore_comment_path(comment.id)
                             .comment-delete
-                              = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete
+                              = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete,class: "complete-delete"
                       - else    # 削除されていない場合
                         .comment-content-other
                           = comment.comment

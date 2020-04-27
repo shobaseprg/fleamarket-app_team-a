@@ -28,10 +28,6 @@ Rails.application.routes.draw do
       get 'search'
     end
 
-    # member do
-    #   resources 'comments',only: [:create]
-    # end
-
 
     member do
       get  'list_from_category'
