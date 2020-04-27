@@ -89,7 +89,7 @@ function PLEdelete(index){
     <div class="comment-restore">
     <a href="/comments/${index}/restore">復元する</a>
     </div>
-    <div class="comment-delete complete-delete" data-index=${index}">
+    <div class="comment-delete complete-delete" data-index=${index}>
     <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
     </div>`
 
@@ -116,7 +116,7 @@ function PLEdelete(index){
   <div class="comment-restore">
   <a href="/comments/${index}/restore">復元する</a>
   </div>
-  <div class="comment-delete complete-delete" data-index="${index}">
+  <div class="comment-delete complete-delete" data-index=${index}>
   <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
   </div>`
 
