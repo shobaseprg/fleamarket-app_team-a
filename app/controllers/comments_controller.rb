@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
     format.json
   end
+end
 
 private
   def comment_params
