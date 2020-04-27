@@ -53,7 +53,7 @@ function PLEdelete(index){
   var html = 
   `
   出品者によりこのコメントは削除されました。
-  <div class="comment-restore">
+  <div class="comment-restore data-index=${comment_data.id}>
   <a href="/comments/${index}/restore">復元する</a>
   </div>
   <div class="comment-delete complete-delete" data-index=${index}>
@@ -96,14 +96,23 @@ return html;
 $(".comment-list").on('click',".comment-restore",function(e){
   e.preventDefault()
   var index = $(this).data("index")
+  var url = `/comments/${index}/restore`
   $.ajax({
-    url: "/comments/${index}/restore",
-    type: "POST",
-    data: formData,
-    dataType: 'json',
-    processData: false,
-    contentType: false
+    url: url,
+    data: {
+      id: index
+  },
+    type: "GET",
+    dataType: 'json'
   })
+  .done(function(comment_data){
+    var html = new_comment(comment_data);
+    console.log("ok")
+  })
+  .fail(function() {
+    alert("メッセージ送信に失敗しました");
+  });
+
 });
   
 
