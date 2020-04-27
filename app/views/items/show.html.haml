@@ -99,7 +99,7 @@
               - if user_signed_in?
                 - @commentALL.each do |comment|
                   - if comment.user_id == current_user.id    # コメントユーザーとログインユーザーが同一の場合
-                    .comment-Me{data:{index: comment.id}}                   
+                    .comment-Me.comment-one-block{data:{index: comment.id}}                   
                       - if comment.delete_check == 1   # 削除済の場合
                         .comment-content
                           出品者によりこのコメントは削除されました。
@@ -123,7 +123,7 @@
                             出品者
                         
                   - else  # コメントユーザーとログインユーザーが異なる場合
-                    .comment-Other{data:{index: comment.id}}     
+                    .comment-Other.comment-one-block{data:{index: comment.id}}     
                       .comment-user-name
                         = comment.user.nickname  
                         - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合

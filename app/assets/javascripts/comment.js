@@ -6,9 +6,10 @@ $(function(){
 
   function new_comment(comment_data){
     if (comment_data.item_user.id == comment_data.user_id){
+      // 出品者とコメントしたユーザーが等しい場合
       var html = 
       `
-      <div class="comment-Me" data-index=${comment_data.id}>
+      <div class="comment-Me comment-one-block" data-index=${comment_data.id}>
         <div class="comment-content">
           ${comment_data.comment}
           <div class="comment_create_at">
@@ -28,7 +29,7 @@ $(function(){
       `
     }else{
       var html = 
-      `<div class="comment-Me" data-index=${comment_data.id}>
+      `<div class="comment-Me comment-one-block" data-index=${comment_data.id}>
         <div class="comment-content">
         ${comment_data.comment}
         <div class="comment_create_at">
@@ -75,8 +76,7 @@ $(function(){
   $(".comment-list").on('click','.complete-delete',function(e){
   e.preventDefault()
   var index = $(this).data("index");
-  $(`.comment-Me[data-index=${index}]`).remove();
-  $(`.comment-Other[data-index=${index}]`).remove();
+  $(`.comment-one-block[data-index=${index}]`).remove();
   });
 
 // ===================================
@@ -100,7 +100,7 @@ function PLEdelete(index){
 $(".comment-list").on('click',".me-pre-delete",function(e){
   e.preventDefault()
   var index = $(this).data("index");
-  var content =  $(`.comment-Me[data-index=${index}]`).find(".comment-content");
+  var content =  $(`.comment-one-block[data-index=${index}]`).find(".comment-content");
   content.empty();
   var html = PLEdelete(index);
   content.append(html);
@@ -127,7 +127,7 @@ return html;
 $(".comment-list").on('click',".other-pre-delete",function(e){
 e.preventDefault()
 var index = $(this).data("index");
-var content =  $(`.comment-Other[data-index=${index}]`).find(".comment-content-other");
+var content =  $(`.comment-one-block[data-index=${index}]`).find(".comment-content-other");
 content.empty();
 var html = PLEdelete(index);
 content.append(html);
