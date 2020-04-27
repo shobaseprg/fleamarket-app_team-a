@@ -23,7 +23,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to item_path(@comment.item_id)
   end
 
   def restore

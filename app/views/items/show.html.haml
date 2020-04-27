@@ -99,14 +99,14 @@
               - if user_signed_in?
                 - @commentALL.each do |comment|
                   - if comment.user_id == current_user.id    # コメントユーザーとログインユーザーが同一の場合
-                    .comment-Me                   
+                    .comment-Me{"data-index" => "#{comment.id}"}                      
                       - if comment.delete_check == 1   # 削除済の場合
                         .comment-content
                           出品者によりこのコメントは削除されました。
                           - if comment.item.seller == current_user   # 出品者とログインユーザーが等しい場合
                             .comment-restore
                               = link_to "復元する",restore_comment_path(comment.id)
-                            .comment-delete
+                            .comment-delete.complete-delete{"data-index" => "#{comment.id}"}    
                               = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete,class: "complete-delete"
                       - else   # 削除されていない場合
                         .comment-content
@@ -114,7 +114,7 @@
                           .comment_create_at
                             = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
                           - if comment.item.seller == current_user
-                            .comment-delete
+                            .comment-delete{"data-index" => "#{comment.id}"}      
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
                       .comment-user-name
                         = comment.user.nickname
@@ -123,7 +123,7 @@
                             出品者
                         
                   - else  # コメントユーザーとログインユーザーが異なる場合
-                    .comment-Other  
+                    .comment-Other{"data-index" => "#{comment.id}"}        
                       .comment-user-name
                         = comment.user.nickname  
                         - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合
@@ -135,7 +135,7 @@
                           - if comment.item.seller == current_user    # 出品者とログインユーザーが等しい場合
                             .comment-restore
                               = link_to "復元する",restore_comment_path(comment.id)
-                            .comment-delete
+                            .comment-delete.complete-delete{"data-index" => "#{comment.id}"}      
                               = link_to '完全に削除する削除する', comment_path(comment.id) ,method: :delete,class: "complete-delete"
                       - else    # 削除されていない場合
                         .comment-content-other
