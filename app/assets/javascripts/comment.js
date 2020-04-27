@@ -5,9 +5,7 @@ $(function(){
 // ===================================
 
   function new_comment(comment_data){
-    if (comment_data.item_user.id == comment_data.user_id){
-      // 出品者とコメントしたユーザーが等しい場合
-      var html = 
+    var HTML_content_time = 
       `
       <div class="comment-Me comment-one-block" data-index=${comment_data.id}>
         <div class="comment-content">
@@ -15,36 +13,38 @@ $(function(){
           <div class="comment_create_at">
             ${comment_data.created_at}
           </div>
-          <div class="comment-delete me-pre-delete" data-index=${comment_data.id}>
-            <a rel="nofollow" data-method="patch" href="/comments/${comment_data.id}">削除する</a>
-          </div>
+      `
+    var HTML_deleteBtn =  
+        `<div class="comment-delete me-pre-delete" data-index=${comment_data.id}>
+          <a rel="nofollow" data-method="patch" href="/comments/${comment_data.id}">削除する</a>
+        </div>
+        `
+     var HTML_nickname =
+        `
         </div>
         <div class="comment-user-name">
           ${comment_data.user_nickname}
+        `
+    var HTML_sellerMark =
+        `
           <div class="seller-display">
           出品者
           </div>
+        `
+    var HTML_endDiv =
+      `
         </div>
       </div> 
       `
+    if (comment_data.item_user.id == comment_data.user_id){
+        // 出品者とコメントしたユーザーが等しい場合
+      var html = HTML_content_time + HTML_deleteBtn + HTML_nickname + HTML_sellerMark + HTML_endDiv
     }else{
-      var html = 
-      `<div class="comment-Me comment-one-block" data-index=${comment_data.id}>
-        <div class="comment-content">
-        ${comment_data.comment}
-        <div class="comment_create_at">
-          ${comment_data.created_at}
-        </div>
-        </div>
-        <div class="comment-user-name">
-        ${comment_data.user_nickname}
-        </div>
-      </div>`   
+       // 出品者とコメントしたユーザー
+      var html = HTML_content_time + HTML_nickname + HTML_endDiv
           };
 
-
     return html;
-
   }
 
   $('.new_comment').on('submit', function(e){
