@@ -3,7 +3,7 @@ $(function(){
     if (comment_data.item_user.id == comment_data.user_id){
       var html = 
       `
-      <div class="comment-Me comment-inner" data-index=${comment_data.id}>
+      <div class="comment-Me">
         <div class="comment-content">
           ${comment_data.comment}
           <div class="comment_create_at">
@@ -23,7 +23,7 @@ $(function(){
       `
     }else{
       var html = 
-      `<div class="comment-Me comment-inner" data-index=${comment_data.id}>
+      `<div class="comment-Me">
         <div class="comment-content">
         ${comment_data.comment}
         <div class="comment_create_at">
@@ -63,10 +63,4 @@ $(function(){
     alert("メッセージ送信に失敗しました");
   });
 });
-
-  $(".complete-delete").on('click',function(e){
-  e.preventDefault()
-  
-  
-  });
 })
