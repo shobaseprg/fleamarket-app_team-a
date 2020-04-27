@@ -38,7 +38,7 @@ $(function(){
         // 出品者とコメントしたユーザーが等しい場合
       var html = HTML_content_time + HTML_deleteBtn + HTML_nickname + HTML_sellerMark + HTML_endDiv
     }else{
-       // 出品者とコメントしたユーザー
+       // 出品者とコメントしたユーザーが異なる場合
       var html = HTML_content_time + HTML_nickname + HTML_endDiv
           };
 
@@ -80,7 +80,6 @@ return html;
       contentType: false
     })
   .done(function(comment_data){
-    console.log(comment_data)
     var html = new_comment(comment_data);
     $(".comment-list").append(html)
     $('#comment_body').val("");
@@ -104,6 +103,11 @@ $(".comment-list").on('click',".comment-restore",function(e){
     dataType: 'json',
   })
   .done(function(comment_data){
+    if (comment_data.item_seller.id == comment_data.user_id){
+      var html = new_comment(comment_data);
+      $(`.comment-one-block[data-index=${index}]`).replaceWith(html)
+    }else{}
+
   })
   .fail(function() {
     alert("メッセージ送信に失敗しました");
