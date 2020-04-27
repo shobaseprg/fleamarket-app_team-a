@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
     @seller_of_item = User.find(@comment.item.seller_id)
     respond_to do |format|
     format.json
-    end
   end
 
 private
