@@ -101,9 +101,10 @@
               - if user_signed_in?
                 - @commentALL.each do |comment|
                   - if comment.user_id == current_user.id   
-                    .comment-Me.comment-one-block{data:{index: comment.id}}   
-                  - else 
-                    .comment-Other.comment-one-block{data:{index: comment.id}} 
+                    -#   ===================================
+                    -#   コメントユーザーとログインユーザーが同一の場合  
+                    -#   ===================================
+                    .comment-Me.comment-one-block{data:{index: comment.id}}                   
                       - if comment.delete_check == 1   # 削除済の場合
                         .comment-content
                           出品者によりこのコメントは削除されました。
@@ -120,19 +121,22 @@
                           - if comment.item.seller == current_user
                             .comment-delete.me-pre-delete{data:{index: comment.id}}     
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
-                      - if comment.user_id == current_user.id  
-                        .comment-user-name
-                          = comment.user.nickname
-                          - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合
-                            .seller-display
-                              出品者
+                      .comment-user-name
+                        = comment.user.nickname
+                        - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合
+                          .seller-display
+                            出品者
                         
                   - else 
                     -#   ===================================
                     -#   コメントユーザーとログインユーザーが異なる場合の場合  
                     -#   ===================================
-    
-              
+                    .comment-Other.comment-one-block{data:{index: comment.id}}     
+                      .comment-user-name
+                        = comment.user.nickname  
+                        - if comment.user ==  comment.item.seller  # コメントユーザーと出品者が同じ場合
+                          .seller-display
+                            出品者                
                       - if comment.delete_check == 1    # 削除済の場合
                         .comment-content-other
                           出品者によりこのコメントは削除されました。
