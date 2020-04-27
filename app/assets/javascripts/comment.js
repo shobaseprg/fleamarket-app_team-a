@@ -72,7 +72,7 @@ $(function(){
 // ===================================
 // 完全削除
 // ===================================
-  $(".complete-delete").on('click',function(e){
+  $(".comment-list").on('click','.complete-delete',function(e){
   e.preventDefault()
   var index = $(this).data("index");
   $(`.comment-Me[data-index=${index}]`).remove();
@@ -104,6 +104,33 @@ $(".comment-list").on('click',".me-pre-delete",function(e){
   content.empty();
   var html = PLEdelete(index);
   content.append(html);
+});
+
+// ===================================
+// 他人のコメントを仮削除
+// ===================================
+function PLEdelete(index){
+  var html = 
+  `
+  出品者によりこのコメントは削除されました。
+  <div class="comment-restore">
+  <a href="/comments/${index}/restore">復元する</a>
+  </div>
+  <div class="comment-delete complete-delete" data-index="${index}">
+  <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する削除する</a>
+  </div>`
+
+
+return html;
+};
+
+$(".comment-list").on('click',".other-pre-delete",function(e){
+e.preventDefault()
+var index = $(this).data("index");
+var content =  $(`.comment-Other[data-index=${index}]`).find(".comment-content-other");
+content.empty();
+var html = PLEdelete(index);
+content.append(html);
 });
 
 })
