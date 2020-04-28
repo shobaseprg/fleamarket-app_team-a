@@ -112,8 +112,13 @@
                         .comment-content
                           = comment.comment
                           .comment_create_at
-                            = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
                           - if comment.item.seller == current_user
+                            .comment-delete.idd
+                              コメントid = 5
+                            .comment-delete.inputt
+                              削除したいコメントidを入力してください➡︎
+                            .boxx
+                              5
                             .comment-delete.me-pre-delete{data:{index: comment.id}}     
                               = link_to '削除する', comment_path(comment.id) ,method: :patch
                       = render 'items/template_comment/comment_name',comment: comment                    
