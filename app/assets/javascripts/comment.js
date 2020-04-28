@@ -13,7 +13,8 @@ $(function(){
           </div>
       `
     var HTML_deleteBtn =  
-        `<div class="comment-delete me-pre-delete" data-index=${comment_data.id}>
+        `
+        <div class="comment-delete me-pre-delete" data-index=${comment_data.id}>
           <a rel="nofollow" data-method="patch" href="/comments/${comment_data.id}">削除する</a>
         </div>
         `
@@ -48,7 +49,8 @@ $(function(){
 // 他人のコメント復元用 
 // ===================================
   function restore_other_comment(comment_data){
-    var html = `
+    var html = 
+    `
     <div class="comment-Other comment-one-block" data-index=${comment_data.id}>
       <div class="comment-user-name">
       ${comment_data.user_nickname}
@@ -77,11 +79,12 @@ function PLEdelete(index){
   `
   出品者によりこのコメントは削除されました。
   <div class="comment-restore" data-index=${index}>
-  <a href="/comments/${index}/restore">復元する</a>
+    <a href="/comments/${index}/restore">復元する</a>
   </div>
   <div class="comment-delete complete-delete" data-index=${index}>
-  <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する</a>
-  </div>`
+    <a class="complete-delete" rel="nofollow" data-method="delete" href="/comments/${index}">完全に削除する</a>
+  </div>
+  `
 
 return html;
 };
