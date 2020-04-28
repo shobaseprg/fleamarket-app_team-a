@@ -1,6 +1,6 @@
 $(function(){
 // ===================================
-// 新規コメント表示用
+// 新規コメント表示用・自分のコメント復元用 
 // ===================================
   function new_comment(comment_data){
     var HTML_content_time = 
@@ -43,7 +43,30 @@ $(function(){
           };
 
     return html;
-  }
+  };
+// ===================================
+// 他人のコメント復元用 
+// ===================================
+  function restore_other_comment(comment_data){
+    var html = `
+    <div class="comment-Other comment-one-block" data-index=${comment_data.id}>
+      <div class="comment-user-name">
+      ${comment_data.user_nickname}
+      </div>
+    
+      <div class="comment-content-other">
+        ${comment_data.comment}
+        <div class="comment_create_at">
+          ${comment_data.created_at}
+        </div>
+        <div class="comment-delete other-pre-delete" data-index=${comment_data.id}>
+          <a rel="nofollow" data-method="patch" href="/comments/${comment_data.id}">削除する</a>
+        </div>
+      </div>
+    </div>
+    `
+  return html;
+  };
 
 // ===================================
 // 仮削除表示用
@@ -103,11 +126,13 @@ $(".comment-list").on('click',".comment-restore",function(e){
     dataType: 'json',
   })
   .done(function(comment_data){
-    if (comment_data.item_seller.id == comment_data.user_id){
+    if (comment_data.item_seller.id == comment_data.user_id){   // 出品者とコメントユーザーが同じ場合
       var html = new_comment(comment_data);
       $(`.comment-one-block[data-index=${index}]`).replaceWith(html)
-    }else{}
-
+    }else{    // 出品者とコメントユーザーが異なる場合
+      var html = restore_other_comment(comment_data);
+      $(`.comment-one-block[data-index=${index}]`).replaceWith(html)
+    }
   })
   .fail(function() {
     alert("メッセージ送信に失敗しました");
