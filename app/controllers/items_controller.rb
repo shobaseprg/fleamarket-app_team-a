@@ -97,8 +97,7 @@ class ItemsController < ApplicationController
     @ko = @item.children_category
     @oya = @item.parent_category
     @comment = Comment.new
-    # form_withを使用しているためからのモデルを送る
-    @commentALL = Comment.where(item_id:params[:id])
+    @commentALL = @item.comments
   end
 
   def search
