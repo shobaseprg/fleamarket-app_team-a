@@ -17,31 +17,33 @@
                 %span.form-require 必須
                 .field-input
                   = f.text_field :nickname, class: "field-input-full", autofocus: true, autocomplete: "nickname", placeholder: "例）メルカリ太郎"
+                .input-error
+                  = resource.errors.full_messages_for(:nickname)[0]
               .field
                 .field-label
                   = f.label 'メールアドレス'
                 %span.form-require 必須
                 .field-input
                   = f.email_field :email, class: "field-input-full", autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+                .input-error
+                  = resource.errors.full_messages_for(:email)[0]
               .field
-              - if @sns_id.present?
-                = hidden_field_tag :sns_auth, true
-              - else
-                .field-label 
-                  = f.label :password, 'パスワード'
-                  %span.form-require 必須
-                  - if @minimum_password_length
-                    %em
-                      (#{@minimum_password_length} characters minimum)
-                  %br/
-                .field-input.toggle
-                  = f.password_field :password, class: "field-input-full", autocomplete: "off", autocomplete: "password", placeholder: "7文字以上の半角英数字", id:'password'
-                  .checkbox-field
-                    %input#js-passcheck.checkbox.js-password-toggle{type: "checkbox"}
-                    %label.btn-label.js-password-label{for: "js-passcheck"}
-                      %i.fas.fa-eye-slash{style: "font-size:20px;color:#808080"}
-                .field-info
-                  ※ 英字と数字の両方を含めて設定してください
+                - if @sns_id.present?
+                  = hidden_field_tag :sns_auth, true
+                - else
+                  .field-label 
+                    = f.label :password, 'パスワード'
+                    %span.form-require 必須
+                  .field-input.toggle
+                    = f.password_field :password, class: "field-input-full", autocomplete: "off", autocomplete: "password", placeholder: "7文字以上の半角英数字", id:'password'
+                    .checkbox-field
+                      %input#js-passcheck.checkbox.js-password-toggle{type: "checkbox"}
+                      %label.btn-label.js-password-label{for: "js-passcheck"}
+                        %i.fas.fa-eye-slash{style: "font-size:20px;color:#808080"}
+                  .input-error
+                    = resource.errors.full_messages_for(:password)[0]
+                  .field-info
+                    ※ 英字と数字の両方を含めて設定してください
               .field
                 .field-info-title 本人確認
                 .field-info-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません
@@ -53,29 +55,41 @@
                   .field-input
                     = f.text_field :family_name, class: "field-input-half", autofocus: true, autocomplete: "family_name", placeholder: "例）山田"
                   .field-input
-                    = f.text_field :first_name, class: "field-input-half", autofocus: true, autocomplete: "first_name", placeholder: "例）綾"               
+                    = f.text_field :first_name, class: "field-input-half", autofocus: true, autocomplete: "first_name", placeholder: "例）綾"
+                .input-error
+                  = resource.errors.full_messages_for(:family_name)[0]
+                .input-error
+                  = resource.errors.full_messages_for(:first_name)[0]
               .field
                 .field-label 
                   = f.label 'お名前カナ(全角)'
                 %span.form-require 必須
                 .field-name
                   .field-input
-                    = f.text_field :family_name_reading, class: "field-input-half", autofocus: true, autocomplete: "family_name_reading", placeholder: "例）ヤマダ"  
+                    = f.text_field :family_name_reading, class: "field-input-half", autofocus: true, autocomplete: "family_name_reading", placeholder: "例）ヤマダ"
                   .field-input
-                    = f.text_field :first_name_reading, class: "field-input-half", autofocus: true, autocomplete: "first_name_reading", placeholder: "例）アヤ"               
+                    = f.text_field :first_name_reading, class: "field-input-half", autofocus: true, autocomplete: "first_name_reading", placeholder: "例）アヤ"
+                .input-error
+                  = resource.errors.full_messages_for(:family_name_reading)[0]
+                .input-error
+                  = resource.errors.full_messages_for(:first_name_reading)[0]
               .field
                 .field-label 
                   = f.label '生年月日'
                 %span.form-require 必須
                 .birthday-select
-                  = raw sprintf(f.date_select( :birthday, use_two_digit_numbers: true, prompt: "--", start_year: Time.now.year, end_year: 1900, date_separator: '%s'), '年 ', '月 ') + '日'
+                  = raw sprintf(f.date_select( :birthday, use_two_digit_numbers: true, prompt: "--", start_year: Time.now.year, end_year: 1900, date_separator: '%s'), '年 ', '月 ') + "日"
+                .input-error
+                  = resource.errors.full_messages_for(:birthday)[0]
                 .field-info
                   ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
               .field
                 .field-label 
-                = f.label '携帯電話の番号'
+                  = f.label '携帯電話の番号'
                 %span.form-require 必須
                 = f.text_field :phone_number, class: "field-input-full", autocomplete: "phone_namber", placeholder: "携帯電話の番号を入力"
+                .input-error
+                  = resource.errors.full_messages_for(:phone_number)[0]
                 .field-info
                   ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。               
               .actions
