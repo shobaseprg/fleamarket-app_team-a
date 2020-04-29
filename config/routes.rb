@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
+
+  devise_scope :users do
+    get '/users', to: redirect("/users/sign_up")
+  end
 
   root to: "items#index"
 
