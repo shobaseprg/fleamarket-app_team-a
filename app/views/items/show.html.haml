@@ -141,15 +141,15 @@
               = form_with model:@comment ,class:"new_comment", local: true do |f|
                 = f.text_area :comment,id: "comment_body",wrap: "soft"
                 = f.hidden_field :item_id, value: @item.id
-
-                %p.noticeMsg
-                  相手のことを考えて丁寧なコメントをこころがけましょう。
-                  %br/
-                  不快な言葉遣いなどは利用制限や退会処分となることがあります。
-                %br/
-                %button.commentBtn{name: "button", type: "submit"}
-                  %i.fa.fa-comment
-                  コメントする
+                = f.submit, class:"commentBtn"
+                -# %p.noticeMsg
+                -#   相手のことを考えて丁寧なコメントをこころがけましょう。
+                -#   %br/
+                -#   不快な言葉遣いなどは利用制限や退会処分となることがあります。
+                -# %br/
+                -# %button.commentBtn{name: "button", type: "submit"}
+                -#   %i.fa.fa-comment
+                -#   コメントする
 
 
         / 前の商品、後ろの商品
