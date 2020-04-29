@@ -178,20 +178,24 @@ g =0
     end
 end
 
-User.create(id:1, first_name:"けん１",family_name:"志村",first_name_reading:"ケン",family_name_reading:"シムラ",nickname:"けんちゃん1",
-            email: "1@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
-            updated_at:"2020-04-03 14:55:54") 
-User.create(id:2, first_name:"ぶー",family_name:"高木",first_name_reading:"ブー",family_name_reading:"タカギ",nickname:"ブー2",
+User.create(id:1, first_name:"けん１",family_name:"志村",first_name_reading:"ケン",family_name_reading:"シムラ",nickname:"けんちゃん",
+  email: "1@gmail.com",phone_number:"08011111122",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+  updated_at:"2020-04-03 14:55:54") 
+
+User.create(id:2, first_name:"ぶー",family_name:"高木",first_name_reading:"ブー",family_name_reading:"タカギ",nickname:"ブー",
   email: "2@gmail.com",phone_number:"08022222222",password:"1111111a",birthday:"2018-06-06", created_at:"2020-04-04 14:55:54",
   updated_at:"2020-04-04 14:55:54") 
-User.create(id:3, first_name:"茶",family_name:"加藤",first_name_reading:"チャ",family_name_reading:"カトウ",nickname:"ちゃ3",
+
+User.create(id:3, first_name:"茶",family_name:"加藤",first_name_reading:"チャ",family_name_reading:"カトウ",nickname:"ちゃ",
   email: "3@gmail.com",phone_number:"08033333333",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
   updated_at:"2020-04-03 14:55:54") 
-User.create(id:4, first_name:"長介",family_name:"いかりや",first_name_reading:"チョウスケ",family_name_reading:"イカリヤ",nickname:"ちょうさん4",
-  email: "4@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+
+User.create(id:4, first_name:"長介",family_name:"いかりや",first_name_reading:"チョウスケ",family_name_reading:"イカリヤ",nickname:"ちょうさん",
+  email: "4@gmail.com",phone_number:"08011198111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
   updated_at:"2020-04-03 14:55:54") 
-User.create(id:5, first_name:"工事",family_name:"仲本",first_name_reading:"コウジ",family_name_reading:"ナカモト",nickname:"なかもと5",
-  email: "5@gmail.com",phone_number:"08011111111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
+  
+User.create(id:5, first_name:"工事",family_name:"仲本",first_name_reading:"コウジ",family_name_reading:"ナカモト",nickname:"なかもと",
+  email: "5@gmail.com",phone_number:"08011199111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
   updated_at:"2020-04-03 14:55:54") 
 
   Item.create(id:1, name:"ズボン(売けん　買ぶー）", description_item:"ズボンです",category_id:193,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,

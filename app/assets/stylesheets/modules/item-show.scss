@@ -242,6 +242,19 @@ tr {
                 bottom: 0;
                 font-size: 9px;
               }
+              .comment-restore{
+                position: absolute;
+                background-color:skyblue;
+                bottom:5px;
+                right: 110px;
+                padding-left: 5px;
+                padding-right: 5px;
+                border: solid 1px;
+                a{
+                color:black;
+                font-size: 12px;
+                }
+              }
               .comment-delete{
                 position: absolute;
                 background-color: red;
@@ -249,6 +262,7 @@ tr {
                 right: 5px;
                 padding-left: 5px;
                 padding-right: 5px;
+                border: solid 1px;
                 a{
                 color: white;
                 font-size: 12px;
@@ -267,7 +281,16 @@ tr {
               .comment-user-name{
                 width: 100px;
                 display: flex;
+                position: relative;
                 align-items: center;
+                .seller-display{
+                  position: absolute;
+                  top:70px;
+                  left: 5px;         
+                  background-color:yellow;    
+                  font-size: 10px;
+                  border: solid 1px;
+                }
               }
           }
           .comment-Other {
@@ -290,6 +313,19 @@ tr {
                   bottom: 0;
                   font-size: 9px;
                 }
+                .comment-restore{
+                  position: absolute;
+                  background-color:skyblue;
+                  bottom:5px;
+                  right: 110px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  border: solid 1px;
+                  a{
+                  color:black;
+                  font-size: 12px;
+                  }
+                }
                 .comment-delete{
                   position: absolute;
                   background-color: red;
@@ -297,6 +333,7 @@ tr {
                   right: 5px;
                   padding-left: 5px;
                   padding-right: 5px;
+                  border: solid 1px;
                   a{
                   color: white;
                   font-size: 12px;
@@ -315,7 +352,16 @@ tr {
               .comment-user-name{
                 width: 100px;
                 display: flex;
+                position: relative;
                 align-items: center;
+                .seller-display{
+                  position: absolute;
+                  top:80px;
+                  left: 5px;         
+                  background-color:yellow;    
+                  font-size: 10px;
+                  border: solid 1px;
+                }
               }
           }
        

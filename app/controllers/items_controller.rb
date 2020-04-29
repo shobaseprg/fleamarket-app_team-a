@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
     @items = self_progeny.map(&:items)
     # 配列の平坦化
     @items.flatten!
-    @items = Kaminari.paginate_array(@items).page(params[:page]).per(100)
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(3)
   end
 
   def show
@@ -97,8 +97,7 @@ class ItemsController < ApplicationController
     @ko = @item.children_category
     @oya = @item.parent_category
     @comment = Comment.new
-    # form_withを使用しているためからのモデルを送る
-  @commentALL = Comment.where(item_id:params[:id])
+    @commentALL = @item.comments
   end
 
   def search
