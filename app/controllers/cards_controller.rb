@@ -52,12 +52,17 @@ class CardsController < ApplicationController
   def show 
       if @card.blank?
         #登録された情報がない場合にカード登録画面に移動
+        flash[:alert] = '購入前にカード登録してください'
         redirect_to cards_path
       else
         #保管した顧客IDでpayjpから情報取得
         set_customer
         #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
         set_card_information
+      end
+      if current_user.address == nil
+          flash[:alert] = '購入前に住所登録してください'
+          redirect_to addresses_path
       end
   end
 

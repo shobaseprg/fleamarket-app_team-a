@@ -4,7 +4,7 @@
     %section.l-chapter-container
     .l-single-inner_registration-form
       %h2.l-chapter-head 発送元・お届け先住所変更
-      = form_with model: @address do |f|
+      = form_with(model: @address,data: { remote: false }) do |f|
         .l-single-content
           .form-group
             %label{for: "name"} お名前

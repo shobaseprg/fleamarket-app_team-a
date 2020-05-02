@@ -10,7 +10,7 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    if @address.save
+   if @address.save
       flash[:notice] = '登録しました'
       redirect_to root_path
     else
