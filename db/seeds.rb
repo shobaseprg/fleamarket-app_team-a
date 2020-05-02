@@ -178,11 +178,11 @@ g =0
     end
 end
 
-User.create(id:1, first_name:"けん１",family_name:"志村",first_name_reading:"ケン",family_name_reading:"シムラ",nickname:"けんちゃん",
+User.create(id:1, first_name:"太郎",family_name:"山田",first_name_reading:"タロウ",family_name_reading:"ヤマダ",nickname:"たろう",
   email: "1@gmail.com",phone_number:"08011111122",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
   updated_at:"2020-04-03 14:55:54") 
 
-User.create(id:2, first_name:"ぶー",family_name:"高木",first_name_reading:"ブー",family_name_reading:"タカギ",nickname:"ブー",
+User.create(id:2, first_name:"健太",family_name:"田中",first_name_reading:"ケンタ",family_name_reading:"タナカ",nickname:"けんた",
   email: "2@gmail.com",phone_number:"08022222222",password:"1111111a",birthday:"2018-06-06", created_at:"2020-04-04 14:55:54",
   updated_at:"2020-04-04 14:55:54") 
 
@@ -198,19 +198,3 @@ User.create(id:5, first_name:"工事",family_name:"仲本",first_name_reading:"�
   email: "5@gmail.com",phone_number:"08011199111",password:"1111111a",birthday:"2018-06-05", created_at:"2020-04-03 14:55:54",
   updated_at:"2020-04-03 14:55:54") 
 
-  Item.create(id:1, name:"ズボン(売けん　買ぶー）", description_item:"ズボンです",category_id:193,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
-    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 ,buyer_id:2, auction_id:2,
-    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
-  Item.create(id:2, name:"ラジオ(売けん　買ちゃ）", description_item:"ラジオです",category_id:368,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
-    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 ,buyer_id:3, auction_id:3,
-    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
-  Item.create(id:3, name:"自転車(売けん　取ぶー）", description_item:"自転車です",category_id:383,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
-    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 , auction_id: 2,
-    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
-  Item.create(id:4, name:"野菜(売けん　取いかりや）", description_item:"421です",category_id:421,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
-    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1 , auction_id:4,
-    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
-  Item.create(id:5, name:"デグーの餌(売けん）", description_item:"えさです",category_id:417,  brand_id:1 ,condition_id:1 ,shipping_charger_id:1, shipping_method_id:1,
-    ship_from_id:1,shipping_days_id:1,price:5000,sales_fee:500, sales_profit:4500,seller_id:1,
-    created_at:"2020-04-03 14:55:54",updated_at:"2020-04-03 14:55:54")
-  
