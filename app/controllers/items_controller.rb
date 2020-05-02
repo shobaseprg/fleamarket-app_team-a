@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    if @item.item_images
       if @item.price
         set_price
       end
@@ -37,6 +38,10 @@ class ItemsController < ApplicationController
         flash[:alert] = '登録できませんでした'
         redirect_to new_item_path
       end
+    else
+      flash[:alert] = '登録できませんでした'
+      redirect_to new_item_path
+    end
   end
 
      # 親カテゴリーが選択された後に動くアクション
