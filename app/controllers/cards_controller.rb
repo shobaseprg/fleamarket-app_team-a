@@ -62,7 +62,7 @@ class CardsController < ApplicationController
       end
       if current_user.address == nil
           flash[:alert] = '購入前に住所登録してください'
-          redirect_to addresses_path
+          redirect_to new_address_path
       end
   end
 
