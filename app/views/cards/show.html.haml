@@ -53,7 +53,7 @@
             .purchaseConfirmation__main__content__payment__address__method__text
               配送先
             .purchaseConfirmation__main__content__payment__address__method__change
-              = link_to '変更する', edit_address_path(current_user.address.id)お, class: "change"
+              = link_to '変更する', edit_address_path(current_user.address.id), class: "change"
           .purchaseConfirmation__main__content__payment__address__number
             = "〒" + "#{@address.postal_code.first(3)}" + "-" + "#{@address.postal_code.last(4)}" 
           .purchaseConfirmation__main__content__payment__address__text
