@@ -48,7 +48,7 @@
 |user_id|integer|null: false|
 
 ### Association
--belongs_to :user
+- belongs_to :user
 
 ----------------------------------------------------
 
@@ -74,15 +74,14 @@
 |auction|reference|foreign_key: true|
 
 ### Association
--belongs_to :category,class_name:"Category",optional: true,foreign_key: "category_id"
--belongs_to :parent_category,class_name:"Category",optional: true,foreign_key: "parent_category_id"
--belongs_to :children_category,class_name:"Category",optional: true,foreign_key: "children_category_id"
-
--belongs_to :seller, class_name: "User" , optional: true,foreign_key: "seller_id"
--belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
--belongs_to :auction, class_name: "User", optional: true,foreign_key: "auction_id"
--has_many :item_images, dependent: :destroy
--has_many :comments, dependent: :destroy
+- belongs_to :category,class_name:"Category",optional: true,foreign_key: "category_id"
+- belongs_to :parent_category,class_name:"Category",optional: true,foreign_key: "parent_category_id"
+- belongs_to :children_category,class_name:"Category",optional: true,foreign_key: "children_category_id"
+- belongs_to :seller, class_name: "User" , optional: true,foreign_key: "seller_id"
+- belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
+- belongs_to :auction, class_name: "User", optional: true,foreign_key: "auction_id"
+- has_many :item_images, dependent: :destroy
+- has_many :comments, dependent: :destroy
 
 ----------------------------------------------------------
 
@@ -93,7 +92,7 @@
 |image|string|null: false|
 
 ### Association
--belongs_to :item 
+- belongs_to :item 
 
 -------------------------------------------------------------
 
@@ -104,7 +103,7 @@
 |ancestry|string||
 
 ### Association
--has_many :items
+- has_many :items
 
 --------------------------------------------------------------------
 
@@ -116,8 +115,8 @@
 |comment|string||
 
 ### Association
--belongs_to :user
--belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 ---------------------------------------------------------------------
 
@@ -130,7 +129,7 @@
 
 
 ### Association
--belongs_to :user
+- belongs_to :user
 
 ---------------------------------------------------------------------
 
@@ -142,7 +141,7 @@
 |user|reference|null: false, foreign_key: true| 
 
 ### Association
--belongs_to :user, optional: true
+- belongs_to :user, optional: true
 
 ---------------------------------------------------------------------
 
@@ -152,7 +151,7 @@
 |good|reference|null: false,foreign_key: true| 
 
 ### Association
--belongs_to :user
+- belongs_to :user
 
 --------------------------------------------------------------------
 
@@ -162,7 +161,7 @@
 |comment|reference|null: false,foreign_key: true| 
 
 ### Association
--belongs_to :user
+- belongs_to :user
 
 ---------------------------------------------------------------------
 
@@ -172,7 +171,7 @@
 |evaluations|reference|null: false,foreign_key: true| 
 
 ### Association
--belongs_to :user
+- belongs_to :user
 
 --------------------------------------------------------------------
 
@@ -182,7 +181,7 @@
 |item|reference|null: false,foreign_key: true| 
 
 ### Association
--belongs_to :user
+- belongs_to :user
 
 -------------------------------------------------------------------
 
@@ -194,7 +193,7 @@
 |item|reference|null: false, foreign_key: true| 
 
 ### Association
--belongs_to :item 
+- belongs_to :item 
 
 -------------------------------------------------------------------
 
@@ -205,8 +204,8 @@
 |user|reference|null: false, foreign_key: true|
 
 ### Association
--belongs_to :user 
--belongs_to :item
+- belongs_to :user 
+- belongs_to :item
 
 -----------------------------------------------------------
 
@@ -218,7 +217,7 @@
 |rank|integer|null: false|
 
 ### Association
--belongs_to :sayer, class_name: "User"
--belongs_to :receiver, class_name: "User"
+- belongs_to :sayer, class_name: "User"
+- belongs_to :receiver, class_name: "User"
 
 -------------------------------------------------------------------
